@@ -1,0 +1,1 @@
+GET http://localhost:3001/api/foods/664f42d7887888e5f94b0b5f

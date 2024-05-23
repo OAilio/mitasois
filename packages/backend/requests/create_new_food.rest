@@ -2,8 +2,8 @@ POST http://localhost:3001/api/foods
 Content-Type: application/json
 
 {
-    "name": "Kalapihvit ja uunijuurekset",
+    "name": "Kalapuikot ja peruna",
     "protein": "Seafood",
-    "carb": "Vegetable",
-    "date": "11/5/2024"
+    "carb": "Vegetables",
+    "date": "9/5/2024"
 }

@@ -1,87 +1,105 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const Food = require("./models/food")
 
 app.use(cors())
 app.use(express.json())
 
-let foods = [
-    {
-      id: 1,
-      name: "Kalapuikot",
-      protein: "Seafood",
-      carb: "Vegetable",
-      date: "21/5/2024"
-    },
-    {
-        id: 2,
-        name: "Nachovuoka",
-        protein: "Chicken",
-        carb: "Other",
-        date: "19/5/2024"
-    },
-    {
-        id: 3,
-        name: "Tofuwokki",
-        protein: "Vegetable",
-        carb: "Noodles",
-        date: "15/5/2024"
-    }
-  ]
+
+// Methods
 
 app.get('/', (request, response) => {
     response.send('<h1>Hello World!</h1>')
 })
 
+//Get all foods
 app.get('/api/foods', (request, response) => {
+  Food.find({}).then(foods => {
     response.json(foods)
+  })
 })
 
-app.get('/api/foods/:id', (request, response) => {
-    const id = Number(request.params.id)
-    const food = foods.find(food => food.id === id)
-    if (food) {
+// Get single food by ID
+app.get('/api/foods/:id', (request, response, next) => {
+  Food.findById(request.params.id)
+    .then(food => {
+      if (food) {
         response.json(food)
-    } else {
+      } else {
         response.status(404).end()
-    }
+      }
+    })
+    .catch(error => next(error))
 })
 
+// Delete a food
 app.delete('/api/foods/:id', (request, response) => {
-    const id = Number(request.params.id)
-    food = foods.find(food => food.id === id)
-  
-    response.status(204).end()
+  Food.findByIdAndDelete(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
 })
 
-const generateId = () => {
-    const maxId = foods.length > 0
-      ? Math.max(...foods.map(n => n.id))
-      : 0
-    return maxId + 1
-}
-
+// Create new food
 app.post('/api/foods', (request, response) => {
-    const body = request.body
+  const body = request.body
 
-    if (!body.name) {
-      return response.status(400).json({ 
-        error: 'name missing' 
-      })
-    }
-  
-    const food = {
-      id: generateId(),
-      name: body.name,
-      protein: body.protein,
-      carb: body.carb,
-      date: body.date
-    }
-  
-    foods = foods.concat(food)
-  
-    response.json(food)
+  if (!body.name) {
+    return response.status(400).json({ 
+      error: 'name missing' 
+    })
+  }
+
+  const food = new Food({
+    name: body.name,
+    protein: body.protein,
+    carb: body.carb,
+    date: body.date
+  })
+
+  food.save().then(savedFood => {
+    response.json(savedFood)
+  })
 })
+
+// Edit a food by ID
+app.put('/api/foods/:id', (request, response, next) => {
+  const { name, protein, carb, date} = request.body
+
+  const food = {
+    name,
+    protein,
+    carb,
+    date
+  }
+
+  Food.findByIdAndUpdate(request.params.id, food, {new: true})
+  .then(updatedFood => {
+    response.json(updatedFood)
+    })
+    .catch(error => next(error))
+})
+
+
+// Error states
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+app.use(unknownEndpoint)
+
+
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message)
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  }
+  next(error)
+}
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {

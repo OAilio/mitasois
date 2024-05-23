@@ -1,0 +1,9 @@
+PUT http://localhost:3001/api/foods/664f3f58872dfd639e97139e
+Content-Type: application/json
+
+{
+    "name": "Kalapuikot",
+    "protein": "Seafood",
+    "carb": "Vegetable",
+    "date": "7/5/2024"
+}
