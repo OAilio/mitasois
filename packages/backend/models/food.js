@@ -13,8 +13,15 @@ mongoose.connect(url)
     console.log('error connecting to MongoDB:', error.message)
   })
 
+//------------------------------
+// TODO: Schema content & validation rules
+//------------------------------
 const foodSchema = new mongoose.Schema({
-  name: String,
+  name:{
+    type: String,
+    required: true,
+    minLength: 2
+  },
   protein: String,
   carb: String,
   date: String,

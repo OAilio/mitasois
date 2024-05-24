@@ -44,7 +44,7 @@ app.delete('/api/foods/:id', (request, response) => {
 })
 
 // Create new food
-app.post('/api/foods', (request, response) => {
+app.post('/api/foods', (request, response, next) => {
   const body = request.body
 
   if (!body.name) {
@@ -63,6 +63,7 @@ app.post('/api/foods', (request, response) => {
   food.save().then(savedFood => {
     response.json(savedFood)
   })
+  .catch(error => next(error))
 })
 
 // Edit a food by ID
@@ -76,9 +77,11 @@ app.put('/api/foods/:id', (request, response, next) => {
     date
   }
 
-  Food.findByIdAndUpdate(request.params.id, food, {new: true})
-  .then(updatedFood => {
-    response.json(updatedFood)
+  Food.findByIdAndUpdate(request.params.id, food,
+    { new: true, runValidators: true, context: 'query' }
+  )
+    .then(updatedFood => {
+      response.json(updatedFood)
     })
     .catch(error => next(error))
 })
@@ -96,7 +99,10 @@ const errorHandler = (error, request, response, next) => {
   console.error(error.message)
   if (error.name === 'CastError') {
     return response.status(400).send({ error: 'malformatted id' })
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message })
   }
+
   next(error)
 }
 app.use(errorHandler)
