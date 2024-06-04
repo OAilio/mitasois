@@ -11,7 +11,9 @@ import Footer from './components/Footer';
 
 function App() {
   const [foods, setFoods] = useState([]);
+  const [ascendingSort, setAscendingSort] = useState(false)
   const [error, setError] = useState(null);
+  const [searchInput, setSearchInput] = useState("")
 
   useEffect(() => {
     foodService.getAllFoods()
@@ -53,14 +55,15 @@ function App() {
       });
   };
 
-  if (error) return <p>Error: {error.message}</p>;
+
+  if (error) return <p>Error: {error.message}</p>
 
   return (
     <>
     <Header />
-    <Toolbar />
+    <Toolbar ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} setSearchInput={setSearchInput}/>
     <AddNewFood handleCreate={handleCreate}/>
-    <AllFoods foods={foods} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+    <AllFoods foods={foods} ascendingSort={ascendingSort} searchInput={searchInput} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
     <Footer />
     </>
   );
