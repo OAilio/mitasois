@@ -5,7 +5,7 @@ const getAllFoods = () => {
   return axios.get(baseUrl)
 }
 
-const newFood = newObject => {
+const createNewFood = newObject => {
   return axios.post(baseUrl, newObject)
 }
 
@@ -19,7 +19,7 @@ const deleteFood = (id) => {
 
 export default { 
   getAllFoods: getAllFoods, 
-  newFood: newFood, 
+  createNewFood: createNewFood, 
   updateFood: updateFood,
   deleteFood: deleteFood 
 }
