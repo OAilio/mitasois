@@ -6,6 +6,7 @@ const getAllFoods = () => {
 }
 
 const createNewFood = newObject => {
+  console.log("Food added", newObject)
   return axios.post(baseUrl, newObject)
 }
 

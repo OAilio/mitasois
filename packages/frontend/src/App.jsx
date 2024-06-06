@@ -15,6 +15,14 @@ function App() {
   const [error, setError] = useState(null);
   const [searchInput, setSearchInput] = useState("")
 
+  //Filters
+  const [proteinFilters, setProteinFilters] = useState([]);
+  const [carbFilters, setCarbFilters] = useState([]);
+  const [dateFilter, setDateFilter] = useState('');
+  const [dateFilterType, setDateFilterType] = useState('before');
+
+
+  // Fetch food data
   useEffect(() => {
     foodService.getAllFoods()
       .then(response => {
@@ -61,9 +69,10 @@ function App() {
   return (
     <>
     <Header />
-    <Toolbar ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} setSearchInput={setSearchInput}/>
+    <Toolbar ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} setSearchInput={setSearchInput} foods={foods}
+      handleUpdate={handleUpdate} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} setCarbFilters={setCarbFilters}/>
     <AddNewFood handleCreate={handleCreate}/>
-    <AllFoods foods={foods} ascendingSort={ascendingSort} searchInput={searchInput} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+    <AllFoods foods={foods} ascendingSort={ascendingSort} searchInput={searchInput} handleDelete={handleDelete} handleUpdate={handleUpdate} proteinFilters={proteinFilters} carbFilters={carbFilters}/>
     <Footer />
     </>
   );
