@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import foodService from './services/foodService';
 
-import Toolbar from './components/Toolbar';
+import Toolbar from './components/toolbar/Toolbar';
 import AddNewFood from './components/AddNewFood';
 import AllFoods from './components/AllFoods';
 import Header from './components/Header';
@@ -18,7 +18,7 @@ function App() {
   //Filters
   const [proteinFilters, setProteinFilters] = useState([]);
   const [carbFilters, setCarbFilters] = useState([]);
-  const [dateFilter, setDateFilter] = useState('');
+  const [dateFilter, setDateFilter] = useState(null);
   const [dateFilterType, setDateFilterType] = useState('before');
 
 
@@ -70,9 +70,11 @@ function App() {
     <>
     <Header />
     <Toolbar ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} setSearchInput={setSearchInput} foods={foods}
-      handleUpdate={handleUpdate} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} setCarbFilters={setCarbFilters}/>
+      handleUpdate={handleUpdate} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} setCarbFilters={setCarbFilters} 
+      setDateFilter={setDateFilter} setDateFilterType={setDateFilterType} />
     <AddNewFood handleCreate={handleCreate}/>
-    <AllFoods foods={foods} ascendingSort={ascendingSort} searchInput={searchInput} handleDelete={handleDelete} handleUpdate={handleUpdate} proteinFilters={proteinFilters} carbFilters={carbFilters}/>
+    <AllFoods foods={foods} ascendingSort={ascendingSort} searchInput={searchInput} handleDelete={handleDelete}
+      handleUpdate={handleUpdate} proteinFilters={proteinFilters} carbFilters={carbFilters} dateFilter={dateFilter} dateFilterType={dateFilterType}/>
     <Footer />
     </>
   );

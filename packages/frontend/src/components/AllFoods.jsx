@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import formatDate from "../utils/formatDate"
 
-const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters}) => {
+const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters, dateFilter, dateFilterType}) => {
   
   const sortedFoods = [...foods].sort((a, b) => {
     if (ascendingSort) {
@@ -12,11 +12,21 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     }
   });
 
+  function filterByDate(food){
+    if (dateFilterType === "before"){
+      return food.date < dateFilter
+    } else {
+      return food.date > dateFilter
+    }
+  }
+
   const filteredFoods = sortedFoods.filter(food => 
     food.name.toLowerCase().includes(searchInput.toLowerCase()) &&
     (proteinFilters.length === 0 || proteinFilters.includes(food.protein)) &&
-    (carbFilters.length === 0 || carbFilters.includes(food.carb))
+    (carbFilters.length === 0 || carbFilters.includes(food.carb)) &&
+    (!dateFilter || filterByDate(food))
   );
+
   //TODO editing
   return (
     <div>
