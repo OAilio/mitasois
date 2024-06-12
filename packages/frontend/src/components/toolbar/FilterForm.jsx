@@ -1,28 +1,25 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import Filter from "./Filter";
 
-const FilterForm = ({ foods, setProteinFilters, setCarbFilters, setDateFilter, setDateFilterType }) => {
-	const [activeProteinFilters, setActiveProteinFilters] = useState([]);
-  const [activeCarbFilters, setActiveCarbFilters] = useState([]);
-	const [selectedDate, setSelectedDate] = useState(null)
-	const [selectedDateFilterType, setSelectedDateFilterType] = useState(["before"])
+const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter,
+	setDateFilterType, filterOptionsIsVisible}) => {
+
+	if (!filterOptionsIsVisible) {
+    return null;
+  }
+	console.log("Filter options visible:",filterOptionsIsVisible)
+
+	console.log("Datefilter:",dateFilter)
+
 
   // Filter options
   const proteinOptions = [...new Set(foods.map(food => food.protein))].sort();
   const carbOptions = [...new Set(foods.map(food => food.carb))].sort();
 
-  const applyFilters = () => {
-    setProteinFilters(activeProteinFilters)
-    setCarbFilters(activeCarbFilters)
-		setDateFilter(selectedDate)
-		setDateFilterType(selectedDateFilterType)
-  };
-
+  // Clear all filters, deselecting the form items and emptying the useStates
   const clearFilters = () => {
-    setActiveProteinFilters([])
-    setProteinFilters([])
-    setActiveCarbFilters([])
+		setDateFilter('')
+		setProteinFilters([])
     setCarbFilters([])
   };
 
@@ -30,28 +27,28 @@ const FilterForm = ({ foods, setProteinFilters, setCarbFilters, setDateFilter, s
 		<>
 		<div>
 			<h2>Filters</h2>
-			<h4>Main protein</h4>
 			<Filter
 				options={proteinOptions}
-				activeFilters={activeProteinFilters}
-				setActiveFilters={setActiveProteinFilters} />
-			<h4>Main carb</h4>
+				activeFilters={proteinFilters}
+				setActiveFilters={setProteinFilters} 
+				name="Main protein"/>
 			<Filter
 				options={carbOptions}
-				activeFilters={activeCarbFilters}
-				setActiveFilters={setActiveCarbFilters} />
+				activeFilters={carbFilters}
+				setActiveFilters={setCarbFilters} 
+				name="Main carb"/>
 		</div>
 		<div>
 			<h4>Date made</h4>
-			<select onChange={(e) => setSelectedDateFilterType(e.target.value)}>
+			<select onChange={(e) => setDateFilterType(e.target.value)}>
           <option value="before">Before</option>
           <option value="after">After</option>
       </select>
-			<label>Date: <input type="date" onChange={(e) => setSelectedDate(e.target.value)} /></label>
+			{/* <Datepicker selected={dateFilter} onChange={(date) => setDateFilter(date)}/>  */}
+			<label>Date: <input type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} /></label>
 		</div>
 		<div>
 			<h5 onClick={clearFilters}>Clear all</h5>
-			<button onClick={applyFilters}>Apply</button>
 		</div>
 		</>
 	)

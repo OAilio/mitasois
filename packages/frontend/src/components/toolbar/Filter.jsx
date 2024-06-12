@@ -1,26 +1,29 @@
 /* eslint-disable react/prop-types */
-const Filter = ({ options, activeFilters, setActiveFilters }) => {
-  const toggleFilter = (option) => {
-    setActiveFilters(prev =>
-      prev.includes(option) ? prev.filter(p => p !== option) : [...prev, option]
-    );
-  };
+import Select from 'react-select'
+
+const Filter = ({ options, activeFilters, setActiveFilters, name }) => {
+  const listOptions = [...options].map(option => ({
+    value: option,
+    label: option
+  }));
+
+  const handleChange = (selectedOptions) => {
+    const selectedValues = selectedOptions.map(option => option.value);
+    setActiveFilters(selectedValues);
+  }
 
   return (
-    <div>
-      {options.map(option => (
-        <button 
-          key={option} 
-          onClick={() => toggleFilter(option)}
-          style={{
-            backgroundColor: activeFilters.includes(option) ? 'green' : 'grey',
-            color: 'white'
-          }}
-        >
-          {option}
-        </button>
-      ))}
-    </div>
+    <>
+      <h4>{name}</h4>
+      <Select
+        placeholder="Select"
+        options={listOptions}
+        value={activeFilters.map(filter => ({ value: filter, label: filter }))}
+        onChange={handleChange} 
+        isMulti={true}
+        hideSelectedOptions={false}
+      />
+    </>
   );
 };
 

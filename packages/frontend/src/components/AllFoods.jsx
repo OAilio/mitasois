@@ -3,7 +3,6 @@
 import formatDate from "../utils/formatDate"
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters, dateFilter, dateFilterType}) => {
-  
   const sortedFoods = [...foods].sort((a, b) => {
     if (ascendingSort) {
       return new Date(a.date) - new Date(b.date);
@@ -14,11 +13,18 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
 
   function filterByDate(food){
     if (dateFilterType === "before"){
-      return food.date < dateFilter
+      return food.date <= dateFilter
     } else {
-      return food.date > dateFilter
+      return food.date >= dateFilter
     }
   }
+  
+  console.log("-----------------------------------")
+  console.log("Selected protein filters:", proteinFilters.length > 0 ? proteinFilters : "none")
+  console.log("Selected carb filters:", carbFilters.length > 0 ? carbFilters : "none")
+  console.log("Date filter:", dateFilter ? `${dateFilterType} ${formatDate(dateFilter)}` : "none");
+  console.log("-----------------------------------")
+
 
   const filteredFoods = sortedFoods.filter(food => 
     food.name.toLowerCase().includes(searchInput.toLowerCase()) &&
@@ -26,6 +32,8 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     (carbFilters.length === 0 || carbFilters.includes(food.carb)) &&
     (!dateFilter || filterByDate(food))
   );
+
+  console.log('render', filteredFoods.length, 'foods' )
 
   //TODO editing
   return (

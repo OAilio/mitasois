@@ -18,7 +18,7 @@ function App() {
   //Filters
   const [proteinFilters, setProteinFilters] = useState([]);
   const [carbFilters, setCarbFilters] = useState([]);
-  const [dateFilter, setDateFilter] = useState(null);
+  const [dateFilter, setDateFilter] = useState("");
   const [dateFilterType, setDateFilterType] = useState('before');
 
 
@@ -26,6 +26,7 @@ function App() {
   useEffect(() => {
     foodService.getAllFoods()
       .then(response => {
+        console.log("Promise fulfilled")
         setFoods(response.data);
       })
       .catch(error => {
@@ -70,8 +71,8 @@ function App() {
     <>
     <Header />
     <Toolbar ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} setSearchInput={setSearchInput} foods={foods}
-      handleUpdate={handleUpdate} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} setCarbFilters={setCarbFilters} 
-      setDateFilter={setDateFilter} setDateFilterType={setDateFilterType} />
+      handleUpdate={handleUpdate} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} carbFilters={carbFilters} setCarbFilters={setCarbFilters} 
+      dateFilter={dateFilter} setDateFilter={setDateFilter} dateFilterType={dateFilterType} setDateFilterType={setDateFilterType} />
     <AddNewFood handleCreate={handleCreate}/>
     <AllFoods foods={foods} ascendingSort={ascendingSort} searchInput={searchInput} handleDelete={handleDelete}
       handleUpdate={handleUpdate} proteinFilters={proteinFilters} carbFilters={carbFilters} dateFilter={dateFilter} dateFilterType={dateFilterType}/>
