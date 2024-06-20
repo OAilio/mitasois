@@ -7,10 +7,6 @@ const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, set
 	if (!filterOptionsIsVisible) {
     return null;
   }
-	console.log("Filter options visible:",filterOptionsIsVisible)
-
-	console.log("Datefilter:",dateFilter)
-
 
   // Filter options
   const proteinOptions = [...new Set(foods.map(food => food.protein))].sort();

@@ -70,7 +70,7 @@ function App() {
   return (
     <>
     <Header />
-    <Toolbar ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} setSearchInput={setSearchInput} foods={foods}
+    <Toolbar ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} searchInput={searchInput} setSearchInput={setSearchInput} foods={foods}
       handleUpdate={handleUpdate} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} carbFilters={carbFilters} setCarbFilters={setCarbFilters} 
       dateFilter={dateFilter} setDateFilter={setDateFilter} dateFilterType={dateFilterType} setDateFilterType={setDateFilterType} />
     <AddNewFood handleCreate={handleCreate}/>

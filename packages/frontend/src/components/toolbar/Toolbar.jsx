@@ -10,7 +10,7 @@ import ActiveFilterTags from "./ActiveFilterTags";
 import FilterVisibilityButton from "./FilterVisibilityButton";
 
 //TODO vittu apua kaikki
-const Toolbar = ({ ascendingSort, setAscendingSort, setSearchInput, foods, handleUpdate, proteinFilters,
+const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput, foods, handleUpdate, proteinFilters,
   setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, setDateFilterType }) => {
 
   // const [activeProteinFilters, setActiveProteinFilters] = useState([]);
@@ -43,7 +43,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, setSearchInput, foods, handl
       <h2>Toolbar-component</h2>
       <Sort ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} />
       <FilterVisibilityButton filterOptionsIsVisible={filterOptionsIsVisible} setFilterOptionsIsVisible={setFilterOptionsIsVisible}/>
-      <SearchFilter setSearchInput={setSearchInput} />
+      <SearchFilter searchInput={searchInput} setSearchInput={setSearchInput} />
       <ChefChoice foods={foods} handleUpdate={handleUpdate} />
       <FilterForm foods={foods} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} carbFilters={carbFilters} setCarbFilters={setCarbFilters} dateFilter={dateFilter} setDateFilter={setDateFilter}
 			setDateFilterType={setDateFilterType} filterOptionsIsVisible={filterOptionsIsVisible} setFilterOptionsIsVisible={setFilterOptionsIsVisible}/>
