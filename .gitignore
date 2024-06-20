@@ -2,4 +2,3 @@ node_modules
 .env
 mongo.js
 notepad.txt
-packages/frontend/src/components/toolbar/FilterVisibilityButton.jsx
