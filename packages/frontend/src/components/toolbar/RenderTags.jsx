@@ -9,9 +9,9 @@ const RenderTags = ({ filters, setFilters}) => {
   }
   return (
     <div>
-        {[...filters].map((filter, index) => (
+      {[...filters].map((filter, index) => (
         <button key={index} onClick={() => removeFilter(filter)}>{filter} x</button>
-      ))}
+    ))}
     </div>
   )
 };

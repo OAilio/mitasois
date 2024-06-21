@@ -8,9 +8,11 @@ const Sort = ({ ascendingSort, setAscendingSort}) => {
   }
 
   return (
-    <><p>Current sort:</p><button onClick={toggleSort}>
+    <>
+    <p>Current sort:</p><button onClick={toggleSort}>
       {ascendingSort ? 'Earliest to latest' : 'Latest to earliest'}
-    </button></>
+    </button>
+    </>
   )
 }
 

@@ -12,8 +12,14 @@ const ActiveFilterTags = ({ proteinFilters, setProteinFilters, carbFilters, setC
   return (
     <><div>
       <h3>Active filters:</h3>
-      <RenderTags filters={proteinFilters} setFilters={setProteinFilters} />
-      <RenderTags filters={carbFilters} setFilters={setCarbFilters} />
+      <RenderTags
+        filters={proteinFilters}
+        setFilters={setProteinFilters}
+      />
+      <RenderTags 
+        filters={carbFilters}
+        setFilters={setCarbFilters}
+      />
       {dateFilter && <button onClick={()=>setDateFilter("")}>{dateFilterType} {formatDate(dateFilter)} x</button>}
     </div>
     <p onClick={clearFilters}>Clear all filters</p>

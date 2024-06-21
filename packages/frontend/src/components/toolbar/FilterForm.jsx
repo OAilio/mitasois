@@ -12,13 +12,6 @@ const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, set
   const proteinOptions = [...new Set(foods.map(food => food.protein))].sort();
   const carbOptions = [...new Set(foods.map(food => food.carb))].sort();
 
-  // Clear all filters, deselecting the form items and emptying the useStates
-  // const clearFilters = () => {
-	// 	setDateFilter('')
-	// 	setProteinFilters([])
-  //   setCarbFilters([])
-  // };
-
 	return (
 		<>
 		<div>
@@ -40,7 +33,6 @@ const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, set
           <option value="Before">Before</option>
           <option value="After">After</option>
       </select>
-			{/* <Datepicker selected={dateFilter} onChange={(date) => setDateFilter(date)}/>  */}
 			<label>Date: <input type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} /></label>
 		</div>
 		<div>

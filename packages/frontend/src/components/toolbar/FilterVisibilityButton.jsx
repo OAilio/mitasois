@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 const FilterVisibilityButton = ({ filterOptionsIsVisible, setFilterOptionsIsVisible}) => {
-    function toggleFilterVisibility(){
-        setFilterOptionsIsVisible(!filterOptionsIsVisible)
-    }
+  function toggleFilterVisibility(){
+    setFilterOptionsIsVisible(!filterOptionsIsVisible)
+  }
+  
   return (
     <div>
-        <button onClick={toggleFilterVisibility}>Filters</button>
+      <button onClick={toggleFilterVisibility}>Filters</button>
     </div>
   )
 };

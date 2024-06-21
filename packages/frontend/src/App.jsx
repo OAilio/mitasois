@@ -70,12 +70,36 @@ function App() {
   return (
     <>
     <Header />
-    <Toolbar ascendingSort={ascendingSort} setAscendingSort={setAscendingSort} searchInput={searchInput} setSearchInput={setSearchInput} foods={foods}
-      handleUpdate={handleUpdate} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} carbFilters={carbFilters} setCarbFilters={setCarbFilters} 
-      dateFilter={dateFilter} setDateFilter={setDateFilter} dateFilterType={dateFilterType} setDateFilterType={setDateFilterType} />
-    <AddNewFood handleCreate={handleCreate}/>
-    <AllFoods foods={foods} ascendingSort={ascendingSort} searchInput={searchInput} handleDelete={handleDelete}
-      handleUpdate={handleUpdate} proteinFilters={proteinFilters} carbFilters={carbFilters} dateFilter={dateFilter} dateFilterType={dateFilterType}/>
+    <Toolbar 
+      ascendingSort={ascendingSort} 
+      setAscendingSort={setAscendingSort} 
+      searchInput={searchInput} 
+      setSearchInput={setSearchInput} 
+      foods={foods}
+      handleUpdate={handleUpdate} 
+      proteinFilters={proteinFilters} 
+      setProteinFilters={setProteinFilters} 
+      carbFilters={carbFilters} 
+      setCarbFilters={setCarbFilters} 
+      dateFilter={dateFilter} 
+      setDateFilter={setDateFilter} 
+      dateFilterType={dateFilterType} 
+      setDateFilterType={setDateFilterType}
+    />
+    <AddNewFood 
+      handleCreate={handleCreate}
+    />
+    <AllFoods 
+      foods={foods}
+      ascendingSort={ascendingSort}
+      searchInput={searchInput}
+      handleDelete={handleDelete}
+      handleUpdate={handleUpdate}
+      proteinFilters={proteinFilters}
+      carbFilters={carbFilters}
+      dateFilter={dateFilter}
+      dateFilterType={dateFilterType}
+    />
     <Footer />
     </>
   );
