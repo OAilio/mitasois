@@ -1,4 +1,7 @@
 /* eslint-disable react/prop-types */
+
+// The component that is used in picking the protein & carb filters
+
 import Select from 'react-select'
 
 const Filter = ({ options, activeFilters, setActiveFilters, name }) => {

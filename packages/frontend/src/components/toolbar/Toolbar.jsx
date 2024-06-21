@@ -38,6 +38,13 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
   // this is FALSE, true only for devving
   const [filterOptionsIsVisible, setFilterOptionsIsVisible] = useState(true)
 
+  // Clear all filters, deselecting the form items and emptying the useStates
+  const clearFilters = () => {
+		setDateFilter('')
+		setProteinFilters([])
+    setCarbFilters([])
+  };  
+
   return (
     <>
       <h2>Toolbar-component</h2>
@@ -46,9 +53,10 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
       <SearchFilter searchInput={searchInput} setSearchInput={setSearchInput} />
       <ChefChoice foods={foods} handleUpdate={handleUpdate} />
       <FilterForm foods={foods} proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} carbFilters={carbFilters} setCarbFilters={setCarbFilters} dateFilter={dateFilter} setDateFilter={setDateFilter}
-			setDateFilterType={setDateFilterType} filterOptionsIsVisible={filterOptionsIsVisible} setFilterOptionsIsVisible={setFilterOptionsIsVisible}/>
-      {/* <ActiveFilterTags proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} carbFilters={carbFilters} setCarbFilters={setCarbFilters} 
-      dateFilter={dateFilter} setDateFilter={setDateFilter} dateFilterType={dateFilterType} setDateFilterType={setDateFilterType}/> */}
+			setDateFilterType={setDateFilterType} filterOptionsIsVisible={filterOptionsIsVisible} clearFilters={clearFilters}/>
+      <ActiveFilterTags proteinFilters={proteinFilters} setProteinFilters={setProteinFilters} carbFilters={carbFilters} setCarbFilters={setCarbFilters} 
+      dateFilter={dateFilter} setDateFilter={setDateFilter} dateFilterType={dateFilterType} setDateFilterType={setDateFilterType}
+      filterOptionsIsVisible={filterOptionsIsVisible} clearFilters={clearFilters}/>
     </>
   );
 }

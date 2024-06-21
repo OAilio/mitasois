@@ -12,7 +12,7 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
   });
 
   function filterByDate(food){
-    if (dateFilterType === "before"){
+    if (dateFilterType === "Before"){
       return food.date <= dateFilter
     } else {
       return food.date >= dateFilter

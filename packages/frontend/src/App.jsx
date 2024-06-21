@@ -19,7 +19,7 @@ function App() {
   const [proteinFilters, setProteinFilters] = useState([]);
   const [carbFilters, setCarbFilters] = useState([]);
   const [dateFilter, setDateFilter] = useState("");
-  const [dateFilterType, setDateFilterType] = useState('before');
+  const [dateFilterType, setDateFilterType] = useState('Before');
 
 
   // Fetch food data
