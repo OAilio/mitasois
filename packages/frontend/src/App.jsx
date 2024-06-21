@@ -88,6 +88,7 @@ function App() {
     />
     <AddNewFood 
       handleCreate={handleCreate}
+      foods={foods}
     />
     <AllFoods 
       foods={foods}

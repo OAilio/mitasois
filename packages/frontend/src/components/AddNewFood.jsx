@@ -1,21 +1,25 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+// import Creatable from 'react-select/creatable';
+import ProteinSelect from './ProteinSelect';
+import CarbSelect from './CarbSelect';
 
-const AddNewFood = ({ handleCreate }) => {
-    const [name, setName] = useState('');
-    const [protein, setProtein] = useState('');
-    const [carb, setCarb] = useState('');
-    const [date, setDate] = useState('');
+
+const AddNewFood = ({ handleCreate, foods }) => {
+    const [name, setName] = useState('')
+    const [protein, setProtein] = useState(null)
+    const [carb, setCarb] = useState(null)
+    const [date, setDate] = useState('')
   
     const handleSubmit = (e) => {
-      e.preventDefault();
-      handleCreate({ name, protein, carb, date });
-      setName('');
-      setProtein('');
-      setCarb('');
-      setDate('');
-    };
-    //TODO select for protein and carb
+      e.preventDefault()
+      handleCreate({ name, protein: protein?.value, carb: carb?.value, date })
+      setName('')
+      setProtein(null)
+      setCarb(null)
+      setDate('')
+    }
+
     return (
       <><h2>Add new food</h2>
       <form onSubmit={handleSubmit}>
@@ -23,10 +27,18 @@ const AddNewFood = ({ handleCreate }) => {
           <label>Name:<input type="text" value={name} onChange={(e) => setName(e.target.value)} required /></label>
         </div>
         <div>
-          <label>Main Protein:<input type="text"value={protein} onChange={(e) => setProtein(e.target.value)} required /></label>
+          <ProteinSelect
+            foods={foods} 
+            protein={protein} 
+            setProtein={setProtein}
+          />
         </div>
         <div>
-          <label>Main Carb:<input type="text"value={carb} onChange={(e) => setCarb(e.target.value)} required /></label>
+          <CarbSelect
+            foods={foods} 
+            carb={carb} 
+            setCarb={setCarb}
+          />
         </div>
         <div>
           <label>Date: <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required /></label>
