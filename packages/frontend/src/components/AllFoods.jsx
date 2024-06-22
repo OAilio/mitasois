@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import formatDate from "../utils/formatDate"
+import FoodForm from "./FoodForm"; //JATKA TÄSTÄ
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters, dateFilter, dateFilterType}) => {
   const sortedFoods = [...foods].sort((a, b) => {
@@ -10,6 +12,15 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
       return new Date(b.date) - new Date(a.date);
     }
   });
+
+  const [editingFood, setEditingFood] = useState(null);
+  console.log("In edit:",editingFood)
+  const [formData, setFormData] = useState({ name: '', protein: null, carb: null, date: '' });
+
+  function handleEditClick(food){
+    setEditingFood(food);
+    setFormData({ id: food.id, name: food.name, protein: food.protein, carb: food.carb, date: food.date });
+  }
 
   function filterByDate(food){
     if (dateFilterType === "Before"){
@@ -36,19 +47,45 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
   console.log('render', filteredFoods.length, 'foods' )
 
   //TODO editing
+  // return (
+  //   <div>
+  //     <h2>All foods</h2>
+  //   <ul>
+  //     {filteredFoods.map(food => (
+  //       <li key={food.id}>
+  //         {food.name} {formatDate(food.date)}
+  //         <button onClick={() => handleEditClick(food)}>Edit</button>
+  //         <button onClick={() => handleDelete(food.id)}>Delete</button>
+  //       </li>
+  //     ))}
+  //   </ul>
+  // </div>
+  // )
   return (
     <div>
       <h2>All foods</h2>
-    <ul>
-      {filteredFoods.map(food => (
-        <li key={food.id}>
-          {food.name} {formatDate(food.date)}
-          <button onClick={() => handleDelete(food.id)}>Delete</button>
-        </li>
-      ))}
-    </ul>
-  </div>
-  )
+      <ul>
+        {filteredFoods.map(food => (
+          <li key={food.id}>
+            {editingFood && editingFood.id === food.id ? (
+              <FoodForm formData={formData} 
+                setFormData={setFormData}
+                foods={foods}  
+                submit={handleUpdate}
+                setEditing={setEditingFood}
+              />
+            ) : (
+              <>
+                {food.name} {formatDate(food.date)}
+                <button onClick={() => handleEditClick(food)}>Edit</button>
+                <button onClick={() => handleDelete(food.id)}>Delete</button>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default AllFoods
