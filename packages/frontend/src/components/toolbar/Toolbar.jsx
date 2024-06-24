@@ -11,7 +11,7 @@ import FilterVisibilityButton from "./FilterVisibilityButton";
 
 //TODO vittu apua kaikki
 const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput, foods, handleUpdate, proteinFilters,
-  setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, setDateFilterType }) => {
+  setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, setDateFilterType, setEditingFood }) => {
 
   // this is FALSE, true only for devving
   const [filterOptionsIsVisible, setFilterOptionsIsVisible] = useState(true)
@@ -42,6 +42,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
       <ChefChoice
         foods={foods}
         handleUpdate={handleUpdate}
+        setEditingFood={setEditingFood}
       />
       <FilterForm
         foods={foods} 

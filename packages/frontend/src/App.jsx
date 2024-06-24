@@ -11,11 +11,12 @@ import Footer from './components/Footer';
 
 function App() {
   const [foods, setFoods] = useState([]);
+  const [editingFood, setEditingFood] = useState(null)
   const [ascendingSort, setAscendingSort] = useState(false)
   const [error, setError] = useState(null);
   const [searchInput, setSearchInput] = useState("")
 
-  //Filters
+  // Filters
   const [proteinFilters, setProteinFilters] = useState([]);
   const [carbFilters, setCarbFilters] = useState([]);
   const [dateFilter, setDateFilter] = useState("");
@@ -85,6 +86,7 @@ function App() {
       setDateFilter={setDateFilter} 
       dateFilterType={dateFilterType} 
       setDateFilterType={setDateFilterType}
+      setEditingFood={setEditingFood}
     />
     <AddNewFood 
       handleCreate={handleCreate}
@@ -100,6 +102,8 @@ function App() {
       carbFilters={carbFilters}
       dateFilter={dateFilter}
       dateFilterType={dateFilterType}
+      editingFood={editingFood}
+      setEditingFood={setEditingFood}
     />
     <Footer />
     </>

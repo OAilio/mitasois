@@ -14,6 +14,7 @@ const FoodForm = ({formData, setFormData, submit, foods, setEditing}) => {
         carb: formData.carb?.value,
         date: formData.date
       });
+      console.log("Updated:", formData)
       setEditing(null)
     } else {
       submit({

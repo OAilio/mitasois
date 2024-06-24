@@ -7,6 +7,7 @@ const RenderTags = ({ filters, setFilters}) => {
 	const removeFilter = (filter) => {
     setFilters(filters.filter((clicked) => clicked !== filter));
   }
+  
   return (
     <div>
       {[...filters].map((filter, index) => (

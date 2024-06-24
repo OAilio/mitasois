@@ -24,7 +24,7 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
   };
 
   // Create value+label pair to display current selection
-  const currentSelection = { value: {...ingredient}, label: ingredient}
+  const currentSelection = ingredient && typeof ingredient === 'object' ? ingredient : { value: ingredient, label: ingredient };
 
   // Determine which set of options to use based on the type prop
   const predefinedOptionsForType = type === 'protein' ? predefinedOptions.protein : predefinedOptions.carb;
@@ -40,7 +40,6 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
     new Set([...predefinedOptionsForType, ...existingOptions].map(option => JSON.stringify(option)))
   ).map(option => JSON.parse(option)).sort((a, b) => a.label.localeCompare(b.label));
 
-  console.log("Aines:",ingredient)
   return (
     <div>
       <label>
