@@ -13,8 +13,7 @@ import FilterVisibilityButton from "./FilterVisibilityButton";
 const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput, foods, handleUpdate, proteinFilters,
   setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, setDateFilterType, setEditingFood }) => {
 
-  // this is FALSE, true only for devving
-  const [filterOptionsIsVisible, setFilterOptionsIsVisible] = useState(true)
+  const [filterOptionsIsVisible, setFilterOptionsIsVisible] = useState(false)
 
   // Clear all filters, deselecting the form items and emptying the useStates
   const clearFilters = () => {

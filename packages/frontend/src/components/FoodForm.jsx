@@ -2,7 +2,7 @@
 // import { useState } from "react";
 import IngredientSelect from './IngredientSelect';
 
-const FoodForm = ({formData, setFormData, submit, foods, setEditing}) => {
+const FoodForm = ({formData, setFormData, submit, foods, setEditing, setAddFormOpen}) => {
 
   // If the food data contains "id", it's an update operation
 	const handleSubmit = (e) => {
@@ -24,6 +24,7 @@ const FoodForm = ({formData, setFormData, submit, foods, setEditing}) => {
         date: formData.date
       })
       setFormData({ name: '', protein: null, carb: null, date: '' });
+      setAddFormOpen(false)
     }
 	};
 
@@ -32,7 +33,8 @@ const FoodForm = ({formData, setFormData, submit, foods, setEditing}) => {
       setFormData({ name: '', protein: null, carb: null, date: '' });	
       setEditing(null)
     } else {
-      setFormData({ name: '', protein: null, carb: null, date: '' });		      
+      setFormData({ name: '', protein: null, carb: null, date: '' });
+      setAddFormOpen(false)		      
     }
 	}
 
