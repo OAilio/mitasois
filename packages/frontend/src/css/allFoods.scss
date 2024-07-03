@@ -1,0 +1,65 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+
+.list-of-all-food-items {
+	display: flex;
+	max-width: 100%;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.food-item-container {
+		background-color: $white;
+		list-style-type: none;
+		margin: 0.75rem auto;
+		max-width: 50%;
+		box-shadow: 0px 4px 12.9px 0px rgba($primary, 0.35);
+		padding: 0.75rem 1.5rem;
+		border-radius: 20px;
+		border-style: solid;
+		border-color: $white;
+
+		.single-food-item {
+			.food-content {
+				font-size: 1.5rem;
+				color: $primary;
+				display: flex;
+				justify-content: space-between;
+				padding: 0;
+
+				.food-name {
+					font-family: $medium;
+					text-align: left;
+				}
+			
+				.food-date {
+					font-family: $light;
+					text-align: right;
+				}
+			}
+
+			.button-group{
+				display: flex;
+				justify-content: center;
+				margin: 0.5rem auto 0rem;
+			}
+		}
+
+		&.active {
+			border-style: solid;
+			border-color: $primary;
+
+			.food-content {
+				border-style: solid;
+				border-color: $detail;
+				border-width: 0 0 2px 0;
+				padding-bottom: 0.25rem;
+			}
+		}
+	}
+}

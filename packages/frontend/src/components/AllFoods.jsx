@@ -2,7 +2,8 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import formatDate from "../utils/formatDate";
-import FoodForm from "./FoodForm"; // JATKA TÄSTÄ
+import FoodForm from "./FoodForm";
+import '../css/allFoods.scss'
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters,
   dateFilter, dateFilterType, editingFood, setEditingFood }) => {
@@ -42,6 +43,8 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     setOpenFood(openFood === food.id ? null : food.id);
   }
 
+  console.log(openFood)
+
   function filterByDate(food) {
     if (dateFilterType === "Before") {
       return food.date <= dateFilter;
@@ -67,32 +70,33 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
   console.log("render", filteredFoods.length, "foods");
 
   return (
-    <div>
-      <h2>All foods</h2>
+    <div className="list-of-all-food-items">
       <ul>
         {filteredFoods.map((food) => (
-          <li key={food.id}>
+          <li onClick={() => toggleOpenClick(food)} className={`food-item-container ${openFood === food.id || editingFood && editingFood.id === food.id ? "active" : ""}`} key={food.id}>
+            <div className="single-food-item">
+              <div className="food-content">
+                <span className="food-name">{food.name}</span>
+                <span className="food-date">{formatDate(food.date)}</span>
+            </div>
             {editingFood && editingFood.id === food.id ? (
               <FoodForm
                 formData={formData}
                 setFormData={setFormData}
                 foods={foods}
                 submit={handleUpdate}
-                setEditing={setEditingFood}
-              />
+                setEditing={setEditingFood} />
             ) : (
-              <>
-                <div onClick={() => toggleOpenClick(food)}>
-                  {food.name} {formatDate(food.date)}
-                </div>
+              <div>
                 {openFood === food.id && (
-                  <>
-                    <button onClick={() => handleEditClick(food)}>Edit</button>
+                  <div className="button-group">
                     <button onClick={() => handleDelete(food.id)}>Delete</button>
-                  </>
+                    <button onClick={() => handleEditClick(food)}>Edit</button>
+                  </div>
                 )}
-              </>
+              </div>
             )}
+            </div>
           </li>
         ))}
       </ul>

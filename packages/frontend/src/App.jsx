@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import foodService from './services/foodService';
 
+import './css/body.scss'
+
 import Toolbar from './components/toolbar/Toolbar';
 import AddNewFood from './components/AddNewFood';
 import AllFoods from './components/AllFoods';

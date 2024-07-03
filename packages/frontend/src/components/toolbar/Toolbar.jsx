@@ -24,6 +24,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
 
   return (
     <>
+    <div className="toolbar">
       {/* Delete the header later */}
       <h2>Toolbar-component</h2>
       <Sort 
@@ -65,6 +66,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
         dateFilterType={dateFilterType} 
         filterOptionsIsVisible={filterOptionsIsVisible} 
         clearFilters={clearFilters}/>
+    </div>
     </>
   );
 }

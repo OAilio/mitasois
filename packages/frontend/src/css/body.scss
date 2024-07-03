@@ -1,0 +1,15 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+
+body {
+  background-color: $background;
+}
+
+h1 {
+  color: $primary;
+	font-family: $bold;
+	font-weight: normal;
+	text-align: center;
+	font-size: 3rem;
+	margin: 0;
+}
