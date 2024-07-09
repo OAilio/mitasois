@@ -1,0 +1,40 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+@import './shared';
+
+.form-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0.75rem auto;
+	font-size: 1rem;
+
+	.input-field {
+		display: flex;
+		align-items: start;
+		font-size: 1rem;
+
+		input, label{
+			display: block;
+		}
+
+		label {
+			text-align: left;
+			font-family: $medium;
+		}
+
+		input {
+			border: none;
+			background-color: $grey;
+			font-family: $regular;
+			padding: 0.5rem;
+			width: $form-input-width;
+			border-radius: 6px;
+			color: $primary;
+		}
+	}
+}
+
+.button-group {
+	@include button-group
+}

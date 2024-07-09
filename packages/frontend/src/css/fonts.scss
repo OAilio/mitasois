@@ -9,6 +9,11 @@
 }
 
 @font-face {
+  font-family: 'Quicksand Regular';
+  src: url("./fonts/Quicksand-Regular.ttf");
+}
+
+@font-face {
   font-family: 'Quicksand Light';
   src: url("./fonts/Quicksand-Light.ttf");
 }
@@ -16,4 +21,5 @@
 
 $bold: 'Quicksand Bold';
 $medium: 'Quicksand Medium';
-$light: 'Quicksand Light'
+$regular: 'Quicksand Regular';
+$light: 'Quicksand Light';

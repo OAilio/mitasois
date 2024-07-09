@@ -1,5 +1,6 @@
 @import 'colors.scss';
 @import 'fonts.scss';
+@import './shared';
 
 .list-of-all-food-items {
 	display: flex;
@@ -14,23 +15,17 @@
 	}
 	
 	.food-item-container {
-		background-color: $white;
-		list-style-type: none;
+		@include food-item-container;
 		margin: 0.75rem auto;
-		max-width: 50%;
-		box-shadow: 0px 4px 12.9px 0px rgba($primary, 0.35);
-		padding: 0.75rem 1.5rem;
-		border-radius: 20px;
-		border-style: solid;
-		border-color: $white;
 
 		.single-food-item {
-			.food-content {
+			.item-content {
 				font-size: 1.5rem;
 				color: $primary;
 				display: flex;
 				justify-content: space-between;
 				padding: 0;
+				width: auto;
 
 				.food-name {
 					font-family: $medium;
@@ -44,9 +39,7 @@
 			}
 
 			.button-group{
-				display: flex;
-				justify-content: center;
-				margin: 0.5rem auto 0rem;
+				@include button-group
 			}
 		}
 
@@ -54,11 +47,19 @@
 			border-style: solid;
 			border-color: $primary;
 
-			.food-content {
+			.item-content {
 				border-style: solid;
 				border-color: $detail;
 				border-width: 0 0 2px 0;
 				padding-bottom: 0.25rem;
+
+				.food-name {
+					font-family: $bold;
+				}
+	
+				.food-date {
+					font-family: $medium;
+				}
 			}
 		}
 	}

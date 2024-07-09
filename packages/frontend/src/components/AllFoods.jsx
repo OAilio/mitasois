@@ -8,7 +8,7 @@ import '../css/allFoods.scss'
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters,
   dateFilter, dateFilterType, editingFood, setEditingFood }) => {
     
-  const [openFood, setOpenFood] = useState(null);
+  const [activeFood, setActiveFood] = useState(null);
 
   const sortedFoods = [...foods].sort((a, b) => {
     if (ascendingSort) {
@@ -40,10 +40,10 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
   }
 
   function toggleOpenClick(food) {
-    setOpenFood(openFood === food.id ? null : food.id);
+    if (!editingFood) {
+      setActiveFood(activeFood === food.id ? null : food.id);      
+    }
   }
-
-  console.log(openFood)
 
   function filterByDate(food) {
     if (dateFilterType === "Before") {
@@ -52,6 +52,8 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
       return food.date >= dateFilter;
     }
   }
+
+  console.log("open food", activeFood)
 
   console.log("-------------Filters--------------");
   console.log("Selected protein filters:", proteinFilters.length > 0 ? proteinFilters : "none");
@@ -73,9 +75,10 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     <div className="list-of-all-food-items">
       <ul>
         {filteredFoods.map((food) => (
-          <li onClick={() => toggleOpenClick(food)} className={`food-item-container ${openFood === food.id || editingFood && editingFood.id === food.id ? "active" : ""}`} key={food.id}>
+          <li onClick={() => !editingFood && toggleOpenClick(food)} className={`food-item-container 
+          ${activeFood === food.id || (editingFood && editingFood.id === food.id) ? "active" : ""}`} key={food.id}>
             <div className="single-food-item">
-              <div className="food-content">
+              <div className="item-content">
                 <span className="food-name">{food.name}</span>
                 <span className="food-date">{formatDate(food.date)}</span>
             </div>
@@ -85,10 +88,12 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
                 setFormData={setFormData}
                 foods={foods}
                 submit={handleUpdate}
-                setEditing={setEditingFood} />
+                setEditing={setEditingFood}
+                setActiveFood={setActiveFood}
+                />
             ) : (
               <div>
-                {openFood === food.id && (
+                {activeFood === food.id && (
                   <div className="button-group">
                     <button onClick={() => handleDelete(food.id)}>Delete</button>
                     <button onClick={() => handleEditClick(food)}>Edit</button>

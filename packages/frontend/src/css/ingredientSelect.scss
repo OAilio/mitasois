@@ -1,0 +1,19 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+@import './shared';
+
+.select {
+	align-items: center;
+	width: $form-input-width;
+	text-align: left;
+	color: $primary;
+
+	.select-label {
+		font-family: $medium;
+		color: $primary;
+	}
+
+	.items {
+		font-family: $medium;
+	}
+}

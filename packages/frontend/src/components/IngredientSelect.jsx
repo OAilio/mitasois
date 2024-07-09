@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import Creatable from 'react-select/creatable';
+import '../css/ingredientSelect.scss'
 
-// TODO: kummatki predefinet samaa tiedostoo ja joku yhe sanan muuttuja jonka perusteella yhdistetään
-// olemassa oleva lista tähän toiseen esim type="carb"
 const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
 
    // Here you can alter the predefined options
@@ -41,18 +40,27 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
   ).map(option => JSON.parse(option)).sort((a, b) => a.label.localeCompare(b.label));
 
   return (
-    <div>
+    <div className='select'>
       <label>
-        Main {type}:
-        <Creatable
-          value={currentSelection}
-          options={ingredientOptions}
-          onChange={(option) => setIngredient(option)}
-          onCreateOption={(inputValue) => {
-            const newOption = { value: inputValue, label: inputValue };
-            setIngredient(newOption);
-          }}
-        />
+        <span className='select-label'>Main {type}:</span>
+        <div className='items'>
+          <Creatable
+            placeholder={"Select..."}
+            value={currentSelection}
+            options={ingredientOptions}
+            onChange={(option) => setIngredient(option)}
+            onCreateOption={(inputValue) => {
+              const newOption = { value: inputValue, label: inputValue };
+              setIngredient(newOption);
+            }}
+            styles={{
+              dropdownIndicator: baseStyles => ({
+                ...baseStyles,
+                color: 'green'
+              })
+            }}
+          />
+        </div>
       </label>
     </div>
   );
