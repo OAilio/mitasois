@@ -1,24 +1,106 @@
-@import 'colors.scss';
-@import 'fonts.scss';
+//Fonts -----------------------------------------------------------
+@font-face { font-family: 'Quicksand Bold'; src: url("./fonts/Quicksand-Bold.ttf");}
+
+@font-face { font-family: 'Quicksand SemiBold'; src: url("./fonts/Quicksand-SemiBold.ttf");}
+
+@font-face { font-family: 'Quicksand Medium'; src: url("./fonts/Quicksand-Medium.ttf");}
+
+@font-face { font-family: 'Quicksand Regular'; src: url("./fonts/Quicksand-Regular.ttf");}
+
+@font-face { font-family: 'Quicksand Light'; src: url("./fonts/Quicksand-Light.ttf");}
+
+
+$bold: 'Quicksand Bold';
+$semibold: 'Quicksand SemiBold';
+$medium: 'Quicksand Medium';
+$regular: 'Quicksand Regular';
+$light: 'Quicksand Light';
+
+// ------------------------------------------------------------------
+  
+// Colors -----------------------------------------------------------
+$primary: rgb(68, 102, 61);
+$background: rgb(221, 255, 212); // App background
+$red: rgb(212, 81, 81); // Alert and irreversible actions color
+$white: rgb(249, 249, 249); 
+$grey: rgb(236, 236, 236); // Background color for the dropdown menus
+$detail: rgb(159, 203, 128); // Used few times as outlines for example, might not be necessary
+
+// ------------------------------------------------------------------
 
 @mixin food-item-container {
 	background-color: $white;
 	list-style-type: none;
 	margin: 0rem auto;
-	max-width: 60%;
+	max-width: $content-width;
 	box-shadow: 0px 4px 12.9px 0px rgba($primary, 0.35);
-	padding: 0.75rem 1.5rem;
+	// padding: 0.75rem 1.5rem;
 	border-radius: 20px;
 	border-style: solid;
 	border-color: $white;
 	cursor: pointer;
 }
 
+
+// Buttons -----------------------------------------------------------
 @mixin button-group {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	align-items: center;
 	margin: 0.5rem auto 0rem;
 }
 
+@mixin button {
+	border-radius: 6px;
+	font-size: 1rem;
+	padding: 0.25rem 1rem;
+	min-width: 5.8rem;
+	margin: 0.5rem 0.25rem;
+	height: 2rem;
+	cursor: pointer;
+	transition: ease-in-out 0.3s;
+}
+
+@mixin primary-button {
+	font-family: $bold;
+	color: $white;
+	background-color: $primary;
+	border-style: solid;
+	border-color: $primary;
+
+	&:hover{
+		background-color: $detail;
+		color: $primary;
+	}
+}
+
+@mixin secondary-button {
+	font-family: $semibold;
+	color: $primary;
+	background-color: $white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: $primary;
+
+	&:hover{
+		background-color: darken($white, 10%);
+	}
+}
+
+@mixin tertiary-button {
+	font-family: $semibold;
+	border-style: solid;
+	border-width: 0 0 1.5px 0;
+	border-color: $red;
+	color: $red;
+	font-size: 1rem;
+	margin: 0.25rem auto;
+	cursor: pointer;
+	display: inline-block;
+}
+
+// ------------------------------------------------------------------
+
 $form-input-width: 9rem;
+$content-width: 60%

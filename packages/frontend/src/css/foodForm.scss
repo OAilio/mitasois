@@ -1,12 +1,10 @@
-@import 'colors.scss';
-@import 'fonts.scss';
 @import './shared';
 
 .form-container {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin: 0.75rem auto;
+	margin: 0.75rem 1.5rem;
 	font-size: 1rem;
 
 	.input-field {
@@ -24,6 +22,7 @@
 		}
 
 		input {
+			font-size: 1rem;
 			border: none;
 			background-color: $grey;
 			font-family: $regular;
@@ -36,5 +35,17 @@
 }
 
 .button-group {
-	@include button-group
+	@include button-group;
+
+	button {
+		@include button;
+
+		&.primary-button {
+			@include primary-button;
+		}
+
+		&.secondary-button {
+			@include secondary-button;
+		}
+	}
 }

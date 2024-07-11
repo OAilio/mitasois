@@ -7,13 +7,15 @@ import ChefChoice from "./ChefChoice";
 import SearchFilter from "./SearchFilter";
 import FilterForm from "./FilterForm";
 import ActiveFilterTags from "./ActiveFilterTags";
-import FilterVisibilityButton from "./FilterVisibilityButton";
+import VisibilityButton from "./VisibilityButton";
 
-//TODO vittu apua kaikki
+import '../../css/toolbar.scss'
+
 const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput, foods, handleUpdate, proteinFilters,
-  setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, setDateFilterType, setEditingFood }) => {
+  setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, setDateFilterType, setActiveFood }) => {
 
-  const [filterOptionsIsVisible, setFilterOptionsIsVisible] = useState(false)
+  const [filterOptionsVisibility, setFilterOptionsVisibility] = useState(false)
+  const [chefChoiceVisibility, setChefChoiceVisibility] = useState(false)
 
   // Clear all filters, deselecting the form items and emptying the useStates
   const clearFilters = () => {
@@ -24,25 +26,36 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
 
   return (
     <>
-    <div className="toolbar">
-      {/* Delete the header later */}
-      <h2>Toolbar-component</h2>
-      <Sort 
-        ascendingSort={ascendingSort} 
-        setAscendingSort={setAscendingSort}
-      />
-      <FilterVisibilityButton
-        filterOptionsIsVisible={filterOptionsIsVisible} 
-        setFilterOptionsIsVisible={setFilterOptionsIsVisible}
-      />
-      <SearchFilter
-        searchInput={searchInput} 
-        setSearchInput={setSearchInput}
-      />
+    <div>
+      <div className="toolbar-container">
+        <div className="toolbar-left">
+          <Sort 
+            ascendingSort={ascendingSort} 
+            setAscendingSort={setAscendingSort}
+          />
+          <VisibilityButton
+            visibility={filterOptionsVisibility} 
+            setVisibility={setFilterOptionsVisibility}
+            icon={"Filters"}
+          />
+          <SearchFilter
+            searchInput={searchInput} 
+            setSearchInput={setSearchInput}
+          />
+        </div>
+        <div className="toolbar-right">
+          <VisibilityButton
+            visibility={chefChoiceVisibility} 
+            setVisibility={setChefChoiceVisibility}
+            icon={"Chef Choice"}
+          />
+        </div>
+      </div>
       <ChefChoice
         foods={foods}
-        handleUpdate={handleUpdate}
-        setEditingFood={setEditingFood}
+        setActiveFood={setActiveFood}
+        chefChoiceVisible={chefChoiceVisibility}
+        setChefChoiceVisible={setChefChoiceVisibility}
       />
       <FilterForm
         foods={foods} 
@@ -53,7 +66,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
         dateFilter={dateFilter} 
         setDateFilter={setDateFilter}
         setDateFilterType={setDateFilterType} 
-        filterOptionsIsVisible={filterOptionsIsVisible} 
+        filterOptionsVisibility={filterOptionsVisibility} 
         clearFilters={clearFilters}
         />
       <ActiveFilterTags 
@@ -64,7 +77,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
         dateFilter={dateFilter} 
         setDateFilter={setDateFilter} 
         dateFilterType={dateFilterType} 
-        filterOptionsIsVisible={filterOptionsIsVisible} 
+        filterOptionsVisibility={filterOptionsVisibility} 
         clearFilters={clearFilters}/>
     </div>
     </>

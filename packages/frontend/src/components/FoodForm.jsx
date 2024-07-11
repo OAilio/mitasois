@@ -82,8 +82,8 @@ const FoodForm = ({formData, setFormData, submit, foods, setEditing, setActiveFo
           </div>
         </div>
         <div className='button-group'>
-          <button onClick={handleCancel}>Cancel</button>
-          <button type="submit">Save</button>
+          <button className='secondary-button' onClick={handleCancel}>Cancel</button>
+          <button className='primary-button' type="submit">Save</button>
         </div>
       </form>
     </div>

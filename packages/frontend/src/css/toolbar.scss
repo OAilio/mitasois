@@ -1,0 +1,15 @@
+@import './shared';
+
+.toolbar-container {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    // padding: 0rem 1.5rem;
+    background-color: blue;
+    max-width: $content-width;
+
+    .toolbar-left{
+        display: flex;
+        align-items:start;
+    }
+}

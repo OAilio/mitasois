@@ -2,13 +2,15 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import formatDate from "../utils/formatDate";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import FoodForm from "./FoodForm";
 import '../css/allFoods.scss'
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters,
-  dateFilter, dateFilterType, editingFood, setEditingFood }) => {
+  dateFilter, dateFilterType, editingFood, setEditingFood, activeFood, setActiveFood }) => {
     
-  const [activeFood, setActiveFood] = useState(null);
+  // const [activeFood, setActiveFood] = useState(null);
 
   const sortedFoods = [...foods].sort((a, b) => {
     if (ascendingSort) {
@@ -37,6 +39,17 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
 
   function handleEditClick(food) {
     setEditingFood(food);
+  }
+
+  // Sets the food date to current date
+  function ateThisToday(food) {
+    const todaysDate = new Date().toLocaleDateString('en-CA');
+    handleUpdate(food.id, {
+      name: food.name,
+      protein: food.protein?.value,
+      carb: food.carb?.value,
+      date: todaysDate
+    });
   }
 
   function toggleOpenClick(food) {
@@ -94,10 +107,15 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
             ) : (
               <div>
                 {activeFood === food.id && (
-                  <div className="button-group">
-                    <button onClick={() => handleDelete(food.id)}>Delete</button>
-                    <button onClick={() => handleEditClick(food)}>Edit</button>
-                  </div>
+                  <>
+                    <div className="button-group">
+                      <button className='secondary-button' onClick={() => handleEditClick(food)}>Edit</button>
+                      <button className='primary-button' onClick={() => ateThisToday(food)}>Ate this today!</button>
+                    </div>
+                    <div className="tertiary-button" onClick={() => handleDelete(food.id)}>
+                      Delete <FontAwesomeIcon icon={faTrash} />
+                    </div>
+                  </>
                 )}
               </div>
             )}

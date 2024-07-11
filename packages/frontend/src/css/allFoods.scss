@@ -17,8 +17,12 @@
 	.food-item-container {
 		@include food-item-container;
 		margin: 0.75rem auto;
+		
+		cursor: auto;
 
 		.single-food-item {
+			padding: 0.75rem 0rem;
+
 			.item-content {
 				font-size: 1.5rem;
 				color: $primary;
@@ -26,20 +30,39 @@
 				justify-content: space-between;
 				padding: 0;
 				width: auto;
+				// margin: auto;
 
 				.food-name {
 					font-family: $medium;
 					text-align: left;
+					padding-left: 1.5rem;
 				}
 			
 				.food-date {
 					font-family: $light;
 					text-align: right;
+					padding-right: 1.5rem;
 				}
 			}
+			
+			.tertiary-button{
+				@include tertiary-button
+			}
 
-			.button-group{
-				@include button-group
+			.button-group {
+				@include button-group;
+			
+				button {
+					@include button;
+			
+					&.primary-button {
+						@include primary-button;
+					}
+			
+					&.secondary-button {
+						@include secondary-button;
+					}
+				}
 			}
 		}
 
@@ -55,10 +78,12 @@
 
 				.food-name {
 					font-family: $bold;
+					padding: 0
 				}
 	
 				.food-date {
 					font-family: $medium;
+					padding: 0
 				}
 			}
 		}

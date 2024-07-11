@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [foods, setFoods] = useState([]);
+  const [activeFood, setActiveFood] = useState(null);
   const [editingFood, setEditingFood] = useState(null)
   const [ascendingSort, setAscendingSort] = useState(false)
   const [error, setError] = useState(null);
@@ -88,7 +89,7 @@ function App() {
       setDateFilter={setDateFilter} 
       dateFilterType={dateFilterType} 
       setDateFilterType={setDateFilterType}
-      setEditingFood={setEditingFood}
+      setActiveFood={setActiveFood}
     />
     <AddNewFood 
       handleCreate={handleCreate}
@@ -106,6 +107,8 @@ function App() {
       dateFilterType={dateFilterType}
       editingFood={editingFood}
       setEditingFood={setEditingFood}
+      activeFood={activeFood}
+      setActiveFood={setActiveFood}
     />
     <Footer />
     </>

@@ -2,9 +2,9 @@
 import Filter from "./Filter";
 
 const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter,
-	setDateFilterType, filterOptionsIsVisible, clearFilters}) => {
+	setDateFilterType, filterOptionsVisibility, clearFilters}) => {
 
-	if (!filterOptionsIsVisible) {
+	if (!filterOptionsVisibility) {
     return null;
   }
 

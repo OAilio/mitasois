@@ -1,11 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import '../../css/chefChoice.scss'
 
-const ChefChoice = ({ foods, setEditingFood }) => {
-  const [menuVisible, setMenuVisible] = useState(false);
+const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisible }) => {
+
   const [selectedFood, setSelectedFood] = useState(null);
   const [lastSelectedFood, setLastSelectedFood] = useState(null);
+
+  // If not visible return null
+  if (!chefChoiceVisible) {
+    return null
+  }
 
   // Randomly select a food
   function Randomizer() {
@@ -34,50 +40,41 @@ const ChefChoice = ({ foods, setEditingFood }) => {
     return randomFood;
   }
 
-  const handleClick = () => {
-    setMenuVisible(!menuVisible);
-    setSelectedFood(null);
-    setLastSelectedFood(null);
-  };
-
   const randomizeFood = () => {
     const food = Randomizer();
     setSelectedFood(food);
   };
 
-  const openEditing = (food) => {
-    setEditingFood(food);
+  const openFoodItem = (food) => {
+    setActiveFood(food.id);
     setSelectedFood(null);
-    setMenuVisible(false);
+    setChefChoiceVisible(false);
   };
 
   const closeMenu = () => {
-    setMenuVisible(false);
+    setChefChoiceVisible(false);
     setSelectedFood(null);
     setLastSelectedFood(null);
   };
 
+  
+
   return (
-    <div>
-      <button onClick={handleClick}>Chef's Choice</button>
-      {menuVisible && (
-        <>
-        <button onClick={closeMenu}>X</button>
-          {!selectedFood ? (
-            <div>
-              <h4>Want to hear tonight's specials?</h4>
-              <button onClick={randomizeFood}>I'm all ears!</button>
-            </div>
-          ) : (
-            <div>
-              <p>The kitchen recommends you have {selectedFood.name}</p>
-              <button onClick={randomizeFood}>Any other options?</button>
-              <button onClick={() => openEditing(selectedFood)}>Let's do it!</button>
-            </div>
-          )}
-        </>
-      )}
-    </div>
+    <>
+      <button onClick={closeMenu}>X</button>
+        {!selectedFood ? (
+          <div>
+            <h4>Want to hear tonight's specials?</h4>
+            <button onClick={randomizeFood}>I'm all ears!</button>
+          </div>
+        ) : (
+          <div>
+            <p>The kitchen recommends you have {selectedFood.name}</p>
+            <button onClick={randomizeFood}>Any other options?</button>
+            <button onClick={() => openFoodItem(selectedFood)}>Let's do it!</button>
+          </div>
+        )}
+    </>
   );
 };
 

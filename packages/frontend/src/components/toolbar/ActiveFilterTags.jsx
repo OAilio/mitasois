@@ -2,10 +2,10 @@
 import RenderTags from "./RenderTags";
 import formatDate from "../../utils/formatDate";
 
-const ActiveFilterTags = ({ proteinFilters, setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, filterOptionsIsVisible, clearFilters}) => {
+const ActiveFilterTags = ({ proteinFilters, setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, filterOptionsVisibility, clearFilters}) => {
   
   // The active tags are only visible if the filtering options is closed or there aren't any filters applied
-  if (filterOptionsIsVisible || proteinFilters.length === 0 && carbFilters.length === 0 && dateFilter === "") {
+  if (filterOptionsVisibility || proteinFilters.length === 0 && carbFilters.length === 0 && dateFilter === "") {
     return null
   }
 
