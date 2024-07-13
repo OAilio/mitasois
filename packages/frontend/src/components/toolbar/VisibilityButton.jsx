@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
-const VisibilityButton = ({ visibility, setVisibility, icon}) => {
+import '../../css/visibilityButton.scss'
+
+const VisibilityButton = ({ visibility, setVisibility, icon, text, classname}) => {
   function toggleVisibility(){
     setVisibility(!visibility)
   }
   
   return (
-    <div>
-      <button onClick={toggleVisibility}>{icon}</button>
+    <div className={classname} onClick={toggleVisibility}>
+      <div className='icon'>{icon}</div>
+      <span>{text}</span>
     </div>
   )
 };

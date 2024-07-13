@@ -112,9 +112,9 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
                       <button className='secondary-button' onClick={() => handleEditClick(food)}>Edit</button>
                       <button className='primary-button' onClick={() => ateThisToday(food)}>Ate this today!</button>
                     </div>
-                    <div className="tertiary-button" onClick={() => handleDelete(food.id)}>
+                    <span className="tertiary-button" onClick={() => handleDelete(food.id)}>
                       Delete <FontAwesomeIcon icon={faTrash} />
-                    </div>
+                    </span>
                   </>
                 )}
               </div>

@@ -21,16 +21,12 @@
 		cursor: auto;
 
 		.single-food-item {
-			padding: 0.75rem 0rem;
 
 			.item-content {
-				font-size: 1.5rem;
-				color: $primary;
 				display: flex;
 				justify-content: space-between;
-				padding: 0;
+				padding: 0.75rem 0rem;
 				width: auto;
-				// margin: auto;
 
 				.food-name {
 					font-family: $medium;
@@ -71,10 +67,7 @@
 			border-color: $primary;
 
 			.item-content {
-				border-style: solid;
-				border-color: $detail;
-				border-width: 0 0 2px 0;
-				padding-bottom: 0.25rem;
+				@include active-item-content;
 
 				.food-name {
 					font-family: $bold;

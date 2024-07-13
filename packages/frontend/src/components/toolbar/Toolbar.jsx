@@ -8,6 +8,8 @@ import SearchFilter from "./SearchFilter";
 import FilterForm from "./FilterForm";
 import ActiveFilterTags from "./ActiveFilterTags";
 import VisibilityButton from "./VisibilityButton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter, faDice } from '@fortawesome/free-solid-svg-icons';
 
 import '../../css/toolbar.scss'
 
@@ -22,32 +24,41 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
 		setDateFilter('')
 		setProteinFilters([])
     setCarbFilters([])
-  };  
+  }; 
 
   return (
     <>
     <div>
       <div className="toolbar-container">
         <div className="toolbar-left">
-          <Sort 
-            ascendingSort={ascendingSort} 
-            setAscendingSort={setAscendingSort}
-          />
-          <VisibilityButton
-            visibility={filterOptionsVisibility} 
-            setVisibility={setFilterOptionsVisibility}
-            icon={"Filters"}
-          />
-          <SearchFilter
-            searchInput={searchInput} 
-            setSearchInput={setSearchInput}
-          />
+          <span className="left-item">
+            <Sort
+              ascendingSort={ascendingSort} 
+              setAscendingSort={setAscendingSort}
+            />
+          </span>
+          <span className="left-item">
+            <VisibilityButton
+              visibility={filterOptionsVisibility} 
+              setVisibility={setFilterOptionsVisibility}
+              icon={<FontAwesomeIcon icon={faFilter}/>}
+              classname="filter-button"
+            />
+          </span>
+          <span className="left-item">
+            <SearchFilter
+              searchInput={searchInput} 
+              setSearchInput={setSearchInput}
+            />
+          </span>
         </div>
         <div className="toolbar-right">
           <VisibilityButton
             visibility={chefChoiceVisibility} 
             setVisibility={setChefChoiceVisibility}
-            icon={"Chef Choice"}
+            icon={<FontAwesomeIcon icon={faDice}/>}
+            text="Chef's Choice"
+            classname="chef-button"
           />
         </div>
       </div>

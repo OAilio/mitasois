@@ -1,0 +1,24 @@
+@import './shared';
+
+.chef-button {
+    @include button;
+    @include primary-button;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0 1rem;
+    border-radius: 12px;
+
+    .icon{
+        margin-right: 0.5rem;
+        margin-bottom: 1px; // Little tweak for visual improvement
+    }
+
+}
+
+.filter-button {
+    @include toolbar-icon-button
+}
+

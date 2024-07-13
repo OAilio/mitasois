@@ -29,16 +29,32 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 // ------------------------------------------------------------------
 
 @mixin food-item-container {
+	color: $primary;
 	background-color: $white;
 	list-style-type: none;
 	margin: 0rem auto;
 	max-width: $content-width;
 	box-shadow: 0px 4px 12.9px 0px rgba($primary, 0.35);
-	// padding: 0.75rem 1.5rem;
 	border-radius: 20px;
 	border-style: solid;
 	border-color: $white;
+	font-size: 1.5rem;
 	cursor: pointer;
+}
+
+@mixin active-item-content {
+	border-style: solid;
+	border-color: $detail;
+	border-width: 0 0 2px 0;
+	padding-bottom: 0.25rem;
+	margin: auto 1.5rem;
+}
+
+@mixin toolbar-icon-button {
+	padding: 0;
+    margin: 0;
+    font-size: 2.25rem;
+    color: $primary;
 }
 
 
@@ -48,7 +64,7 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin: 0.5rem auto 0rem;
+	margin: 1rem auto 0rem;
 }
 
 @mixin button {
@@ -56,7 +72,7 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 	font-size: 1rem;
 	padding: 0.25rem 1rem;
 	min-width: 5.8rem;
-	margin: 0.5rem 0.25rem;
+	margin: 0rem 0.25rem;
 	height: 2rem;
 	cursor: pointer;
 	transition: ease-in-out 0.3s;
@@ -95,7 +111,7 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 	border-color: $red;
 	color: $red;
 	font-size: 1rem;
-	margin: 0.25rem auto;
+	margin: 0rem auto 1rem;
 	cursor: pointer;
 	display: inline-block;
 }

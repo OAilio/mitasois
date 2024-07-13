@@ -1,0 +1,6 @@
+@import './shared';
+
+.sort-icon {
+    @include toolbar-icon-button;
+    margin-right: 0.5rem;
+}

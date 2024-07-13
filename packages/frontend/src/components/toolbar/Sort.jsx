@@ -1,4 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import '../../css/sort.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDays, faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+
 const Sort = ({ ascendingSort, setAscendingSort}) => {
   function toggleSort() {
     setAscendingSort(prevState => {
@@ -9,9 +14,10 @@ const Sort = ({ ascendingSort, setAscendingSort}) => {
 
   return (
     <>
-    <button onClick={toggleSort}>
-      {ascendingSort ? 'Earliest to latest' : 'Latest to earliest'}
-    </button>
+    <div onClick={toggleSort}>
+      <FontAwesomeIcon icon={faCalendarDays} className='sort-icon' />
+      {ascendingSort ? <FontAwesomeIcon icon={faArrowUp} className='sort-icon'/> : <FontAwesomeIcon icon={faArrowDown} className='sort-icon'/>}
+    </div>
     </>
   )
 }

@@ -3,13 +3,23 @@
 .toolbar-container {
     display: flex;
     align-items: center;
-    margin: auto;
-    // padding: 0rem 1.5rem;
-    background-color: blue;
+    justify-content: space-between;
+    margin:  0rem auto 0.75rem;
+    // background-color: red;
     max-width: $content-width;
+    padding: 0px 2px; // Compensates food container borders
 
     .toolbar-left{
         display: flex;
-        align-items:start;
+        align-items: center;
+
+        .left-item {
+            margin-right: 1rem;
+        }
+    }
+
+    .toolbar-right{
+        display: flex;
+        align-items: center;
     }
 }
