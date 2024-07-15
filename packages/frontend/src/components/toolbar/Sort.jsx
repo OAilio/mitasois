@@ -14,10 +14,10 @@ const Sort = ({ ascendingSort, setAscendingSort}) => {
 
   return (
     <>
-    <div onClick={toggleSort}>
-      <FontAwesomeIcon icon={faCalendarDays} className='sort-icon' />
+    <button className='sort-button' onClick={toggleSort}>
+      <FontAwesomeIcon icon={faCalendarDays} className='sort-icon left' />
       {ascendingSort ? <FontAwesomeIcon icon={faArrowUp} className='sort-icon'/> : <FontAwesomeIcon icon={faArrowDown} className='sort-icon'/>}
-    </div>
+    </button>
     </>
   )
 }

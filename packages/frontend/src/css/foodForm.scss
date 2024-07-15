@@ -41,8 +41,6 @@ form {
 		@include button-group;
 
 		button {
-			@include button;
-
 			&.primary-button {
 				@include primary-button;
 			}

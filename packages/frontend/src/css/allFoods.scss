@@ -1,14 +1,6 @@
-@import 'colors.scss';
-@import 'fonts.scss';
 @import './shared';
 
 .list-of-all-food-items {
-	display: flex;
-	max-width: 100%;
-	flex-direction: column;
-	margin: 0;
-	padding: 0;
-
 	ul {
 		margin: 0;
 		padding: 0;
@@ -48,9 +40,7 @@
 			.button-group {
 				@include button-group;
 			
-				button {
-					@include button;
-			
+				button {		
 					&.primary-button {
 						@include primary-button;
 					}
@@ -81,4 +71,14 @@
 			}
 		}
 	}
+}
+
+.no-results {
+	display: flex;
+	justify-content: center;
+	margin: 2rem auto;
+	font-family: $bold;
+	color: $primary;
+	font-size: 2rem;
+	// min-height: 60%;
 }

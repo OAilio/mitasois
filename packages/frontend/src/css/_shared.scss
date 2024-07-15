@@ -49,11 +49,18 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 	padding-bottom: 0.25rem;
 	margin: auto 1.5rem;
 }
+$icon-size: 2.25rem;
+
+@mixin toolbar-icon-button-container {
+	background-color: transparent;
+	border-style: none;
+	padding: 0;
+}
 
 @mixin toolbar-icon-button {
 	padding: 0;
-    margin: 0;
-    font-size: 2.25rem;
+	margin: 0;
+    font-size: $icon-size;
     color: $primary;
 }
 
@@ -79,6 +86,7 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 }
 
 @mixin primary-button {
+	@include button;
 	font-family: $bold;
 	color: $white;
 	background-color: $primary;
@@ -92,6 +100,7 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 }
 
 @mixin secondary-button {
+	@include button;
 	font-family: $semibold;
 	color: $primary;
 	background-color: $white;
@@ -119,4 +128,4 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 // ------------------------------------------------------------------
 
 $form-input-width: 9rem;
-$content-width: 60%
+$content-width:40%

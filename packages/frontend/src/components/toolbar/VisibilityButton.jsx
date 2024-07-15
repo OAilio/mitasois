@@ -7,10 +7,10 @@ const VisibilityButton = ({ visibility, setVisibility, icon, text, classname}) =
   }
   
   return (
-    <div className={classname} onClick={toggleVisibility}>
+    <button className={classname} onClick={toggleVisibility}>
       <div className='icon'>{icon}</div>
       <span>{text}</span>
-    </div>
+    </button>
   )
 };
 

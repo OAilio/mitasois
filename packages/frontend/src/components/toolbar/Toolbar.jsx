@@ -45,7 +45,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
               classname="filter-button"
             />
           </span>
-          <span className="left-item">
+          <span>
             <SearchFilter
               searchInput={searchInput} 
               setSearchInput={setSearchInput}
