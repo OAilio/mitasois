@@ -41,6 +41,30 @@ form {
 				  outline: none; // Ensure the default outline is not displayed
 				}
 			}
+
+			::-webkit-calendar-picker-indicator{
+				filter: brightness(0) 
+				saturate(100%) 
+				invert(38%) 
+				sepia(31%) 
+				saturate(537%) 
+				hue-rotate(64deg) 
+				brightness(86%) 
+				contrast(90%);
+				transition: filter 0.3s ease-in-out;
+
+				&:hover {
+					filter: brightness(0)
+					saturate(100%)
+					invert(95%)
+					sepia(5%)
+					saturate(3237%)
+					hue-rotate(37deg)
+					brightness(84%)
+					contrast(87%);
+				}
+			}
+			  
 		}
 	}
 
