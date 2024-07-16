@@ -2,7 +2,6 @@
 
 .select {
 	align-items: center;
-	width: $form-input-width;
 	text-align: left;
 	color: $primary;
 
@@ -11,7 +10,65 @@
 		color: $primary;
 	}
 
-	.items {
-		font-family: $medium;
+	.ingredient-select {
+		font-family: $regular;
+		width: calc($form-input-width + 16px);
+		color: $primary;
+
+		.ingSelect__control{
+			color: $primary;
+			background-color: $grey;
+			height: calc($form-input-height + 1rem);
+			padding: 0;
+			border-radius: 6px;
+			border-style: none;
+			box-shadow: none;
+			transition: box-shadow 0.3s ease-in-out;
+		}
+
+		.ingSelect__value-container {
+			margin: 0;
+			padding: 0rem 0.5rem;
+		}
+
+		.ingSelect__single-value{
+			color: $primary;
+		}
+
+		.ingSelect__input {
+			color: $primary;
+		}
+		
+		.ingSelect__control--menu-is-open {
+			box-shadow: 0px 0px 0px 2px $primary;
+			outline-width: 4px;
+		}
+
+		.ingSelect__menu {
+			background-color: $white;
+			border-style: none;
+		}
+
+		.ingSelect__option {
+			&--is-selected {
+				background-color: $primary;
+			}
+
+			&--is-focused {
+				background-color: $grey;
+			}
+		}
+
+		.ingSelect__indicator {
+			color: $primary;
+			
+			&:hover {
+				color: $detail;
+			}
+		}
+
+		.ingSelect__indicator-separator {
+			background-color: transparent;
+		}
 	}
 }

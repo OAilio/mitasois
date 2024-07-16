@@ -43,8 +43,10 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
     <div className='select'>
       <label>
         <span className='select-label'>Main {type}:</span>
-        <div className='items'>
+        <div>
           <Creatable
+            className="ingredient-select"
+            classNamePrefix="ingSelect"
             placeholder={"Select..."}
             value={currentSelection}
             options={ingredientOptions}
@@ -52,12 +54,6 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
             onCreateOption={(inputValue) => {
               const newOption = { value: inputValue, label: inputValue };
               setIngredient(newOption);
-            }}
-            styles={{
-              dropdownIndicator: baseStyles => ({
-                ...baseStyles,
-                color: 'green'
-              })
             }}
           />
         </div>

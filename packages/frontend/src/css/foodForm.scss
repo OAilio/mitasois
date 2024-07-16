@@ -31,8 +31,15 @@ form {
 				font-family: $regular;
 				padding: 0.5rem;
 				width: $form-input-width;
+				height: $form-input-height;
 				border-radius: 6px;
 				color: $primary;
+				transition: box-shadow 0.3s ease-in-out;
+
+				&:focus {
+				  box-shadow: 0 0 0 2px $primary;
+				  outline: none; // Ensure the default outline is not displayed
+				}
 			}
 		}
 	}
