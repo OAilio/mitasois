@@ -35,6 +35,10 @@
 			color: $primary;
 		}
 
+		.ingSelect__placeholder{
+			color: darken($grey, 25%);
+		}
+
 		.ingSelect__input {
 			color: $primary;
 		}

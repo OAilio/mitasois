@@ -20,5 +20,6 @@
 .filter-button {
     @include toolbar-icon-button-container;
     @include toolbar-icon-button;
+    @include toolbar-icon-animations
 }
 

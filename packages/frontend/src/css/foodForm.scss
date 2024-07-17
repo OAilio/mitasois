@@ -36,11 +36,21 @@ form {
 				color: $primary;
 				transition: box-shadow 0.3s ease-in-out;
 
+				&::placeholder{
+					color: darken($grey, 25%);
+				}
+
 				&:focus {
 				  box-shadow: 0 0 0 2px $primary;
 				  outline: none; // Ensure the default outline is not displayed
 				}
 			}
+
+			input[type=date]:invalid::-webkit-datetime-edit {
+				color: darken($grey, 25%);
+			}
+
+
 
 			::-webkit-calendar-picker-indicator{
 				filter: brightness(0) 

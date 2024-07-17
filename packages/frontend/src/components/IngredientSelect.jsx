@@ -39,6 +39,8 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
     new Set([...predefinedOptionsForType, ...existingOptions].map(option => JSON.stringify(option)))
   ).map(option => JSON.parse(option)).sort((a, b) => a.label.localeCompare(b.label));
 
+  console.log("current:" , currentSelection)
+
   return (
     <div className='select'>
       <label>
@@ -47,8 +49,8 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
           <Creatable
             className="ingredient-select"
             classNamePrefix="ingSelect"
-            placeholder={"Select..."}
-            value={currentSelection}
+            placeholder="Select"
+            value={currentSelection.value ? currentSelection : null}
             options={ingredientOptions}
             onChange={(option) => setIngredient(option)}
             onCreateOption={(inputValue) => {

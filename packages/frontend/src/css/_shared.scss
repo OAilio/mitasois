@@ -40,6 +40,7 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 	border-color: $white;
 	font-size: 1.5rem;
 	cursor: pointer;
+	transition: all 0.3s ease-in-out, ;
 }
 
 @mixin active-item-content {
@@ -62,6 +63,19 @@ $icon-size: 2.25rem;
 	margin: 0;
     font-size: $icon-size;
     color: $primary;
+	transition: color 0.3s ease-in-out;
+}
+
+// To be used together with the toolbar-icon-button
+@mixin toolbar-icon-animations {
+	transition: color 0.3s ease-in-out, scale 0.1s ease-in-out;
+	&:hover{
+		color: $detail;
+
+		&:active {
+			scale: (0.8);
+		}
+	}	
 }
 
 
@@ -82,7 +96,13 @@ $icon-size: 2.25rem;
 	margin: 0rem 0.25rem;
 	height: 2rem;
 	cursor: pointer;
-	transition: ease-in-out 0.3s;
+	transition: ease-in-out 0.3s, scale 0.1s ease-in-out;
+
+	&:hover {
+		&:active{
+			scale: (0.8);
+		}
+	}
 }
 
 @mixin primary-button {
@@ -96,6 +116,10 @@ $icon-size: 2.25rem;
 	&:hover{
 		background-color: $detail;
 		color: $primary;
+
+		// &:active {
+		// 	scale: (0.8);
+		// }
 	}
 }
 
@@ -109,7 +133,11 @@ $icon-size: 2.25rem;
 	border-color: $primary;
 
 	&:hover{
-		background-color: darken($white, 10%);
+		background-color: darken($white, 15%);
+
+		// &:active {
+		// 	scale: (0.8);
+		// }
 	}
 }
 

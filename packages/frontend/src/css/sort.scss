@@ -2,6 +2,14 @@
 
 .sort-button{
     @include toolbar-icon-button-container;
+    @include toolbar-icon-animations;
+
+    &:hover{
+        .sort-icon {
+            color: $detail;
+        }
+    }
+
     
     .sort-icon {
         @include toolbar-icon-button;
