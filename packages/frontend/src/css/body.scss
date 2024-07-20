@@ -1,5 +1,3 @@
-// @import 'colors.scss';
-// @import 'fonts.scss';
 @import './shared';
 
 body {
@@ -12,6 +10,6 @@ h1 {
 	font-family: $bold;
 	font-weight: normal;
 	text-align: center;
-	font-size: 3rem;
+	font-size: $heading;
 	margin: 0;
 }

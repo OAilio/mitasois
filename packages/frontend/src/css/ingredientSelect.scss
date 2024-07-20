@@ -3,19 +3,26 @@
 .select {
 	align-items: center;
 	text-align: left;
-	color: $primary;
+	// color: $primary;
+	// background-color: rebeccapurple;
+	width: calc($form-input-width + 16px);
+
+	&.filter {
+		width: calc($form-input-width + 48px);
+	}
 
 	.select-label {
 		font-family: $medium;
 		color: $primary;
+		font-size: 1rem;
 	}
 
 	.ingredient-select {
 		font-family: $regular;
-		width: calc($form-input-width + 16px);
 		color: $primary;
 
 		.ingSelect__control{
+			font-size: 1rem;
 			color: $primary;
 			background-color: $grey;
 			height: calc($form-input-height + 1rem);
@@ -29,9 +36,12 @@
 		.ingSelect__value-container {
 			margin: 0;
 			padding: 0rem 0.5rem;
+			display: flex;
+			// color: darken($grey, 25%);
 		}
 
 		.ingSelect__single-value{
+			font-size: 1rem;
 			color: $primary;
 		}
 
@@ -54,12 +64,13 @@
 		}
 
 		.ingSelect__option {
-			&--is-selected {
-				background-color: $primary;
-			}
-
+			font-size: 1rem;
 			&--is-focused {
 				background-color: $grey;
+			}
+			
+			&--is-selected {
+				background-color: $primary;
 			}
 		}
 
@@ -67,12 +78,15 @@
 			color: $primary;
 			
 			&:hover {
-				color: $detail;
+				color: $secondary;
 			}
 		}
 
 		.ingSelect__indicator-separator {
 			background-color: transparent;
+			// background-color: $primary;
+			// border-radius: 50px;
+			// width: 2px;
 		}
 	}
 }

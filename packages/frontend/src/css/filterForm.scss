@@ -1,0 +1,54 @@
+@import './shared';
+
+.filter-form-container {
+    @include food-item-container;
+    background-color: $secondary;
+    border-color: $secondary;
+    display: flex;
+    max-width: calc($content-width + 2px);
+    margin: auto;
+    flex-direction: column;
+    // justify-content: space-between;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+
+    .filter-form-header {
+        font-family: $bold;
+        font-size: 1.5rem;
+        color: $primary;
+        padding-top: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        margin: 0rem 1.5rem;
+
+        .close-container{
+            @include toolbar-icon-button-container;
+
+            .close-icon {
+                @include toolbar-icon-button;
+                @include toolbar-icon-animations;
+                color: $red;
+                font-size: calc($icon-size * 0.60);
+
+                &:hover{
+                    color: darken($red, 15%);
+                }	
+            }
+        }
+    }
+
+    .filter-form-content {
+        // background-color: $detail;
+        display: flex;
+        text-align: left;
+        justify-content: space-between;
+        margin: 0.75rem 1.5rem;
+    }
+
+    .clear-button {
+        @include tertiary-button;
+        background-color: transparent;
+        padding: 0;
+    }
+}

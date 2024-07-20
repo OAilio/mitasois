@@ -1,0 +1,29 @@
+@import './shared';
+
+.active-filter-container {
+    display: flex;
+    margin: 0.75rem auto;
+    // background-color: red;
+    max-width: calc($content-width + 2px);
+    justify-content: left;
+    align-items: center;
+    padding: 0;
+    flex-direction: row;
+
+    .active-filter-header {
+        color: $primary;
+        font-family: $semibold;
+        margin-right: 0.25rem;
+    }
+
+    .active-filter-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .active-filter-clear-button{
+        @include tertiary-button;
+        margin-left: 0.25rem;
+        margin-bottom: 0;
+    }
+}

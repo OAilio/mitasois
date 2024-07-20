@@ -1,11 +1,18 @@
 /* eslint-disable react/prop-types */
 import Filter from "./Filter";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import '../../css/filterForm.scss'
 
 const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter,
-	setDateFilterType, filterOptionsVisibility, clearFilters}) => {
+	setDateFilterType, filterOptionsVisibility, setFilterOptionsVisibility, clearFilters}) => {
 
 	if (!filterOptionsVisibility) {
     return null;
+  }
+
+  function closeFilterForm(){
+	setFilterOptionsVisibility(false)
   }
 
   // Filter options
@@ -14,30 +21,43 @@ const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, set
 
 	return (
 		<>
-		<div>
-			<h2>Filters</h2>
-			<Filter
-				options={proteinOptions}
-				activeFilters={proteinFilters}
-				setActiveFilters={setProteinFilters} 
-				name="Main protein"/>
-			<Filter
-				options={carbOptions}
-				activeFilters={carbFilters}
-				setActiveFilters={setCarbFilters} 
-				name="Main carb"/>
+		<div className="filter-form-container">
+			<div className="filter-form-header">
+				<span>Filters</span>
+				<button className="close-container" onClick={closeFilterForm}><FontAwesomeIcon icon={faCircleXmark} className='close-icon' /></button>
+			</div>	
+			<div className="filter-form-content">
+			{/* <div className="filter-form-header">Filters:</div> */}
+				<div>
+					<Filter
+						options={proteinOptions}
+						activeFilters={proteinFilters}
+						setActiveFilters={setProteinFilters} 
+						name="protein"
+					/>
+				</div>
+				<div>
+				<Filter
+					options={carbOptions}
+					activeFilters={carbFilters}
+					setActiveFilters={setCarbFilters} 
+					name="carb"
+				/>
+				</div>
+				<div>
+					{/* <h4>Date made</h4> */}
+					<select onChange={(e) => setDateFilterType(e.target.value)}>
+						<option value="Before">Before</option>
+						<option value="After">After</option>
+					</select>
+					<label><input type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} /></label>
+				</div>
+			</div>
+			<div>
+				<button className="clear-button" onClick={clearFilters}>Clear all</button>
+			</div>
 		</div>
-		<div>
-			<h4>Date made</h4>
-			<select onChange={(e) => setDateFilterType(e.target.value)}>
-          <option value="Before">Before</option>
-          <option value="After">After</option>
-      </select>
-			<label>Date: <input type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} /></label>
-		</div>
-		<div>
-			<h5 onClick={clearFilters}>Clear all</h5>
-		</div>
+		{/* <ActiveFilterTags /> */}
 		</>
 	)
 }

@@ -1,0 +1,32 @@
+@import './shared';
+
+.filter-tag {
+    display: inline-block;
+    align-items: center;
+    font-size: $small-text;
+    font-family: $semibold;
+    color: $primary;
+    border-color: $primary;
+    border-style: solid;
+    background-color: $secondary;
+    border-radius: 20px;
+    padding: 0.25rem 0.5rem;
+    margin: 0rem 0.125rem;
+    cursor: pointer;
+	transition: ease-in-out 0.3s, scale 0.1s ease-in-out;
+
+    &:hover{
+		background-color: $red;
+        // border-color: $red;
+		color: $white;
+
+        &:active {
+            transform: scale(0.95);
+        }
+	}
+
+    &-icon{
+        font-size: calc($icon-size * 0.45);
+        margin-left: 0.25rem;
+    }
+}

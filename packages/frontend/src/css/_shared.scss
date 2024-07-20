@@ -17,14 +17,24 @@ $regular: 'Quicksand Regular';
 $light: 'Quicksand Light';
 
 // ------------------------------------------------------------------
+
+// Font-sizes -------------------------------------------------------
+
+$heading: 3rem;
+$medium-text: 1.5rem;
+$small-text: 1rem;
+$tag: 0.75rem;
+$icon-size: 2.25rem;
+
+// ------------------------------------------------------------------
   
 // Colors -----------------------------------------------------------
 $primary: rgb(68, 102, 61);
+$secondary: rgb(195, 236, 165); // Used few times as outlines for example, might not be necessary
 $background: rgb(221, 255, 212); // App background
 $red: rgb(212, 81, 81); // Alert and irreversible actions color
 $white: rgb(249, 249, 249); 
 $grey: rgb(236, 236, 236); // Background color for the dropdown menus
-$detail: rgb(159, 203, 128); // Used few times as outlines for example, might not be necessary
 
 // ------------------------------------------------------------------
 
@@ -34,10 +44,11 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 	list-style-type: none;
 	margin: 0rem auto;
 	max-width: $content-width;
-	box-shadow: 0px 4px 12.9px 0px rgba($primary, 0.35);
+	box-shadow: 0px 0px 3.5px 0px rgba($primary, 0.25);
 	border-radius: 20px;
 	border-style: solid;
 	border-color: $white;
+	border-width: 2px;
 	font-size: 1.5rem;
 	cursor: pointer;
 	transition: all 0.3s ease-in-out, ;
@@ -45,12 +56,12 @@ $detail: rgb(159, 203, 128); // Used few times as outlines for example, might no
 
 @mixin active-item-content {
 	border-style: solid;
-	border-color: $detail;
+	border-color: $secondary;
 	border-width: 0 0 2px 0;
 	padding-bottom: 0.25rem;
 	margin: auto 1.5rem;
 }
-$icon-size: 2.25rem;
+
 
 @mixin toolbar-icon-button-container {
 	background-color: transparent;
@@ -70,7 +81,7 @@ $icon-size: 2.25rem;
 @mixin toolbar-icon-animations {
 	transition: color 0.3s ease-in-out, scale 0.1s ease-in-out;
 	&:hover{
-		color: $detail;
+		color: $secondary;
 
 		&:active {
 			scale: (0.8);
@@ -100,7 +111,7 @@ $icon-size: 2.25rem;
 
 	&:hover {
 		&:active{
-			scale: (0.8);
+			scale: (0.95);
 		}
 	}
 }
@@ -114,12 +125,8 @@ $icon-size: 2.25rem;
 	border-color: $primary;
 
 	&:hover{
-		background-color: $detail;
+		background-color: $secondary;
 		color: $primary;
-
-		// &:active {
-		// 	scale: (0.8);
-		// }
 	}
 }
 
@@ -134,15 +141,12 @@ $icon-size: 2.25rem;
 
 	&:hover{
 		background-color: darken($white, 15%);
-
-		// &:active {
-		// 	scale: (0.8);
-		// }
 	}
 }
 
 @mixin tertiary-button {
 	font-family: $semibold;
+	background-color: transparent;
 	border-style: solid;
 	border-width: 0 0 1.5px 0;
 	border-color: $red;
@@ -151,6 +155,16 @@ $icon-size: 2.25rem;
 	margin: 0rem auto 1rem;
 	cursor: pointer;
 	display: inline-block;
+	transition: ease-in-out 0.3s, scale 0.1s ease-in-out;
+
+	&:hover{
+		color: darken($red, 15%);
+		border-color: darken($red, 15%);
+
+		&:active {
+			scale: (0.95);
+		}
+	}
 }
 
 // ------------------------------------------------------------------

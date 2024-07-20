@@ -84,9 +84,9 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
 
   console.log("render", filteredFoods.length, "foods");
 
-  // if (filteredFoods.length === 0) {
-  //   return <div className="no-results">No results found :(</div>;
-  // }
+  if (filteredFoods.length === 0) {
+    return <div className="no-results">No results found :(</div>;
+  }
 
   return (
     <div className="list-of-all-food-items">

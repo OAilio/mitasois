@@ -77,7 +77,8 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
         dateFilter={dateFilter} 
         setDateFilter={setDateFilter}
         setDateFilterType={setDateFilterType} 
-        filterOptionsVisibility={filterOptionsVisibility} 
+        filterOptionsVisibility={filterOptionsVisibility}
+        setFilterOptionsVisibility={setFilterOptionsVisibility}
         clearFilters={clearFilters}
         />
       <ActiveFilterTags 
@@ -88,7 +89,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
         dateFilter={dateFilter} 
         setDateFilter={setDateFilter} 
         dateFilterType={dateFilterType} 
-        filterOptionsVisibility={filterOptionsVisibility} 
+        // filterOptionsVisibility={filterOptionsVisibility} 
         clearFilters={clearFilters}/>
     </div>
     </>
