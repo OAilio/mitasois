@@ -15,6 +15,11 @@
         margin-bottom: 1px; // Little tweak for visual improvement
     }
 
+    @media screen and (max-width: $large-mobile) {
+        justify-content: center;
+        width: 100%;
+    }
+
 }
 
 .filter-button {

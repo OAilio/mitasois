@@ -7,17 +7,44 @@
     margin:  0rem auto 0.75rem;
     max-width: calc($content-width + 2px); // Compensates food container borders
 
+    @media screen and (max-width: $laptop) {
+        max-width: $small-content-width;
+    }
+    @media screen and (max-width: $tablet) {
+        max-width: $tablet-content-width;
+    }
+    @media screen and (max-width: $large-mobile) {
+        max-width: $mobile-content-width;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
     .toolbar-left{
         display: flex;
         align-items: center;
-
+        
         .left-item {
             margin-right: 2rem;
+        }
+
+        @media screen and (max-width: $large-mobile) {
+            // justify-content: space-between;
+            margin-bottom: 1.5rem;
+            width: 100%;
+
+            .right-item {
+                margin-left: auto;
+            }
         }
     }
 
     .toolbar-right{
         display: flex;
         align-items: center;
+
+        @media screen and (max-width: $large-mobile) {
+            width: 100%;
+            margin-bottom: 0.75rem;
+        }
     }
 }

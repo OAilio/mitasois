@@ -3,40 +3,63 @@
 .search-filter {
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
 
     .icon-container {
-        @include toolbar-icon-button-container;
+			@include toolbar-icon-button-container;
 
-        .search-icon {
-            @include toolbar-icon-button;
-            @include toolbar-icon-animations;
-            font-size: calc(0.97*$icon-size);
-        }
-        .x-icon {
-            @include toolbar-icon-button;
-            @include toolbar-icon-animations;
-            font-size: 1.5rem;
-            align-self: flex-end;
-            margin-top: 0.5rem;
-        }
+			.search-icon {
+				@include toolbar-icon-button;
+				@include toolbar-icon-animations;
+				font-size: calc(0.97*$icon-size);
+			}
+
+			.x-icon {
+				@include toolbar-icon-button;
+				@include toolbar-icon-animations;
+				font-size: 1.5rem;
+				margin-top: 0.125rem;
+				&:hover {
+					color: $red
+				}
+			}
     }
 
-    .search-input {
-        margin: auto 0.125rem auto 0.5rem;
-        font-family: $regular;
-        margin-bottom: 2px;
-        color: $primary;
-        height: 100%;
-        font-size: 1rem;
-        background: none;
-        border-style: solid;
-        border-color: $primary;
-        border-width: 0 0 2px 0;
-        
-        &::placeholder {
-            color: lighten($primary, $amount: 30%);
-        }
+    .search-field-container {
+			border-style: solid;
+			border-color: $primary;
+			border-width: 0 0 2px 0;
+			display: flex;
+			justify-content: space-between;
+			margin-left: 0.5rem;
+			width: 10rem;
+
+			.search-input {
+				font-family: $regular;
+				color: $primary;
+				background: none;
+				font-size: $small-text;
+				border-style: none;
+				border-color: $primary;
+				padding-right: 0.25rem;
+				width: 100%;
+				// padding: 0;
+				margin: 0;
+				// height: 100%;
+				
+				&::placeholder {
+					color: lighten($primary, $amount: 30%);
+				}
+
+				&:active {
+					outline: none;
+				}
+
+				&:focus {
+					outline: none;
+				}
+			} 
     }
+
 }
 

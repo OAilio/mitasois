@@ -1,18 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import '../../css/searchFilter.scss'
-import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const SearchFilter = ({ searchInput, setSearchInput }) => {
 
-  const [searchOpen, setSearchOpen] = useState(false)
-
-  console.log("search open:",searchOpen)
-
-  function toggleSearch(){
-    setSearchOpen(!searchOpen)
+  function clearSearch(){
     setSearchInput('')
   }
 
@@ -24,13 +18,13 @@ const SearchFilter = ({ searchInput, setSearchInput }) => {
 
   return (
     <div className="search-filter">
-      <button className='icon-container' onClick={toggleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon' /></button>
-      {searchOpen && (
+      <button className='icon-container'><FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon' /></button>
+      <div className='search-field-container'>
         <input className='search-input' type="text" value={searchInput} onChange={handleSearchChange} placeholder="Food name..."/>
-      )}
-      {searchInput && (
-        <button className='icon-container' onClick={toggleSearch}><FontAwesomeIcon icon={faXmark} className='x-icon' /></button>
-      )}
+        {searchInput && (
+          <button className='icon-container' onClick={clearSearch}><FontAwesomeIcon icon={faXmark} className='x-icon' /></button>
+        )}
+      </div>
     </div>
   )
 }

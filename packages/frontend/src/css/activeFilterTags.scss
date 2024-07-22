@@ -10,6 +10,16 @@
     padding: 0;
     flex-direction: row;
 
+    @media screen and (max-width: $laptop) {
+        max-width: $small-content-width;
+    }
+    @media screen and (max-width: $tablet) {
+        max-width: $tablet-content-width;
+    }
+    @media screen and (max-width: $large-mobile) {
+        max-width: $mobile-content-width;
+    }
+
     .active-filter-header {
         color: $primary;
         font-family: $semibold;

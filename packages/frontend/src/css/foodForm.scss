@@ -8,12 +8,12 @@ form {
 		flex-direction: row;
 		justify-content: space-between;
 		margin: 0.75rem 1.5rem;
-		font-size: 1rem;
+		font-size: $small-text;
 
 		.input-field {
 			display: flex;
 			align-items: start;
-			font-size: 1rem;
+			font-size: $small-text;
 
 			input, label{
 				display: block;

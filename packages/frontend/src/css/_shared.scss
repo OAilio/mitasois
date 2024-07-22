@@ -21,6 +21,7 @@ $light: 'Quicksand Light';
 // Font-sizes -------------------------------------------------------
 
 $heading: 3rem;
+$large-text: 2rem;
 $medium-text: 1.5rem;
 $small-text: 1rem;
 $tag: 0.75rem;
@@ -49,11 +50,23 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	border-style: solid;
 	border-color: $white;
 	border-width: 2px;
-	font-size: 1.5rem;
+	font-size: $medium-text;
 	cursor: pointer;
-	transition: all 0.3s ease-in-out, ;
+	transition: all 0.3s ease-in-out;
+
+    @media screen and (max-width: $laptop) {
+        max-width: $small-content-width;
+    }
+    @media screen and (max-width: $tablet) {
+        max-width: $tablet-content-width;
+    }
+    @media screen and (max-width: $large-mobile) {
+        max-width: $mobile-content-width;
+    }
 }
 
+// The item header stays above the options of the opened item
+// For example "Add new food"
 @mixin active-item-content {
 	border-style: solid;
 	border-color: $secondary;
@@ -101,11 +114,11 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 
 @mixin button {
 	border-radius: 6px;
-	font-size: 1rem;
+	font-size: $small-text;
 	padding: 0.25rem 1rem;
 	min-width: 5.8rem;
 	margin: 0rem 0.25rem;
-	height: 2rem;
+	height: $button-height;
 	cursor: pointer;
 	transition: ease-in-out 0.3s, scale 0.1s ease-in-out;
 
@@ -151,7 +164,7 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	border-width: 0 0 1.5px 0;
 	border-color: $red;
 	color: $red;
-	font-size: 1rem;
+	font-size: $small-text;
 	margin: 0rem auto 1rem;
 	cursor: pointer;
 	display: inline-block;
@@ -169,6 +182,28 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 
 // ------------------------------------------------------------------
 
+// Breakpoints ------------------------------------------------------
+
+$laptop: 1280px;
+$tablet: 991px;
+$large-mobile: 767px;
+$small-mobile: 600px;
+
+// ------------------------------------------------------------------
+
 $form-input-width: 8rem;
 $form-input-height: 1.5rem;
-$content-width:60%
+
+
+$content-width: 50%;
+$small-content-width: 60%;
+$tablet-content-width: 75%;
+$mobile-content-width: 95%;
+
+
+
+$button-height: 2rem;
+
+// @media screen and (max-width: 1480px) {
+// 	$content-width: 80%;
+// }

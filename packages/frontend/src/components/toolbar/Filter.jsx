@@ -18,9 +18,7 @@ const Filter = ({ options, activeFilters, setActiveFilters, name }) => {
   }
 
   // Custom valuecontainer to display the amount of selected options
-  // instead of clickable filters.
-
-  
+  // instead of clickable filters.  
   const ValueContainer = ({ children, ...props }) => {
 
     const selectedOptions = props.getValue();
@@ -45,7 +43,6 @@ const Filter = ({ options, activeFilters, setActiveFilters, name }) => {
         onChange={handleChange} 
         isMulti={true}
         hideSelectedOptions={false}
-        isSearchable={false}
         components={{ ValueContainer }}
         closeMenuOnSelect={false}
       />
