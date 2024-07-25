@@ -10,13 +10,18 @@ form {
 		margin: 0.75rem 1.5rem;
 		font-size: $small-text;
 
+		@media screen and (max-width: $small-mobile) {
+			flex-direction: column;
+		}
+
 		.input-field {
 			display: flex;
 			align-items: start;
 			font-size: $small-text;
 
-			input, label{
-				display: block;
+			.input, label{
+				display: flex;
+				flex-direction: column;
 			}
 
 			label {
@@ -24,7 +29,7 @@ form {
 				font-family: $medium;
 			}
 
-			input {
+			.input {
 				font-size: 1rem;
 				border: none;
 				background-color: $grey;
@@ -72,6 +77,27 @@ form {
 					hue-rotate(37deg)
 					brightness(84%)
 					contrast(87%);
+				}
+			}
+
+			@media screen and (max-width: $small-mobile) {
+				flex-direction: column;
+				justify-content: center;
+				width: 100%;
+				
+				
+				// Ensure input and label take full width within media query
+				.input, label {
+					width: calc(100% - 0.5rem);
+					// padding: 0.5rem 0rem;
+				}
+
+				label {
+					margin-bottom: 1rem;
+				}
+
+				.input {
+					padding: 0.5rem 0.5rem;
 				}
 			}
 			  

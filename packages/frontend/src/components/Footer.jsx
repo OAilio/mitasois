@@ -1,6 +1,8 @@
+import '../css/body.scss'
+
 const Footer = () =>{
   return (
-    <h4>Meitsin nimi</h4>
+    <h4>Created by Okko Ailio</h4>
   )
 }
 

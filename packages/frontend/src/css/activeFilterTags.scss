@@ -13,6 +13,9 @@
     @media screen and (max-width: $laptop) {
         max-width: $small-content-width;
     }
+    @media screen and (max-width: $small-laptop) {
+        max-width: $small-laptop-content-width;
+    }
     @media screen and (max-width: $tablet) {
         max-width: $tablet-content-width;
     }

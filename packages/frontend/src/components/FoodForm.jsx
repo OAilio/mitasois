@@ -56,7 +56,7 @@ const FoodForm = ({formData, setFormData, submit, foods, setEditing, setActiveFo
         <div className='form-container'>
           <div className='input-field'>
             <label>Name:
-              <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder='Food name' required />
+              <input className="input" type="text" name="name" value={formData.name} onChange={handleChange} placeholder='Food name' required />
             </label>
           </div>
           <div>
@@ -77,7 +77,7 @@ const FoodForm = ({formData, setFormData, submit, foods, setEditing, setActiveFo
           </div>
           <div className='input-field'>
             <label>Date: 
-              <input type="date" name="date" value={formData.date} onChange={handleChange} required />
+              <input className="input" type="date" name="date" value={formData.date} onChange={handleChange} required />
             </label>
           </div>
         </div>

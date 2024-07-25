@@ -110,7 +110,7 @@ function App() {
       activeFood={activeFood}
       setActiveFood={setActiveFood}
     />
-    {/* <Footer /> */}
+    <Footer />
     </>
   );
 }

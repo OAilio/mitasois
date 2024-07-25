@@ -94,7 +94,7 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
         {filteredFoods.map((food) => (
           <li onClick={() => !editingFood && toggleOpenClick(food)} className={`food-item-container 
           ${activeFood === food.id || (editingFood && editingFood.id === food.id) ? "active" : ""}`} key={food.id}>
-            <div className="single-food-item">
+            <div>
               <div className="item-content">
                 <span className="food-name">{food.name}</span>
                 <span className="food-date">{formatDate(food.date)}</span>

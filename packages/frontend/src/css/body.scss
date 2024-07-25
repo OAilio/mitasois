@@ -11,5 +11,17 @@ h1 {
 	font-weight: normal;
 	text-align: center;
 	font-size: $heading;
-	margin: 0;
+	margin: 0 0 1rem 0;
+
+	@media screen and (max-width: $small-mobile) {
+        font-size: $large-text;
+    }
+}
+
+h4 {
+	color: $primary;
+	font-family: $semibold;
+	font-weight: normal;
+	text-align: center;
+	font-size: $small-text;
 }

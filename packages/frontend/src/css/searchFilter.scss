@@ -12,6 +12,10 @@
 				@include toolbar-icon-button;
 				@include toolbar-icon-animations;
 				font-size: calc(0.97*$icon-size);
+
+				@media screen and (max-width: $small-mobile) {
+					font-size: calc(0.97*$icon-size-small);
+				}
 			}
 
 			.x-icon {
@@ -21,6 +25,10 @@
 				margin-top: 0.125rem;
 				&:hover {
 					color: $red
+				}
+
+				@media screen and (max-width: $small-mobile) {
+					font-size: 1.25rem;
 				}
 			}
     }

@@ -12,6 +12,11 @@
 		width: calc($form-input-width + 48px);
 	}
 
+	@media screen and (max-width: $small-mobile) {
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+
 	.select-label {
 		font-family: $medium;
 		color: $primary;
