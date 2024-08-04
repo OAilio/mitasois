@@ -17,11 +17,11 @@ const AddNewFood = ({ handleCreate, foods }) => {
   return (
     <> 
     {!addFormOpen ? (
-    <div className='food-item-container' onClick={openForm}>
+    <div className='new-food-container' onClick={openForm}>
       <div className='item-content'>+ Add new food</div>
     </div>
     ) : (
-    <div className='food-item-container active'>
+    <div className='new-food-container open'>
       <div className='item-content'>+ Add new food</div>
       <FoodForm
         formData={formData}

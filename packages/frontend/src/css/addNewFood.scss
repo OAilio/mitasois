@@ -1,20 +1,27 @@
 @import './shared';
 
-.food-item-container {
-  @include food-item-container;
+.new-food-container {
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	@include food-item-container;
+	@include food-item-container-size-diffs;
 	font-family: $bold;
 	text-align: center;
 	border-color: $secondary;
 	background-color: #FEFEFE;
+	cursor: pointer;
 
 	.item-content {
 		padding: 0.75rem 1.5rem;
 		text-align: center;
 	}
 
-	&.active {
+	&.open {
 		border-style: solid;
 		border-color: $primary;
+		cursor: auto;
 
 		.item-content {
 			@include active-item-content;	

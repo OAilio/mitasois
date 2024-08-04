@@ -8,7 +8,7 @@ import FoodForm from "./FoodForm";
 import '../css/allFoods.scss'
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters,
-  dateFilter, dateFilterType, editingFood, setEditingFood, activeFood, setActiveFood }) => {
+  dateFilter, dateFilterType, editingFood, setEditingFood, activeFood, setActiveFood, toolbarHeight }) => {
     
   // const [activeFood, setActiveFood] = useState(null);
 
@@ -89,11 +89,11 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
   }
 
   return (
-    <div className="list-of-all-food-items">
-      <ul>
+    // <div className="list-of-all-food-items">
+      <ul className="list-of-all-food-items">
         {filteredFoods.map((food) => (
-          <li onClick={() => !editingFood && toggleOpenClick(food)} className={`food-item-container 
-          ${activeFood === food.id || (editingFood && editingFood.id === food.id) ? "active" : ""}`} key={food.id}>
+          <li onClick={() => !editingFood && toggleOpenClick(food)} className={`all-foods-container 
+          ${activeFood === food.id || (editingFood && editingFood.id === food.id) ? "open" : ""}`} key={food.id}>
             <div>
               <div className="item-content">
                 <span className="food-name">{food.name}</span>
@@ -127,7 +127,7 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
           </li>
         ))}
       </ul>
-    </div>
+    // </div>
   );
 };
 

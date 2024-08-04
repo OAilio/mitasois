@@ -5,16 +5,19 @@
     align-items: center;
     justify-content: space-between;
     margin:  0rem auto 0.75rem;
-    max-width: calc($content-width + 2px); // Compensates food container borders
+    max-width: calc($content-width + 4px); // Compensates food container borders
 
     @media screen and (max-width: $laptop) {
         max-width: $small-content-width;
+    }
+    @media screen and (max-width: $small-laptop) {
+        max-width: $small-laptop-content-width;
     }
     @media screen and (max-width: $tablet) {
         max-width: $tablet-content-width;
     }
     @media screen and (max-width: $large-mobile) {
-        max-width: $mobile-content-width;
+        max-width: calc($mobile-content-width + 0px);
         flex-direction: column;
         justify-content: flex-end;
         margin:  0rem auto;

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import foodService from './services/foodService';
 
 import './css/body.scss'
@@ -68,33 +68,32 @@ function App() {
       });
   };
 
-
   if (error) return <p>Error: {error.message}</p>
 
   return (
     <>
-    <Header />
-    <Toolbar 
-      ascendingSort={ascendingSort} 
-      setAscendingSort={setAscendingSort} 
-      searchInput={searchInput} 
-      setSearchInput={setSearchInput} 
-      foods={foods}
-      handleUpdate={handleUpdate} 
-      proteinFilters={proteinFilters} 
-      setProteinFilters={setProteinFilters} 
-      carbFilters={carbFilters} 
-      setCarbFilters={setCarbFilters} 
-      dateFilter={dateFilter} 
-      setDateFilter={setDateFilter} 
-      dateFilterType={dateFilterType} 
-      setDateFilterType={setDateFilterType}
-      setActiveFood={setActiveFood}
-    />
-    <AddNewFood 
-      handleCreate={handleCreate}
-      foods={foods}
-    />
+      <Header />
+      <Toolbar 
+        ascendingSort={ascendingSort} 
+        setAscendingSort={setAscendingSort} 
+        searchInput={searchInput} 
+        setSearchInput={setSearchInput} 
+        foods={foods}
+        handleUpdate={handleUpdate} 
+        proteinFilters={proteinFilters} 
+        setProteinFilters={setProteinFilters} 
+        carbFilters={carbFilters} 
+        setCarbFilters={setCarbFilters} 
+        dateFilter={dateFilter} 
+        setDateFilter={setDateFilter} 
+        dateFilterType={dateFilterType} 
+        setDateFilterType={setDateFilterType}
+        setActiveFood={setActiveFood}
+      />      
+      <AddNewFood 
+        handleCreate={handleCreate}
+        foods={foods}
+      />
     <AllFoods 
       foods={foods}
       ascendingSort={ascendingSort}
@@ -110,7 +109,7 @@ function App() {
       activeFood={activeFood}
       setActiveFood={setActiveFood}
     />
-    <Footer />
+    {/* <Footer /> */}
     </>
   );
 }

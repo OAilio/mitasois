@@ -45,32 +45,40 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	background-color: $white;
 	list-style-type: none;
 	margin: 0rem auto;
-	max-width: $content-width;
+	padding: 0rem;
+	width: $content-width;
 	box-shadow: 0px 4px 0px 0px rgba($secondary, 1);
 	// box-shadow: inset 2px 2px 2px 2px rgba($red, 1);
 	border-radius: 20px;
 	border-style: solid;
-	border-color: darken($white, 3%);
+	border-color: darken($white, 4%);
 	// border-color: red;
 	border-width: 2px;
 	font-size: $medium-text;
-	cursor: pointer;
-	transition: all 0.3s ease-in-out;
+	// cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
 
-	&:active {
-		box-shadow: 0px 0px 0px 2px rgba($primary, 1);
-	}
+    &:active {
+        box-shadow: 0px 0px 0px 2px rgba($primary, 1);
+        border-color: $white;
+        transition: transform 0.1s ease-in-out; // Adjust the transform transition separately
+        transform: scale(0.99);
+    }
 
-	&.active {
+	&.open {
 		box-shadow: 0px 8px 0px 0px rgba($primary, 1);
-
-		&:active {
-			border-color: $secondary;
-			box-shadow: 0px 0px 0px 2px rgba($secondary, 1);
-		}
+		transform: none;
+		margin-bottom: 1rem;
 	}
 
-    @media screen and (max-width: $laptop) {
+	@media screen and (max-width: $small-mobile) {
+        font-size: $small-text;
+		border-radius: 12px;
+    }
+}
+
+@mixin food-item-container-size-diffs {
+	@media screen and (max-width: $laptop) {
         max-width: $small-content-width;
     }
 	@media screen and (max-width: $small-laptop) {
@@ -82,9 +90,25 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
     @media screen and (max-width: $large-mobile) {
         max-width: $mobile-content-width;
     }
-	@media screen and (max-width: $small-mobile) {
-        font-size: $small-text;
-		border-radius: 12px;
+}
+
+@mixin all-foods-widths {
+	@media screen and (max-width: $laptop) {
+        max-width: calc($small-content-width - 3rem);
+		padding: 1rem 1.5rem;
+		height: 50vh;
+    }
+	@media screen and (max-width: $small-laptop) {
+        max-width: calc($small-laptop-content-width - 2rem);
+		padding: 1rem;
+    }
+    @media screen and (max-width: $tablet) {
+        max-width: calc($tablet-content-width - 2rem);
+		height: 75vh;
+    }
+    @media screen and (max-width: $large-mobile) {
+        max-width: calc($mobile-content-width - 2rem);
+		height: 65vh;
     }
 }
 
@@ -236,7 +260,7 @@ $content-width: 60rem;
 $small-content-width: 65%;
 $small-laptop-content-width: 75%;
 $tablet-content-width: 85%;
-$mobile-content-width: 95%;
+$mobile-content-width: 90%;
 
 
 

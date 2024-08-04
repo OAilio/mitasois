@@ -1,17 +1,21 @@
 @import './shared';
 
 .filter-form-container {
-    @include food-item-container;
+    // @include food-item-container;
     background-color: $secondary;
     border-color: $secondary;
     display: flex;
-    max-width: calc($content-width + 2px);
+    max-width: 20rem;
     margin: auto;
     flex-direction: column;
-    // justify-content: space-between;
     text-align: center;
     border-radius: 20px;
     margin-bottom: 1rem;
+    z-index: 100;
+    position: fixed; // Make it fixed
+    left: 0;
+    right: 0;
+    top: -1;
 
     .filter-form-header {
         font-family: $bold;
@@ -42,6 +46,7 @@
         display: flex;
         text-align: left;
         justify-content: space-between;
+        flex-direction: column;
         margin: 0.75rem 1.5rem;
     }
 
