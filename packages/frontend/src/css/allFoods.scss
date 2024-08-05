@@ -105,12 +105,15 @@
 	}
 }
 
-.no-results {
+.result-count {
 	display: flex;
 	justify-content: center;
-	margin: 14rem auto 2rem;
+	margin: 0.5rem auto;
 	font-family: $bold;
 	color: $primary;
-	font-size: $large-text;
-	// min-height: 60%;
+	font-size: $medium-text;
+
+	&.none {
+		margin: 2rem auto;
+	}
 }

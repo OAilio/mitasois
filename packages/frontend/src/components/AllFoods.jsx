@@ -84,12 +84,14 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
 
   console.log("render", filteredFoods.length, "foods");
 
-  if (filteredFoods.length === 0) {
-    return <div className="no-results">No results found :(</div>;
-  }
+  // if (filteredFoods.length === 0) {
+  //   return <div className="no-results">No results found :(</div>;
+  // }
 
   return (
     // <div className="list-of-all-food-items">
+      <>
+      {/* <div className="list-of-all-food-items"> */}
       <ul className="list-of-all-food-items">
         {filteredFoods.map((food) => (
           <li onClick={() => !editingFood && toggleOpenClick(food)} className={`all-foods-container 
@@ -98,36 +100,50 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
               <div className="item-content">
                 <span className="food-name">{food.name}</span>
                 <span className="food-date">{formatDate(food.date)}</span>
-            </div>
-            {editingFood && editingFood.id === food.id ? (
-              <FoodForm
-                formData={formData}
-                setFormData={setFormData}
-                foods={foods}
-                submit={handleUpdate}
-                setEditing={setEditingFood}
-                setActiveFood={setActiveFood}
-                />
-            ) : (
-              <div>
-                {activeFood === food.id && (
-                  <>
-                    <div className="button-group">
-                      <button className='secondary-button' onClick={() => handleEditClick(food)}>Edit</button>
-                      <button className='primary-button' onClick={() => ateThisToday(food)}>Ate this today!</button>
-                    </div>
-                    <span className="tertiary-button" onClick={() => handleDelete(food.id)}>
-                      Delete <FontAwesomeIcon icon={faTrash} />
-                    </span>
-                  </>
-                )}
               </div>
-            )}
+              {editingFood && editingFood.id === food.id ? (
+                <FoodForm
+                  formData={formData}
+                  setFormData={setFormData}
+                  foods={foods}
+                  submit={handleUpdate}
+                  setEditing={setEditingFood}
+                  setActiveFood={setActiveFood} />
+              ) : (
+                <div>
+                  {activeFood === food.id && (
+                    <>
+                      <div className="button-group">
+                        <button className='secondary-button' onClick={() => handleEditClick(food)}>Edit</button>
+                        <button className='primary-button' onClick={() => ateThisToday(food)}>Ate this today!</button>
+                      </div>
+                      <span className="tertiary-button" onClick={() => handleDelete(food.id)}>
+                        Delete <FontAwesomeIcon icon={faTrash} />
+                      </span>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           </li>
         ))}
+        {filteredFoods.length < 1 ? (
+          <div className="result-count none">
+            No results found :(
+          </div>
+        ) : (
+          filteredFoods.length === 1 ? (
+            <div className="result-count">
+              {filteredFoods.length} food
+            </div>
+          ) : (
+            <div className="result-count">
+              {filteredFoods.length} foods
+            </div>
+          )
+        )}
       </ul>
-    // </div>
+    </>
   );
 };
 

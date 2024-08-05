@@ -12,7 +12,7 @@ const RenderTags = ({ filters, setFilters}) => {
   }
   
   return (
-    <div>
+    <div className='list-of-tags'>
       {[...filters].map((filter, index) => (
         <button key={index} className="filter-tag" onClick={() => removeFilter(filter)}>
           {filter}<FontAwesomeIcon icon={faCircleXmark} className='filter-tag-icon'/>
