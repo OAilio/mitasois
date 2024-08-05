@@ -3,7 +3,6 @@
 .search-filter {
     display: flex;
     justify-content: center;
-    // align-items: center;
 
     .icon-container {
 			@include toolbar-icon-button-container;
@@ -13,9 +12,9 @@
 				@include toolbar-icon-animations;
 				font-size: calc(0.97*$icon-size);
 
-				@media screen and (max-width: $small-mobile) {
-					font-size: calc(0.97*$icon-size-small);
-				}
+				// @media screen and (max-width: $small-mobile) {
+				// 	// font-size: calc(0.97*$icon-size-small);
+				// }
 			}
 
 			.x-icon {
@@ -42,18 +41,21 @@
 			margin-left: 0.5rem;
 			width: 10rem;
 
+			// &:active {
+			// 	border-color: red;
+			// }
+
 			.search-input {
 				font-family: $regular;
 				color: $primary;
 				background: none;
 				font-size: $small-text;
 				border-style: none;
-				border-color: $primary;
+				border-color: $background;
 				padding-right: 0.25rem;
 				width: 100%;
-				// padding: 0;
 				margin: 0;
-				// height: 100%;
+				transition: border-color 0.3s ease-in-out;
 				
 				&::placeholder {
 					color: lighten($primary, $amount: 30%);
@@ -65,8 +67,13 @@
 
 				&:focus {
 					outline: none;
+					border-color: $primary;
 				}
-			} 
+			}
+			
+			@media screen and (max-width: $small-mobile) {
+				width: 7rem;
+			}
     }
 
 }

@@ -45,7 +45,6 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	background-color: $white;
 	list-style-type: none;
 	margin: 0rem auto;
-	padding: 0rem;
 	width: $content-width;
 	box-shadow: 0px 4px 0px 0px rgba($secondary, 1);
 	// box-shadow: inset 2px 2px 2px 2px rgba($red, 1);
@@ -56,11 +55,15 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	border-width: 2px;
 	font-size: $medium-text;
 	// cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.1s ease-in-out;
+
+	&:hover {
+		background-color: darken($white, 4%);
+	}
 
     &:active {
         box-shadow: 0px 0px 0px 2px rgba($primary, 1);
-        border-color: $white;
+        border-color: darken($white, 4%);
         transition: transform 0.1s ease-in-out; // Adjust the transform transition separately
         transform: scale(0.99);
     }
@@ -69,6 +72,10 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 		box-shadow: 0px 8px 0px 0px rgba($primary, 1);
 		transform: none;
 		margin-bottom: 1rem;
+
+		&:hover {
+			background-color: $white;
+		}
 	}
 
 	@media screen and (max-width: $small-mobile) {
@@ -89,6 +96,7 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
     }
     @media screen and (max-width: $large-mobile) {
         max-width: $mobile-content-width;
+		padding: 0.75rem 0rem;
     }
 }
 
@@ -96,7 +104,6 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	@media screen and (max-width: $laptop) {
         max-width: calc($small-content-width - 3rem);
 		padding: 1rem 1.5rem;
-		height: 50vh;
     }
 	@media screen and (max-width: $small-laptop) {
         max-width: calc($small-laptop-content-width - 2rem);
@@ -104,11 +111,9 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
     }
     @media screen and (max-width: $tablet) {
         max-width: calc($tablet-content-width - 2rem);
-		height: 75vh;
     }
     @media screen and (max-width: $large-mobile) {
         max-width: calc($mobile-content-width - 2rem);
-		height: 65vh;
     }
 }
 
@@ -142,7 +147,7 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	transition: color 0.3s ease-in-out;
 
 	@media screen and (max-width: $small-mobile) {
-        font-size: $icon-size-small;
+        // font-size: $icon-size-small;
     }
 }
 
@@ -166,6 +171,12 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	justify-content: center;
 	align-items: center;
 	margin: 1rem auto 0rem;
+
+	@media screen and (max-width: $large-mobile) {
+		// flex-direction: column-reverse;
+		// background-color: aqua;
+		margin: 0.75rem 0.75rem 0rem 0.75rem;
+    }
 }
 
 @mixin button {
@@ -177,6 +188,12 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	height: $button-height;
 	cursor: pointer;
 	transition: ease-in-out 0.3s, scale 0.1s ease-in-out;
+
+	@media screen and (max-width: $large-mobile) {
+		// min-width: 3.25rem;
+		// margin-bottom: 0.75rem;
+		height: 3rem;
+    }
 
 	&:hover {
 		&:active{

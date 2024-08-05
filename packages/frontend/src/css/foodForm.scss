@@ -10,8 +10,11 @@ form {
 		margin: 0.75rem 1.5rem;
 		font-size: $small-text;
 
-		@media screen and (max-width: $small-mobile) {
+		@media screen and (max-width: $large-mobile) {
 			flex-direction: column;
+		}
+		@media screen and (max-width: $small-mobile) {
+			margin: 0.75rem 0.75rem;
 		}
 
 		.input-field {
@@ -80,7 +83,7 @@ form {
 				}
 			}
 
-			@media screen and (max-width: $small-mobile) {
+			@media screen and (max-width: $large-mobile) {
 				flex-direction: column;
 				justify-content: center;
 				width: 100%;

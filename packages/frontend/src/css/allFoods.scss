@@ -85,11 +85,15 @@
 				}
 			}
 		}
+		@media screen and (max-width: $large-mobile) {
+			padding: 0.5rem 0rem;
+		}
+		
 		@media screen and (max-width: $small-mobile) {
 			margin: 0.75rem auto;
 
 			.item-content{
-				// padding: 0.5rem 0rem;
+				// padding: 1rem 0rem;
 				.food-name {
 					padding-left: 0.75rem;
 				}

@@ -1,6 +1,6 @@
 @import './shared';
 
-// This file is a bit messy, but quoting a unknown Reddit user
+// This file is a bit messy, but quoting an unknown Reddit user
 // "U have to be a rocket scientist to style this component"...
 
 .select {
@@ -12,7 +12,7 @@
 		width: calc($form-input-width + 48px);
 	}
 
-	@media screen and (max-width: $small-mobile) {
+	@media screen and (max-width: $large-mobile) {
 		width: 100%;
 		margin-bottom: 1rem;
 	}
