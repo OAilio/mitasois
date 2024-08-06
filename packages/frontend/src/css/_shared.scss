@@ -1,4 +1,4 @@
-//Fonts -----------------------------------------------------------
+// Fonts -----------------------------------------------------------
 @font-face { font-family: 'Quicksand Bold'; src: url("./fonts/Quicksand-Bold.ttf");}
 
 @font-face { font-family: 'Quicksand SemiBold'; src: url("./fonts/Quicksand-SemiBold.ttf");}
@@ -16,10 +16,7 @@ $medium: 'Quicksand Medium';
 $regular: 'Quicksand Regular';
 $light: 'Quicksand Light';
 
-// ------------------------------------------------------------------
-
 // Font-sizes -------------------------------------------------------
-
 $heading: 3rem;
 $large-text: 2rem;
 $medium-text: 1.5rem;
@@ -27,8 +24,6 @@ $small-text: 1rem;
 $tag: 0.75rem;
 $icon-size: 2.25rem;
 $icon-size-small: 1.75rem;
-
-// ------------------------------------------------------------------
   
 // Colors -----------------------------------------------------------
 $primary: rgb(68, 102, 61);
@@ -47,14 +42,11 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	margin: 0rem auto;
 	width: $content-width;
 	box-shadow: 0px 4px 0px 0px rgba($secondary, 1);
-	// box-shadow: inset 2px 2px 2px 2px rgba($red, 1);
 	border-radius: 20px;
 	border-style: solid;
 	border-color: darken($white, 4%);
-	// border-color: red;
 	border-width: 2px;
 	font-size: $medium-text;
-	// cursor: pointer;
     transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.1s ease-in-out;
 
 	&:hover {
@@ -113,7 +105,9 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
         max-width: calc($tablet-content-width - 2rem);
     }
     @media screen and (max-width: $large-mobile) {
-        max-width: calc($mobile-content-width - 2rem);
+		max-width: 100%;
+		margin-bottom: 0rem;
+		border-radius: 20px 20px 0px 0px;
     }
 }
 
@@ -128,7 +122,7 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 
 	@media screen and (max-width: $small-mobile) {
 		margin: auto 0.75rem;
-		padding: 0.75rem 0;
+		padding: 0.5rem 0rem;
     }
 }
 
@@ -145,10 +139,6 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
     font-size: $icon-size;
     color: $primary;
 	transition: color 0.3s ease-in-out;
-
-	@media screen and (max-width: $small-mobile) {
-        // font-size: $icon-size-small;
-    }
 }
 
 // To be used together with the toolbar-icon-button
@@ -165,6 +155,9 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 
 
 // Buttons -----------------------------------------------------------
+
+$button-height: 2rem;
+
 @mixin button-group {
 	display: flex;
 	flex-direction: row;
@@ -173,8 +166,7 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	margin: 1rem auto 0rem;
 
 	@media screen and (max-width: $large-mobile) {
-		// flex-direction: column-reverse;
-		// background-color: aqua;
+		flex-direction: column-reverse; // KEEP THIS? 
 		margin: 0.75rem 0.75rem 0rem 0.75rem;
     }
 }
@@ -190,9 +182,9 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	transition: ease-in-out 0.3s, scale 0.1s ease-in-out;
 
 	@media screen and (max-width: $large-mobile) {
-		// min-width: 3.25rem;
-		// margin-bottom: 0.75rem;
-		height: 3rem;
+		height: 2.5rem;
+		width: 100%; // KEEP THIS?
+		margin: 0rem 0rem 0.5rem; // KEEP THIS?
     }
 
 	&:hover {
@@ -257,32 +249,21 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	}
 }
 
-// ------------------------------------------------------------------
-
 // Breakpoints ------------------------------------------------------
 
 $laptop: 1280px;
-$small-laptop: 1080px;
+$small-laptop: 1100px;
 $tablet: 991px;
-$large-mobile: 800px;
+$large-mobile: 820px;
 $small-mobile: 700px;
 
-// ------------------------------------------------------------------
+// Other variables --------------------------------------------------
 
 $form-input-width: 8rem;
 $form-input-height: 1.5rem;
-
 
 $content-width: 60rem;
 $small-content-width: 65%;
 $small-laptop-content-width: 75%;
 $tablet-content-width: 85%;
 $mobile-content-width: 90%;
-
-
-
-$button-height: 2rem;
-
-// @media screen and (max-width: 1480px) {
-// 	$content-width: 80%;
-// }

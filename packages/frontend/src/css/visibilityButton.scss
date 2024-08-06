@@ -18,12 +18,14 @@
     @media screen and (max-width: $large-mobile) {
         justify-content: center;
         width: 100%;
-        padding: 1.5rem 1rem;
+        padding: 2.125rem 1rem;
         height: 2.75rem;
+        font-size: $medium-text;
     }
 
-    @media screen and (max-width: $large-mobile) {
-        padding: 1.725rem 1rem;
+    @media screen and (max-width: $small-mobile) {
+        padding: 1.75rem 1rem;
+        font-size: $small-text;
     }
 
 }

@@ -22,14 +22,17 @@ const AddNewFood = ({ handleCreate, foods }) => {
     </div>
     ) : (
     <div className='new-food-container open'>
+      <div className='form-padding-container'>
       <div className='item-content'>+ Add new food</div>
-      <FoodForm
-        formData={formData}
-        setFormData={setFormData}
-        submit={handleCreate}
-        foods={foods}
-        setAddFormOpen={setAddFormOpen}
-      />    
+        <FoodForm
+          formData={formData}
+          setFormData={setFormData}
+          submit={handleCreate}
+          foods={foods}
+          setAddFormOpen={setAddFormOpen}
+        /> 
+      </div>
+    
     </div>)}
     </>
   );

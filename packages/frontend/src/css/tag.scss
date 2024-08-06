@@ -2,7 +2,7 @@
 .list-of-tags {
     display: flex;
     flex-direction: row;
-    // flex-wrap: wrap;
+
    .filter-tag {
         display: flex;
         align-items: center;
@@ -20,7 +20,6 @@
 
         &:hover{
             background-color: $red;
-            // border-color: $red;
             color: $white;
 
             &:active {

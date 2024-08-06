@@ -3,7 +3,6 @@
 .list-of-all-food-items {
 	display: flex;
 	flex-direction: column;
-	// flex-wrap: wrap;
 	@include all-foods-widths;
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -21,7 +20,6 @@
 	&::-webkit-scrollbar {
 		display: none;
 	}
-
 	
 	.all-foods-container {
 		@include food-item-container;
@@ -85,15 +83,17 @@
 				}
 			}
 		}
+
 		@media screen and (max-width: $large-mobile) {
-			padding: 0.5rem 0rem;
+			padding: 0.5rem 1rem;
+			max-width: calc($mobile-content-width - 4px);
 		}
 		
 		@media screen and (max-width: $small-mobile) {
-			margin: 0.75rem auto;
+			margin: 0.75rem 1.5rem;
+			width: 100%;
 
 			.item-content{
-				// padding: 1rem 0rem;
 				.food-name {
 					padding-left: 0.75rem;
 				}

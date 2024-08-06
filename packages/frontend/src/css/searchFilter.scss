@@ -11,10 +11,6 @@
 				@include toolbar-icon-button;
 				@include toolbar-icon-animations;
 				font-size: calc(0.97*$icon-size);
-
-				// @media screen and (max-width: $small-mobile) {
-				// 	// font-size: calc(0.97*$icon-size-small);
-				// }
 			}
 
 			.x-icon {
@@ -40,10 +36,6 @@
 			justify-content: space-between;
 			margin-left: 0.5rem;
 			width: 10rem;
-
-			// &:active {
-			// 	border-color: red;
-			// }
 
 			.search-input {
 				font-family: $regular;
