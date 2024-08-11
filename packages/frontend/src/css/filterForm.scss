@@ -2,10 +2,12 @@
 
 .filter-form-container {
     // @include food-item-container;
-    background-color: $secondary;
+    // @include food-item-container-size-diffs;
+    background-color: $white;
     border-color: $secondary;
     display: flex;
     max-width: 20rem;
+	// box-shadow: 0px 0px 0px 3000px rgba(black, 0.30);
     margin: auto;
     flex-direction: column;
     text-align: center;
@@ -44,10 +46,36 @@
 
     .filter-form-content {
         display: flex;
-        text-align: left;
+        align-items:stretch;
+        // text-align: left;
         justify-content: space-between;
         flex-direction: column;
         margin: 0.75rem 1.5rem;
+        // width: 100%;
+
+        .input-field {
+			margin-top: 1rem;
+			@include input-field-basics;
+
+			label {
+				@include label-style;
+			}
+
+			.input {
+				@include input-style;
+			}
+
+
+			// input[type=date]:invalid::-webkit-datetime-edit {
+			// 	// color: darken($grey, 25%);
+			// }
+
+
+
+			::-webkit-calendar-picker-indicator{
+				@include date-picker-icon;
+			}
+        }
     }
 
     .clear-button {

@@ -18,78 +18,29 @@ form {
 		}
 
 		.input-field {
-			display: flex;
-			align-items: start;
-			font-size: $small-text;
-
-			.input, label{
-				display: flex;
-				flex-direction: column;
-			}
+			@include input-field-basics;
 
 			label {
-				text-align: left;
-				font-family: $medium;
+				@include label-style;
 			}
 
 			.input {
-				font-size: 1rem;
-				border: none;
-				background-color: $grey;
-				font-family: $regular;
-				padding: 0.5rem;
-				width: $form-input-width;
-				height: $form-input-height;
-				border-radius: 6px;
-				color: $primary;
-				transition: box-shadow 0.3s ease-in-out;
-
-				&::placeholder{
-					color: darken($grey, 25%);
-				}
-
-				&:focus {
-				  box-shadow: 0 0 0 2px $primary;
-				  outline: none; // Ensure the default outline is not displayed
-				}
+				@include input-style;
 			}
 
-			input[type=date]:invalid::-webkit-datetime-edit {
-				color: darken($grey, 25%);
-			}
-
-
+			// input[type=date]:invalid::-webkit-datetime-edit {
+			// 	// color: darken($grey, 25%);
+			// }
 
 			::-webkit-calendar-picker-indicator{
-				filter: brightness(0) 
-				saturate(100%) 
-				invert(38%) 
-				sepia(31%) 
-				saturate(537%) 
-				hue-rotate(64deg) 
-				brightness(86%) 
-				contrast(90%);
-				transition: filter 0.3s ease-in-out;
-
-				&:hover {
-					filter: brightness(0)
-					saturate(100%)
-					invert(95%)
-					sepia(5%)
-					saturate(3237%)
-					hue-rotate(37deg)
-					brightness(84%)
-					contrast(87%);
-				}
+				@include date-picker-icon;
 			}
 
 			@media screen and (max-width: $large-mobile) {
 				flex-direction: column;
 				justify-content: center;
 				width: 100%;
-				
-				
-				// Ensure input and label take full width within media query
+
 				.input, label {
 					width: calc(100% - 0.5rem);
 				}
@@ -120,4 +71,3 @@ form {
 		}
 	}	
 }
-

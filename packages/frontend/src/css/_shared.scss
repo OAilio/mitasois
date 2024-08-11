@@ -45,6 +45,7 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 	border-radius: 20px;
 	border-style: solid;
 	border-color: darken($white, 4%);
+	// border-color: red;
 	border-width: 2px;
 	font-size: $medium-text;
     transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.1s ease-in-out;
@@ -78,16 +79,19 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 
 @mixin food-item-container-size-diffs {
 	@media screen and (max-width: $laptop) {
-        max-width: $small-content-width;
+        max-width: calc($small-content-width - 4px);
+		// background-color: red;
+		// border-color: red;
     }
 	@media screen and (max-width: $small-laptop) {
-        max-width: $small-laptop-content-width;
+        max-width: calc($small-laptop-content-width - 4px);
+		// background-color: red;
     }
     @media screen and (max-width: $tablet) {
-        max-width: $tablet-content-width;
+        max-width: calc($tablet-content-width - 4px);
     }
     @media screen and (max-width: $large-mobile) {
-        max-width: $mobile-content-width;
+        max-width: calc($mobile-content-width - 4px);
 		padding: 0.75rem 0rem;
     }
 }
@@ -151,6 +155,66 @@ $grey: rgb(236, 236, 236); // Background color for the dropdown menus
 			scale: (0.8);
 		}
 	}	
+}
+
+// Input field styles
+
+@mixin input-field-basics {
+	display: flex;
+	align-items: start;
+	font-size: $small-text;
+}
+
+@mixin label-style {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	font-family: $medium;
+}
+
+@mixin input-style {
+	font-size: 1rem;
+	border: none;
+	background-color: $grey;
+	font-family: $regular;
+	padding: 0.5rem;
+	width: $form-input-width;
+	height: $form-input-height;
+	border-radius: 6px;
+	color: $primary;
+	transition: box-shadow 0.3s ease-in-out;
+
+	&::placeholder{
+		color: darken($grey, 25%);
+	}
+
+	&:focus {
+	  box-shadow: 0 0 0 2px $primary;
+	  outline: none;
+	}
+}
+
+@mixin date-picker-icon {
+	filter: brightness(0) 
+	saturate(100%) 
+	invert(38%) 
+	sepia(31%) 
+	saturate(537%) 
+	hue-rotate(64deg) 
+	brightness(86%) 
+	contrast(90%);
+	transition: filter 0.3s ease-in-out;
+
+	&:hover {
+		filter: brightness(0)
+		saturate(100%)
+		invert(95%)
+		sepia(5%)
+		saturate(3237%)
+		hue-rotate(37deg)
+		brightness(84%)
+		contrast(87%);
+	}
 }
 
 

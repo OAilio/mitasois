@@ -13,7 +13,7 @@ const ActiveFilterTags = ({ proteinFilters, setProteinFilters, carbFilters, setC
 
   return (
     <><div className="active-filter-container">
-      <div className="active-filter-header">Active filters:</div>
+      <div className="active-filter-header">Filters:</div>
       <div className="active-filter-content">
         <RenderTags
           filters={proteinFilters}
@@ -24,7 +24,7 @@ const ActiveFilterTags = ({ proteinFilters, setProteinFilters, carbFilters, setC
           setFilters={setCarbFilters}
         />
         {dateFilter && <button onClick={()=>setDateFilter("")}>{dateFilterType} {formatDate(dateFilter)} x</button>}
-        <button className="active-filter-clear-button" onClick={clearFilters}>Clear all filters</button>
+        <button className="active-filter-clear-button" onClick={clearFilters}>Clear all</button>
       </div>
     </div>
     </>

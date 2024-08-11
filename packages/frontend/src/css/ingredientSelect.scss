@@ -9,7 +9,7 @@
 	width: calc($form-input-width + 16px);
 
 	&.filter {
-		width: calc($form-input-width + 48px);
+		width: 100%;
 	}
 
 	@media screen and (max-width: $large-mobile) {

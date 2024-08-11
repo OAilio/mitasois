@@ -27,7 +27,6 @@ const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, set
 				<button className="close-container" onClick={closeFilterForm}><FontAwesomeIcon icon={faCircleXmark} className='close-icon' /></button>
 			</div>	
 			<div className="filter-form-content">
-			{/* <div className="filter-form-header">Filters:</div> */}
 				<div>
 					<Filter
 						options={proteinOptions}
@@ -44,20 +43,18 @@ const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, set
 					name="carb"
 				/>
 				</div>
-				<div>
-					{/* <h4>Date made</h4> */}
+				<div className='input-field'>
 					<select onChange={(e) => setDateFilterType(e.target.value)}>
 						<option value="Before">Before</option>
 						<option value="After">After</option>
 					</select>
-					<label><input type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} /></label>
+					<label><input className="input" type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} /></label>
 				</div>
 			</div>
 			<div>
 				<button className="clear-button" onClick={clearFilters}>Clear all</button>
 			</div>
 		</div>
-		{/* <ActiveFilterTags /> */}
 		</>
 	)
 }

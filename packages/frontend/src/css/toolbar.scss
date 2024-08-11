@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: space-between;
     margin:  0rem auto 0.75rem;
+    // background-color: red;
     max-width: calc($content-width + 4px); // Compensates food container borders
 
     @media screen and (max-width: $laptop) {
@@ -20,7 +21,7 @@
         max-width: calc($mobile-content-width + 0px);
         flex-direction: column;
         justify-content: flex-end;
-        margin:  0rem auto;
+        margin: 0rem auto;
     }
 
     .toolbar-left{
