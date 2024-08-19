@@ -9,8 +9,6 @@ import '../css/allFoods.scss'
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters,
   dateFilter, dateFilterType, editingFood, setEditingFood, activeFood, setActiveFood, toolbarHeight }) => {
-    
-  // const [activeFood, setActiveFood] = useState(null);
 
   const sortedFoods = [...foods].sort((a, b) => {
     if (ascendingSort) {
@@ -84,14 +82,8 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
 
   console.log("render", filteredFoods.length, "foods");
 
-  // if (filteredFoods.length === 0) {
-  //   return <div className="no-results">No results found :(</div>;
-  // }
-
   return (
-    // <div className="list-of-all-food-items">
       <>
-      {/* <div className="list-of-all-food-items"> */}
       <ul className="list-of-all-food-items">
         {filteredFoods.map((food) => (
           <li onClick={() => !editingFood && toggleOpenClick(food)} className={`all-foods-container 

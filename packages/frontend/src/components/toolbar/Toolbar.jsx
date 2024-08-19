@@ -89,7 +89,6 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
         dateFilter={dateFilter} 
         setDateFilter={setDateFilter} 
         dateFilterType={dateFilterType} 
-        // filterOptionsVisibility={filterOptionsVisibility} 
         clearFilters={clearFilters}/>
     </div>
     </>

@@ -9,7 +9,6 @@ import Toolbar from './components/toolbar/Toolbar';
 import AddNewFood from './components/AddNewFood';
 import AllFoods from './components/AllFoods';
 import Header from './components/Header';
-import Footer from './components/Footer';
 
 function App() {
   const [foods, setFoods] = useState([]);
@@ -109,7 +108,6 @@ function App() {
       activeFood={activeFood}
       setActiveFood={setActiveFood}
     />
-    {/* <Footer /> */}
     </>
   );
 }

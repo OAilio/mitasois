@@ -49,7 +49,6 @@ const FoodForm = ({formData, setFormData, submit, foods, setEditing, setActiveFo
 		}));
 	};
 	
-	// Better button copy needed
   return (
     <div>
       <form onSubmit={handleSubmit}>
