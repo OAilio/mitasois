@@ -34,7 +34,7 @@ const Filter = ({ options, activeFilters, setActiveFilters, name }) => {
 
   return (
     <div className="select filter">
-      <span className='select-label'>Main {name}</span>
+      <span className='select-label filter'>Main {name}</span>
       <Select
         className="ingredient-select"
         classNamePrefix="ingSelect"
@@ -45,6 +45,7 @@ const Filter = ({ options, activeFilters, setActiveFilters, name }) => {
         hideSelectedOptions={false}
         components={{ ValueContainer }}
         closeMenuOnSelect={false}
+        isSearchable={false}
       />
     </div>
   );

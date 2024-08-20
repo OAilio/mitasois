@@ -28,9 +28,9 @@ form {
 				@include input-style;
 			}
 
-			// input[type=date]:invalid::-webkit-datetime-edit {
-			// 	// color: darken($grey, 25%);
-			// }
+			input[type=date]:invalid::-webkit-datetime-edit {
+				color: darken($grey, 25%);
+			}
 
 			::-webkit-calendar-picker-indicator{
 				@include date-picker-icon;

@@ -7,8 +7,9 @@
     border-color: $secondary;
     display: flex;
     max-width: 20rem;
-	// box-shadow: 0px 0px 0px 3000px rgba(black, 0.30);
-    margin: auto;
+	box-shadow: 0px 0px 20px 1px rgba($primary, 0.15);
+    border-style: solid;
+    margin: 10rem auto auto auto;
     flex-direction: column;
     text-align: center;
     border-radius: 20px;
@@ -16,8 +17,10 @@
     z-index: 100;
     position: fixed; // Make it fixed
     left: 0;
+    // margin-left: 4rem;
     right: 0;
-    top: -1;
+    // bottom: 0;
+    top: 0;
 
     .filter-form-header {
         font-family: $bold;
@@ -52,23 +55,47 @@
         flex-direction: column;
         margin: 0.75rem 1.5rem;
         // width: 100%;
+        // background-color: aqua;
+
+        .filter-picker-container {
+            margin-bottom: 1rem;
+        }
+
+        .date-label {
+            @include label-style;  
+        }
 
         .input-field {
-			margin-top: 1rem;
 			@include input-field-basics;
+            justify-content: space-between;
+            align-items: center;
 
-			label {
-				@include label-style;
-			}
+            .date-type-toggle {
+                @include toolbar-icon-animations;
+                color: $primary;
+                border-style: none;
+                background-color: transparent;
+                font-size: $small-text;
+                font-family: $semibold;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                &-icon {
+                    // color: red;
+                    margin-right: 0.75rem;
+                    font-size: calc($icon-size-small * 0.75);
+                }
+            }
 
 			.input {
 				@include input-style;
 			}
 
 
-			// input[type=date]:invalid::-webkit-datetime-edit {
-			// 	// color: darken($grey, 25%);
-			// }
+			input[type=date]:invalid::-webkit-datetime-edit {
+				color: darken($grey, 25%);
+			}
 
 
 
@@ -76,11 +103,21 @@
 				@include date-picker-icon;
 			}
         }
+
+        @media screen and (max-width: $large-mobile) {
+            .filter-picker-container {
+                margin-bottom: 0rem;
+            }
+        }
     }
 
     .clear-button {
         @include tertiary-button;
         background-color: transparent;
         padding: 0;
+    }
+
+    @media screen and (max-width: $large-mobile) {
+        margin: 18rem auto auto auto;
     }
 }

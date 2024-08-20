@@ -41,6 +41,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
             <VisibilityButton
               visibility={filterOptionsVisibility} 
               setVisibility={setFilterOptionsVisibility}
+              closeOther={setChefChoiceVisibility}
               icon={<FontAwesomeIcon icon={faFilter}/>}
               classname="filter-button"
             />
@@ -56,6 +57,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
           <VisibilityButton
             visibility={chefChoiceVisibility} 
             setVisibility={setChefChoiceVisibility}
+            closeOther={setFilterOptionsVisibility}
             icon={<FontAwesomeIcon icon={faDice}/>}
             text="Chef's Choice"
             classname="chef-button"
@@ -76,6 +78,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
         setCarbFilters={setCarbFilters} 
         dateFilter={dateFilter} 
         setDateFilter={setDateFilter}
+        dateFilterType={dateFilterType}
         setDateFilterType={setDateFilterType} 
         filterOptionsVisibility={filterOptionsVisibility}
         setFilterOptionsVisibility={setFilterOptionsVisibility}

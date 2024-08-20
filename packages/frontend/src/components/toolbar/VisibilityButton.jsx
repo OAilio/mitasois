@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import '../../css/visibilityButton.scss'
 
-const VisibilityButton = ({ visibility, setVisibility, icon, text, classname}) => {
+const VisibilityButton = ({ visibility, setVisibility, closeOther, icon, text, classname}) => {
   function toggleVisibility(){
     setVisibility(!visibility)
+    closeOther(false) // Hopefully this doesn't bug horribly lol
   }
   
   return (
