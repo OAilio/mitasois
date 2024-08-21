@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import formatDate from "../utils/formatDate";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faArrowUpLong } from '@fortawesome/free-solid-svg-icons';
 import FoodForm from "./FoodForm";
 import '../css/allFoods.scss'
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters,
-  dateFilter, dateFilterType, editingFood, setEditingFood, activeFood, setActiveFood, toolbarHeight }) => {
+  dateFilter, dateFilterType, editingFood, setEditingFood, activeFood, setActiveFood }) => {
+
+
 
   const sortedFoods = [...foods].sort((a, b) => {
     if (ascendingSort) {
@@ -18,7 +20,7 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     }
   });
 
-  console.log("In edit:", editingFood);
+  // console.log("In edit:", editingFood);
   const [formData, setFormData] = useState({ name: "", protein: null, carb: null, date: "" });
 
   useEffect(() => {
@@ -64,13 +66,13 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     }
   }
 
-  console.log("open food", activeFood)
+  // console.log("open food", activeFood)
 
-  console.log("-------------Filters--------------");
-  console.log("Selected protein filters:", proteinFilters.length > 0 ? proteinFilters : "none");
-  console.log("Selected carb filters:", carbFilters.length > 0 ? carbFilters : "none");
-  console.log("Date filter:", dateFilter ? `${dateFilterType} ${formatDate(dateFilter)}` : "none");
-  console.log("-----------------------------------");
+  // console.log("-------------Filters--------------");
+  // console.log("Selected protein filters:", proteinFilters.length > 0 ? proteinFilters : "none");
+  // console.log("Selected carb filters:", carbFilters.length > 0 ? carbFilters : "none");
+  // console.log("Date filter:", dateFilter ? `${dateFilterType} ${formatDate(dateFilter)}` : "none");
+  // console.log("-----------------------------------");
 
   const filteredFoods = sortedFoods.filter(
     (food) =>
@@ -80,7 +82,18 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
       (!dateFilter || filterByDate(food))
   );
 
-  console.log("render", filteredFoods.length, "foods");
+  console.log("render", filteredFoods.length, "foods");  
+  
+  if (foods.length === 0){
+    return (
+    <div className="list-of-all-food-items">
+      <div className="result-count" >
+        <FontAwesomeIcon icon={faArrowUpLong} className="up-arrow"/>
+        <span className="add-first">No foods here. Add something tasty!</span>
+      </div>
+    </div>
+    )
+  }
 
   return (
       <>

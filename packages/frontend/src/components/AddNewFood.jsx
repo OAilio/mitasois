@@ -10,8 +10,6 @@ const AddNewFood = ({ handleCreate, foods }) => {
   const openForm = () => {
     setAddFormOpen(true)
   }
-
-  console.log("addFormOpen:", addFormOpen)
   
   // addFormOpen defines whether the button is expanded to the form or not
   return (

@@ -9,7 +9,7 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
   const [selectedFood, setSelectedFood] = useState(null);
   const [lastSelectedFood, setLastSelectedFood] = useState(null);
   const [isCycling, setIsCycling] = useState(false);
-  const [animateFood, setAnimateFood] = useState(false); // Track animation state
+  const [animateFood, setAnimateFood] = useState(false);
 
   // If not visible return null
   if (!chefChoiceVisible) {
@@ -48,7 +48,7 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
     setAnimateFood(false); // Reset animation state
 
     let cycleCount = 0;
-    const maxCycles = 15; // Adjust this to control the length of the animation
+    const maxCycles = 15;
 
     const intervalId = setInterval(() => {
       const food = foods[Math.floor(Math.random() * foods.length)];
@@ -69,15 +69,15 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
   };
 
   const openFoodItem = (food) => {
-    setActiveFood(food.id);
-    setSelectedFood(null);
-    setChefChoiceVisible(false);
+    setActiveFood(food.id)
+    setSelectedFood(null)
+    setChefChoiceVisible(false)
   };
 
   const closeMenu = () => {
-    setChefChoiceVisible(false);
-    setSelectedFood(null);
-    setLastSelectedFood(null);
+    setChefChoiceVisible(false)
+    setSelectedFood(null)
+    setLastSelectedFood(null)
   };
 
   return (
@@ -94,7 +94,7 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
           <div>
             {!selectedFood && !isCycling ? (
               <div className="chef-choice-content">
-                Want to hear tonight's specials?
+                <span className="chef-choice-text">Want to hear tonight's specials?</span>
                 <div className="button-group">
                   <button className='secondary-button' onClick={closeMenu}>Not interested</button>
                   <button className="primary-button" onClick={randomizeFood}>I'm all ears!</button>
@@ -102,7 +102,7 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
               </div>
             ) : (
               <div className="chef-choice-content">
-                <span>The kitchen recommends you have</span>
+                <span className="chef-choice-text">The kitchen recommends you have</span>
                 <span className={`recommended-food ${animateFood ? 'enlarge' : ''}`}>
                   {selectedFood?.name}
                 </span>

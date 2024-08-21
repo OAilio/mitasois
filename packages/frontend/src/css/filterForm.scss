@@ -38,7 +38,7 @@
                 @include toolbar-icon-button;
                 @include toolbar-icon-animations;
                 color: $red;
-                font-size: calc($icon-size * 0.60);
+                font-size: calc($icon-size * 0.70);
 
                 &:hover{
                     color: darken($red, 15%);

@@ -108,12 +108,25 @@
 .result-count {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	margin: 0.5rem auto;
 	font-family: $bold;
 	color: $primary;
 	font-size: $medium-text;
+	// align-items: flex-end;
+	text-align: center;
 
 	&.none {
 		margin: 2rem auto;
+	}
+
+	// .add-first {
+	// 	padding-top: 1rem;
+	// 	// background-color: red;
+	// }
+
+	.up-arrow{
+		padding-bottom: 1rem;
+		font-size: 4rem;
 	}
 }
