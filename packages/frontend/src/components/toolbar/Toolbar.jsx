@@ -13,7 +13,7 @@ import { faFilter, faDice } from '@fortawesome/free-solid-svg-icons';
 
 import '../../css/toolbar.scss'
 
-const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput, foods, handleUpdate, proteinFilters,
+const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput, foods, proteinFilters,
   setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, setDateFilterType, setActiveFood }) => {
 
   const [filterOptionsVisibility, setFilterOptionsVisibility] = useState(false)

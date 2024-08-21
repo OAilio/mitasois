@@ -70,12 +70,17 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			font-family: $regular;
-			font-size: $medium-text;
-			// padding-bottom: 2rem;
+
 
 			.chef-choice-text {
 				margin-bottom: 0.75rem;
+				font-family: $medium;
+				font-size: $medium-text;
+
+				&.thinner {
+					font-family: $regular;
+					font-size: $small-text;;
+				}
 			}
 
 			@keyframes enlarge {
@@ -131,7 +136,7 @@
 		}
 
 		@media screen and (max-width: $large-mobile) {
-			width: 80%;
+			width: 75%;
 		}
 	}
 }
