@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import '../../css/chefChoice.scss'
+import '../../css/darkBgModal.scss'
 
 const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisible }) => {
   const [selectedFood, setSelectedFood] = useState(null);
@@ -83,8 +83,8 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
   return (
     <>
       <div className="darkened-background-container">
-        <div className="chef-choice-container">
-          <div className="chef-choice-heading">
+        <div className="message-container">
+          <div className="message-heading">
             <button className="x-container" onClick={closeMenu}>
               <FontAwesomeIcon icon={faCircleXmark} className="x-icon" />
             </button>
@@ -92,24 +92,24 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
             <span>Chef's Choice</span>
           </div>
           {foods.length < 3 ? (
-            <div className="chef-choice-content">
-              <span className="chef-choice-text">The kitchen needs more to work with!</span>
-              <span className="chef-choice-text thinner">Add at least 3 foods to get the chef's recommendation.</span>
+            <div className="message-content">
+              <span className="message-text">The kitchen needs more to work with!</span>
+              <span className="message-text thinner">Add at least 3 foods to get the chef's recommendation.</span>
               <div className="button-group">
                 <button className="primary-button" onClick={closeMenu}>Got it</button>
               </div>
             </div>
           ) : !selectedFood && !isCycling ? (
-            <div className="chef-choice-content">
-              <span className="chef-choice-text">Want to hear tonight's specials?</span>
+            <div className="message-content">
+              <span className="message-text">Want to hear tonight's specials?</span>
               <div className="button-group">
                 <button className="secondary-button" onClick={closeMenu}>Not interested</button>
                 <button className="primary-button" onClick={randomizeFood}>I'm all ears!</button>
               </div>
             </div>
           ) : (
-            <div className="chef-choice-content">
-              <span className="chef-choice-text">The kitchen recommends you have</span>
+            <div className="message-content">
+              <span className="message-text">The kitchen recommends you have</span>
               <span className={`recommended-food ${animateFood ? 'enlarge' : ''}`}>
                 {selectedFood?.name}
               </span>

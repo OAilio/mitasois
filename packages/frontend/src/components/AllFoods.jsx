@@ -5,23 +5,14 @@ import formatDate from "../utils/formatDate";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faArrowUpLong } from '@fortawesome/free-solid-svg-icons';
 import FoodForm from "./FoodForm";
-import '../css/allFoods.scss'
+import DeleteConfirmation from "./deleteConfirmation";
+import '../css/allFoods.scss';
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters,
   dateFilter, dateFilterType, editingFood, setEditingFood, activeFood, setActiveFood }) => {
 
-
-
-  const sortedFoods = [...foods].sort((a, b) => {
-    if (ascendingSort) {
-      return new Date(a.date) - new Date(b.date);
-    } else {
-      return new Date(b.date) - new Date(a.date);
-    }
-  });
-
-  // console.log("In edit:", editingFood);
   const [formData, setFormData] = useState({ name: "", protein: null, carb: null, date: "" });
+  const [foodToDelete, setFoodToDelete] = useState(null);
 
   useEffect(() => {
     if (editingFood) {
@@ -41,7 +32,6 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     setEditingFood(food);
   }
 
-  // Sets the food date to current date
   function ateThisToday(food) {
     const todaysDate = new Date().toLocaleDateString('en-CA');
     handleUpdate(food.id, {
@@ -66,13 +56,26 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     }
   }
 
-  // console.log("open food", activeFood)
+  function confirmDelete(food) {
+    setFoodToDelete(food); // Set the food to be deleted and trigger the confirmation dialog
+  }
 
-  // console.log("-------------Filters--------------");
-  // console.log("Selected protein filters:", proteinFilters.length > 0 ? proteinFilters : "none");
-  // console.log("Selected carb filters:", carbFilters.length > 0 ? carbFilters : "none");
-  // console.log("Date filter:", dateFilter ? `${dateFilterType} ${formatDate(dateFilter)}` : "none");
-  // console.log("-----------------------------------");
+  function handleDeleteConfirm() {
+    handleDelete(foodToDelete.id); // Delete the food item
+    setFoodToDelete(null); // Reset the food to delete
+  }
+
+  function handleDeleteCancel() {
+    setFoodToDelete(null); // Cancel the delete action
+  }
+
+  const sortedFoods = [...foods].sort((a, b) => {
+    if (ascendingSort) {
+      return new Date(a.date) - new Date(b.date);
+    } else {
+      return new Date(b.date) - new Date(a.date);
+    }
+  });
 
   const filteredFoods = sortedFoods.filter(
     (food) =>
@@ -82,25 +85,23 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
       (!dateFilter || filterByDate(food))
   );
 
-  console.log("render", filteredFoods.length, "foods");  
-  
   if (foods.length === 0){
     return (
-    <div className="list-of-all-food-items">
-      <div className="result-count" >
-        <FontAwesomeIcon icon={faArrowUpLong} className="up-arrow"/>
-        <span className="add-first">No foods here. Add something tasty!</span>
+      <div className="list-of-all-food-items">
+        <div className="result-count" >
+          <FontAwesomeIcon icon={faArrowUpLong} className="up-arrow"/>
+          <span className="add-first">No foods here. Add something tasty!</span>
+        </div>
       </div>
-    </div>
     )
   }
 
   return (
-      <>
+    <>
       <ul className="list-of-all-food-items">
         {filteredFoods.map((food) => (
           <li onClick={() => !editingFood && toggleOpenClick(food)} className={`all-foods-container 
-          ${activeFood === food.id || (editingFood && editingFood.id === food.id) ? "open" : ""}`} key={food.id}>
+            ${activeFood === food.id || (editingFood && editingFood.id === food.id) ? "open" : ""}`} key={food.id}>
             <div>
               <div className="item-content">
                 <span className="food-name">{food.name}</span>
@@ -122,7 +123,7 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
                         <button className='secondary-button' onClick={() => handleEditClick(food)}>Edit</button>
                         <button className='primary-button' onClick={() => ateThisToday(food)}>Ate this today!</button>
                       </div>
-                      <span className="tertiary-button" onClick={() => handleDelete(food.id)}>
+                      <span className="tertiary-button" onClick={() => confirmDelete(food)}>
                         Delete <FontAwesomeIcon icon={faTrash} />
                       </span>
                     </>
@@ -148,8 +149,16 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
           )
         )}
       </ul>
+      {foodToDelete && (
+        <DeleteConfirmation 
+          food={foodToDelete} 
+          onConfirm={handleDeleteConfirm} 
+          onCancel={handleDeleteCancel} 
+        />
+      )}
     </>
   );
 };
 
 export default AllFoods;
+

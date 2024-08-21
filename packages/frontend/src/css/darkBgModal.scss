@@ -12,7 +12,7 @@
 	justify-content: center;
 	align-items: center;
 
-	.chef-choice-container {
+	.message-container {
 		background-color: $white;
 		border-style: solid;
 		border-width: 0.5rem;
@@ -22,16 +22,16 @@
 		margin: auto;
 		padding: 1.25rem;
 		text-align: center;
-  	border-radius: 20px;
+  		border-radius: 20px;
 		color: $primary;
 		justify-content: center;
 		align-items: center;
 
-		.chef-choice-heading {
+		.message-heading {
 			display: flex;
 			flex-direction: column;
 			// background-color: aqua;
-			margin-bottom: 1rem;
+			// margin-bottom: 0.75rem;
 			font-family: $semibold;
 			font-size: $medium-text;
 			
@@ -65,21 +65,25 @@
 			}
 		}
 		
-		.chef-choice-content {
+		.message-content {
 			// background-color: red;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 
 
-			.chef-choice-text {
-				margin-bottom: 0.75rem;
+			.message-text {
+				margin: 0.75rem auto 1rem;
 				font-family: $medium;
 				font-size: $medium-text;
 
 				&.thinner {
 					font-family: $regular;
 					font-size: $small-text;;
+				}
+
+				&.bolder{
+					font-family: $semibold;
 				}
 			}
 
@@ -104,10 +108,37 @@
 			.recommended-food {
 				font-size: $large-text;
 				font-family: $bold;
-				margin-bottom: 0.75rem;
+				margin-bottom: 1rem;
+				max-width: 100%;
+				// background-color: aqua;
+				white-space: wrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 
 				&.enlarge {
 					animation: enlarge 1s ease-in-out; // Apply the enlarge animation for 0.5s
+				}
+			}
+
+			.large-trash-icon {
+				font-size: 5rem;
+				color: $red;
+			}
+
+			@media screen and (max-width: $small-mobile) {
+				.message-text {
+					font-size: $small-text;
+					margin-bottom: 0rem;
+				}
+
+				.recommended-food {
+					font-size: $medium-text;
+					margin-bottom: 0rem;
+					// background-color: black;
+				}
+
+				.large-trash-icon {
+					font-size: 3rem;
 				}
 			}
 		}
@@ -115,13 +146,24 @@
 		.button-group {
 			@include button-group;
 			// padding-top: 2rem;
-			margin-top: 1rem;
+			margin-top: 0.5rem;
 
 			button {
 				@include button;
 
 				&.primary-button {
-					@include primary-button
+					@include primary-button;
+
+					&.delete {
+						background-color: $red;
+						border-color: $red;
+
+						&:hover{
+							background-color: darken($red, 15%);
+							border-color: darken($red, 15%);
+							color: $white;
+						}
+					}
 				}
 
 				&.secondary-button {
