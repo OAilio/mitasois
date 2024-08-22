@@ -15,7 +15,25 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
   const [foodToDelete, setFoodToDelete] = useState(null);
 
   useEffect(() => {
+    if (activeFood) {
+      const element = document.getElementById(`food-${activeFood}`);
+      if (element) {
+        const parentElement = element.parentElement;
+        const elementTop = element.offsetTop;
+        const marginTop = parseFloat(getComputedStyle(document.documentElement).fontSize); // Convert 1rem to pixels
+  
+        // Scroll the parent element to bring the target element into view with a margin of 1rem
+        parentElement.scrollTo({
+          top: elementTop - marginTop,
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [activeFood]);
+
+  useEffect(() => {
     if (editingFood) {
+      // Set form data when editingFood is set
       setFormData({
         id: editingFood.id,
         name: editingFood.name,
@@ -23,10 +41,31 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
         carb: editingFood.carb,
         date: editingFood.date,
       });
+
+      // Scroll the entire page to bring the parent element into view
+      const element = document.getElementById(`food-${editingFood.id}`);
+      if (element) {
+        const parentElement = element.parentElement;
+        const parentElementTop = parentElement.getBoundingClientRect().top + window.scrollY;
+        const marginTop = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+        window.scrollTo({
+          top: parentElementTop - marginTop,
+          behavior: 'smooth',
+        });
+      }
     } else {
+      // Reset form data when editingFood is cleared
       setFormData({ id: "", name: "", protein: null, carb: null, date: "" });
+  
+      // Scroll the page back to the top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     }
   }, [editingFood]);
+
 
   function handleEditClick(food) {
     setEditingFood(food);
@@ -100,21 +139,23 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
     <>
       <ul className="list-of-all-food-items">
         {filteredFoods.map((food) => (
-          <li onClick={() => !editingFood && toggleOpenClick(food)} className={`all-foods-container 
-            ${activeFood === food.id || (editingFood && editingFood.id === food.id) ? "open" : ""}`} key={food.id}>
+          <li id={`food-${food.id}`} onClick={() => !editingFood && toggleOpenClick(food)} 
+          className={`all-foods-container ${activeFood === food.id || (editingFood && editingFood.id === food.id) ? "open" : ""}`}
+          key={food.id}>
             <div>
               <div className="item-content">
                 <span className="food-name">{food.name}</span>
                 <span className="food-date">{formatDate(food.date)}</span>
               </div>
+              <div className="opened-item-options">
               {editingFood && editingFood.id === food.id ? (
                 <FoodForm
-                  formData={formData}
-                  setFormData={setFormData}
-                  foods={foods}
-                  submit={handleUpdate}
-                  setEditing={setEditingFood}
-                  setActiveFood={setActiveFood} />
+                formData={formData}
+                setFormData={setFormData}
+                foods={foods}
+                submit={handleUpdate}
+                setEditing={setEditingFood}
+                setActiveFood={setActiveFood} />
               ) : (
                 <div>
                   {activeFood === food.id && (
@@ -129,7 +170,7 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
                     </>
                   )}
                 </div>
-              )}
+              )}</div>
             </div>
           </li>
         ))}

@@ -2,17 +2,20 @@
 
 .list-of-all-food-items {
 	display: flex;
+	position: relative;
+	// bottom: 0;
 	flex-direction: column;
 	@include all-foods-widths;
 	overflow-y: auto;
 	overflow-x: hidden;
-	height: 70vh;
+	height: 80vh;
 	max-width: calc($content-width - 4rem);
 	margin: 1.5rem auto 1rem;
 	padding: 1.5rem 2rem;
 	background-color: $secondary;
 	border-radius: 20px;
 	align-items: center;
+
 
 	// Get rid of all scrollbars
 	-ms-overflow-style: none;
@@ -49,6 +52,15 @@
 				padding-right: 1.5rem;
 			}
 		}
+
+		// .opened-item-options {
+		// 	position: relative;
+		// 	top: -100%;
+		// 	opacity: 0;
+		// 	overflow: hidden;
+		// 	max-height: 0px;
+		// 	transition: all 1s ease-in-out
+		// }
 		
 		.tertiary-button{
 			@include tertiary-button
@@ -86,6 +98,13 @@
 					padding: 0
 				}
 			}
+
+			// .opened-item-options{
+			// 	top: 0;
+			// 	opacity: 1;
+			// 	// overflow: auto;
+			// 	max-height: none;
+			// }
 		}
 
 		@media screen and (max-width: $large-mobile) {
@@ -113,7 +132,7 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	margin: 0.5rem auto;
+	margin: 0.5rem auto 20vh;
 	font-family: $bold;
 	color: $primary;
 	font-size: $medium-text;
@@ -132,5 +151,9 @@
 	.up-arrow{
 		padding-bottom: 1rem;
 		font-size: 4rem;
+	}
+
+	@media screen and (max-width: $large-mobile) {
+		margin: 0.5rem auto 50vh;
 	}
 }
