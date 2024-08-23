@@ -52,15 +52,6 @@
 				padding-right: 1.5rem;
 			}
 		}
-
-		// .opened-item-options {
-		// 	position: relative;
-		// 	top: -100%;
-		// 	opacity: 0;
-		// 	overflow: hidden;
-		// 	max-height: 0px;
-		// 	transition: all 1s ease-in-out
-		// }
 		
 		.tertiary-button{
 			@include tertiary-button
@@ -98,13 +89,6 @@
 					padding: 0
 				}
 			}
-
-			// .opened-item-options{
-			// 	top: 0;
-			// 	opacity: 1;
-			// 	// overflow: auto;
-			// 	max-height: none;
-			// }
 		}
 
 		@media screen and (max-width: $large-mobile) {
@@ -136,17 +120,11 @@
 	font-family: $bold;
 	color: $primary;
 	font-size: $medium-text;
-	// align-items: flex-end;
 	text-align: center;
 
 	&.none {
 		margin: 2rem auto;
 	}
-
-	// .add-first {
-	// 	padding-top: 1rem;
-	// 	// background-color: red;
-	// }
 
 	.up-arrow{
 		padding-bottom: 1rem;

@@ -5,7 +5,8 @@ import formatDate from "../utils/formatDate";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faArrowUpLong } from '@fortawesome/free-solid-svg-icons';
 import FoodForm from "./FoodForm";
-import DeleteConfirmation from "./deleteConfirmation";
+// import DeleteConfirmation from "./DeleteConfirmation";
+import ConfirmAction from "./ConfirmAction";
 import '../css/allFoods.scss';
 
 const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdate, proteinFilters, carbFilters,
@@ -191,10 +192,11 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
         )}
       </ul>
       {foodToDelete && (
-        <DeleteConfirmation 
+        <ConfirmAction 
           food={foodToDelete} 
           onConfirm={handleDeleteConfirm} 
-          onCancel={handleDeleteCancel} 
+          onCancel={handleDeleteCancel}
+          type="delete" 
         />
       )}
     </>
