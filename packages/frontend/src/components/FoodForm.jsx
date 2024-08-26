@@ -37,7 +37,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
         protein: formData.protein?.value,
         carb: formData.carb?.value,
         date: formData.date,
-      });
+      }, "Roger that!");
       setEditing(null); // De-select the editing state
       setActiveFood(formData.id); // Keep the item open
     } else {
@@ -46,7 +46,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
         protein: formData.protein?.value,
         carb: formData.carb?.value,
         date: formData.date,
-      });
+      }, "Sounds delicious!");
       setFormData({ name: "", protein: null, carb: null, date: "" });
       setAddFormOpen(false);
     }

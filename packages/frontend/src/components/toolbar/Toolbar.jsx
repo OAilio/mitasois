@@ -14,7 +14,8 @@ import { faFilter, faDice } from '@fortawesome/free-solid-svg-icons';
 import '../../css/toolbar.scss'
 
 const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput, foods, proteinFilters,
-  setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, setDateFilterType, setActiveFood }) => {
+  setProteinFilters, carbFilters, setCarbFilters, dateFilter, setDateFilter, dateFilterType, 
+  setDateFilterType, setActiveFood, setMessage, setMessageHeading }) => {
 
   const [filterOptionsVisibility, setFilterOptionsVisibility] = useState(false)
   const [chefChoiceVisibility, setChefChoiceVisibility] = useState(false)
@@ -69,6 +70,8 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
         setActiveFood={setActiveFood}
         chefChoiceVisible={chefChoiceVisibility}
         setChefChoiceVisible={setChefChoiceVisibility}
+        setMessage={setMessage}
+        setMessageHeading={setMessageHeading}
       />
       <FilterForm
         foods={foods} 

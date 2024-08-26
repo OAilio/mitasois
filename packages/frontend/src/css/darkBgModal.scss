@@ -1,5 +1,13 @@
 @import './shared';
 
+@keyframes opening {
+    0% { transform: translateY(500px); }
+    // 25% { transform: scale(1.1); }
+    // 50% { transform: translateY(20px); }
+    // 75% { transform: scale(1.1); }
+    100% { transform: translateY(0); }
+}
+
 .darkened-background-container {
 	position: fixed;
 	z-index: 100;
@@ -26,6 +34,7 @@
 		color: $primary;
 		justify-content: center;
 		align-items: center;
+		animation: opening 0.4s ease-in-out;
 
 		.message-heading {
 			display: flex;

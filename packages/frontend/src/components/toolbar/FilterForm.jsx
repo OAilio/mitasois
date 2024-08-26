@@ -52,7 +52,7 @@ const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, set
 					<div className="date-label">Date:</div>
 					<div className='input-field'>
 						<button className="date-type-toggle" onClick={toggleDateFilterType} title="Toggle date comparison mode">
-							<FontAwesomeIcon className="date-type-toggle-icon" icon={faArrowRightArrowLeft}></FontAwesomeIcon>{dateFilterType}
+							<FontAwesomeIcon className="date-type-toggle-icon" icon={faArrowRightArrowLeft}/>{dateFilterType}
 						</button>
 						<input className="input" type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} />
 					</div>

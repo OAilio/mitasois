@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import '../../css/darkBgModal.scss'
 
-const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisible }) => {
+const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisible, setMessageHeading, setMessage }) => {
   const [selectedFood, setSelectedFood] = useState(null);
   const [lastSelectedFood, setLastSelectedFood] = useState(null);
   const [isCycling, setIsCycling] = useState(false);
@@ -72,6 +72,8 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
     setActiveFood(food.id)
     setSelectedFood(null)
     setChefChoiceVisible(false)
+    setMessageHeading("Coming right up!")
+    setMessage(`You can now update the food's date.`)
   };
 
   const closeMenu = () => {

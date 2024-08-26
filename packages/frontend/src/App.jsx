@@ -9,6 +9,7 @@ import Toolbar from './components/toolbar/Toolbar';
 import AddNewFood from './components/AddNewFood';
 import AllFoods from './components/AllFoods';
 import Header from './components/Header';
+import PopUpMessage from './components/PopUpMessage';
 
 function App() {
   const [foods, setFoods] = useState([]);
@@ -17,6 +18,8 @@ function App() {
   const [ascendingSort, setAscendingSort] = useState(false)
   const [error, setError] = useState(null);
   const [searchInput, setSearchInput] = useState("")
+  const [message, setMessage] = useState(null)
+  const [messageHeading, setMessageHeading] = useState(null)
 
   // Filters
   const [proteinFilters, setProteinFilters] = useState([]);
@@ -37,20 +40,24 @@ function App() {
       });
   }, []);
 
-  const handleCreate = (newFood) => {
+  const handleCreate = (newFood, heading) => {
     foodService.createNewFood(newFood)
       .then(response => {
         setFoods(foods.concat(response.data));
+        setMessageHeading(heading)
+        setMessage(`${newFood.name} was added to your foods!`)
       })
       .catch(error => {
         setError(error);
       });
   };
 
-  const handleUpdate = (id, updatedFood) => {
+  const handleUpdate = (id, updatedFood, heading) => {
     foodService.updateFood(id, updatedFood)
       .then(response => {
         setFoods(foods.map(food => (food.id === id ? response.data : food)));
+        setMessageHeading(heading)
+        setMessage(`${updatedFood.name} was updated successfully!`)
       })
       .catch(error => {
         setError(error);
@@ -61,6 +68,8 @@ function App() {
     foodService.deleteFood(id)
       .then(() => {
         setFoods(foods.filter(food => food.id !== id));
+        setMessageHeading(null)
+        setMessage(`Food deleted successfully!`)
       })
       .catch(error => {
         setError(error);
@@ -88,6 +97,8 @@ function App() {
       dateFilterType={dateFilterType} 
       setDateFilterType={setDateFilterType}
       setActiveFood={setActiveFood}
+      setMessage={setMessage}
+      setMessageHeading={setMessageHeading}
     />      
     <AddNewFood 
       handleCreate={handleCreate}
@@ -107,6 +118,12 @@ function App() {
       setEditingFood={setEditingFood}
       activeFood={activeFood}
       setActiveFood={setActiveFood}
+    />
+    <PopUpMessage
+      message={message}
+      setMessage={setMessage}
+      messageHeading={messageHeading}
+      setMessageHeading={setMessageHeading}
     />
     </>
   );

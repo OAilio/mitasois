@@ -11,7 +11,9 @@ const ConfirmAction = ({ food, onConfirm, onCancel, type }) => {
           {type == "delete" ? (
             <>
             <FontAwesomeIcon icon={faTrash} className='confirmation-icon' />
-            <span className='message-text'>Are you sure you want to delete <span className='message-text bolder'>{food.name}</span>?</span>
+            <span className='message-text'>
+              Are you sure you want to delete <span className='message-text bolder'>{food.name}</span>?
+            </span>
             <div className="button-group">
               <button className="secondary-button" onClick={onCancel}>Cancel</button>
               <button className="primary-button delete" onClick={onConfirm}>Delete</button>

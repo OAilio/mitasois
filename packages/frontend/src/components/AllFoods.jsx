@@ -79,7 +79,7 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
       protein: food.protein?.value,
       carb: food.carb?.value,
       date: todaysDate
-    });
+    }, "Excellent choice!");
   }
 
   function toggleOpenClick(food) {
