@@ -14,18 +14,25 @@
 
 	@media screen and (max-width: $large-mobile) {
 		width: 100%;
-		margin-bottom: 1rem;
+		margin-top: 1rem;
 	}
 
 	.select-label {
 		font-family: $medium;
 		color: $primary;
 		font-size: $small-text;
+
 	}
 
 	.ingredient-select {
 		font-family: $regular;
 		color: $primary;
+
+		&.error {
+			.ingSelect__control{
+				box-shadow: 0px 0px 0px 2px $red;
+			}
+		}
 
 		.ingSelect__control{
 			font-size: $small-text;
@@ -33,6 +40,7 @@
 			background-color: $grey;
 			height: calc($form-input-height + 1rem);
 			padding: 0;
+			margin: 0.25rem 0rem;
 			border-radius: 6px;
 			border-style: none;
 			box-shadow: none;

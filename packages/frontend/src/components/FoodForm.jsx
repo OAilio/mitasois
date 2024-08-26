@@ -5,74 +5,85 @@ import ConfirmAction from "./ConfirmAction";
 import '../css/foodForm.scss';
 
 const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveFood, setAddFormOpen }) => {
-  // State to manage the visibility of the confirmation modal
   const [showConfirm, setShowConfirm] = useState(false);
-  // Initial state for form data (an empty form)
   const initialEmptyFormData = { name: "", protein: null, carb: null, date: "" };
-
-  // Track the initial form data when the component mounts
   const [initialFormData, setInitialFormData] = useState(initialEmptyFormData);
 
+  // Error state for required fields
+  const [errors, setErrors] = useState({ name: false, protein: false, carb: false, date: false });
+
   useEffect(() => {
-    // Check if initialFormData is still the default empty object and formData has an id
     if (JSON.stringify(initialFormData) === JSON.stringify(initialEmptyFormData) && formData.id) {
       setInitialFormData(JSON.parse(JSON.stringify(formData)));
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData, initialFormData]);
 
-  // console.log(formData);
-  // console.log("ini",initialFormData)
-
-  // Function to check if form data has been altered
   const hasFormChanged = () => {
     return JSON.stringify(formData) !== JSON.stringify(initialFormData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Trim the input values and check for empty strings or only spaces
+    const trimmedName = formData.name.trim();
+
+    // Validate required fields and set different error states for the name
+    const newErrors = {
+      nameEmpty: !formData.name,
+      nameSpaces: formData.name && !trimmedName,
+      protein: !formData.protein,
+      carb: !formData.carb,
+      date: !formData.date,
+    };
+    setErrors(newErrors);
+
+    // If there are any errors, do not submit the form
+    if (newErrors.nameEmpty || newErrors.nameSpaces || newErrors.protein || newErrors.carb || newErrors.date) {
+        return;
+    }
+
+    // Prepare data for submission
+    const submissionData = {
+      name: trimmedName,
+      protein: formData.protein,
+      carb: formData.carb,
+      date: formData.date
+    };
+
     if (formData.id) {
-      submit(formData.id, {
-        name: formData.name,
-        protein: formData.protein?.value,
-        carb: formData.carb?.value,
-        date: formData.date,
-      }, "Roger that!");
-      setEditing(null); // De-select the editing state
-      setActiveFood(formData.id); // Keep the item open
+      submit(formData.id, submissionData, "Roger that!");
+      setEditing(null);
+      setActiveFood(formData.id);
     } else {
-      submit({
-        name: formData.name,
-        protein: formData.protein?.value,
-        carb: formData.carb?.value,
-        date: formData.date,
-      }, "Sounds delicious!");
-      setFormData({ name: "", protein: null, carb: null, date: "" });
+      submit(submissionData, "Sounds delicious!");
+      setFormData(initialEmptyFormData);
       setAddFormOpen(false);
     }
-  };
+};
 
   const handleCancel = () => {
     if (hasFormChanged()) {
-      setShowConfirm(true); // Show the confirmation modal if the form has been altered
+      setShowConfirm(true);
     } else {
-      confirmCancel(); // Proceed with cancellation if the form is unaltered
+      confirmCancel();
     }
   };
 
   const confirmCancel = () => {
-    setFormData({ name: "", protein: null, carb: null, date: "" });
+    setFormData(initialEmptyFormData);
     if (formData.id) {
       setEditing(null);
       setActiveFood(formData.id);
     } else {
       setAddFormOpen(false);
     }
-    setShowConfirm(false); // Close the confirmation modal
+    setShowConfirm(false);
   };
 
   const cancelCancel = () => {
-    setShowConfirm(false); // Close the confirmation modal without making changes
+    setShowConfirm(false);
   };
 
   const handleChange = (e) => {
@@ -91,14 +102,15 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
             <label>
               Name:
               <input
-                className="input"
+                className={`input ${errors.nameEmpty || errors.nameSpaces ? "error" : ""}`}
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Food name"
-                required
               />
+              {errors.nameEmpty && <div className="error-message">Name is required.</div>}
+              {errors.nameSpaces && <div className="error-message">Enter a valid name.</div>}
             </label>
           </div>
           <div>
@@ -109,7 +121,9 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
                 setFormData((prevData) => ({ ...prevData, protein }))
               }
               type="protein"
+							isError={errors.protein}
             />
+            {errors.protein && <div className="error-message">Protein is required.</div>}
           </div>
           <div>
             <IngredientSelect
@@ -119,19 +133,21 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
                 setFormData((prevData) => ({ ...prevData, carb }))
               }
               type="carb"
+							isError={errors.carb}
             />
+            {errors.carb && <div className="error-message">Carb is required.</div>}
           </div>
           <div className="input-field">
             <label>
               Date:
               <input
-                className="input"
+                className={`input ${errors.date ? "error" : ""}`}
                 type="date"
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
-                required
               />
+              {errors.date && <div className="error-message">Date is required.</div>}
             </label>
           </div>
         </div>

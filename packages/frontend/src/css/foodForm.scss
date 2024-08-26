@@ -14,7 +14,7 @@ form {
 			flex-direction: column;
 		}
 		@media screen and (max-width: $small-mobile) {
-			margin: 0.75rem 0.75rem;
+			margin: 0rem 0.75rem 0.75rem;
 		}
 
 		.input-field {
@@ -26,6 +26,10 @@ form {
 
 			.input {
 				@include input-style;
+
+				&.error {
+					box-shadow: 0 0 0 2px $red;
+				}
 			}
 
 			input[type=date]:invalid::-webkit-datetime-edit {
@@ -38,7 +42,7 @@ form {
 
 			@media screen and (max-width: $large-mobile) {
 				flex-direction: column;
-				justify-content: center;
+				justify-content: space-between;
 				width: 100%;
 
 				.input, label {
@@ -46,7 +50,7 @@ form {
 				}
 
 				label {
-					margin-bottom: 1rem;
+					margin-top: 1rem;
 				}
 
 				.input {
@@ -69,5 +73,12 @@ form {
 				@include secondary-button;
 			}
 		}
-	}	
+	}
+	
+	.error-message {
+		color: $red;
+		font-size: 0.75rem;
+		font-family: $semibold;
+		text-align: left;
+	}
 }

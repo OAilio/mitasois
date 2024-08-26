@@ -20,11 +20,19 @@ const foodSchema = new mongoose.Schema({
   name:{
     type: String,
     required: true,
-    minLength: 2
   },
-  protein: String,
-  carb: String,
-  date: String,
+  protein:{
+    type: String,
+    required: true,
+  },
+  carb:{
+    type: String,
+    required: true,
+  },
+  date:{
+    type: String,
+    required: true,
+  }
 })
 
 foodSchema.set('toJSON', {

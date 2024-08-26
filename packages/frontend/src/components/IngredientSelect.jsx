@@ -2,7 +2,7 @@
 import Creatable from 'react-select/creatable';
 import '../css/ingredientSelect.scss'
 
-const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
+const IngredientSelect = ({ foods, ingredient, setIngredient, type, isError }) => {
 
    // Here you can alter the predefined options
   const predefinedOptions = {
@@ -45,8 +45,8 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
         <span className='select-label'>Main {type}:</span>
         <div>
           <Creatable
-            className="ingredient-select"
-            classNamePrefix="ingSelect"
+            className={`ingredient-select ${isError ? "error" : ""}`}
+            classNamePrefix={`ingSelect`}
             placeholder="Select"
             value={currentSelection.value ? currentSelection : null}
             options={ingredientOptions}
@@ -63,3 +63,4 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type }) => {
 };
 
 export default IngredientSelect;
+
