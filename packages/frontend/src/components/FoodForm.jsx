@@ -47,8 +47,8 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
     // Prepare data for submission
     const submissionData = {
       name: trimmedName,
-      protein: formData.protein,
-      carb: formData.carb,
+      protein: formData.protein.value,
+      carb: formData.carb.value,
       date: formData.date
     };
 
