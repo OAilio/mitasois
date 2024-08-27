@@ -25,7 +25,7 @@ const SearchFilter = ({ searchInput, setSearchInput }) => {
   };
 
   return (
-    <div className="search-filter">
+    <div className="search-filter" title="Search by name">
       <button className='icon-container' onClick={focusInputField}><FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon' /></button>
       <div className='search-field-container'>
         <input ref={inputRef} className='search-input' type="text" value={searchInput} onChange={handleSearchChange} placeholder="Food name..."/>

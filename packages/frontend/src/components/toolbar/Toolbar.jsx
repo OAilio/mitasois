@@ -45,6 +45,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
               closeOther={setChefChoiceVisibility}
               icon={<FontAwesomeIcon icon={faFilter}/>}
               classname="filter-button"
+              tooltip="Open filter menu"
             />
           </span>
           <span className="right-item">
@@ -62,6 +63,7 @@ const Toolbar = ({ ascendingSort, setAscendingSort, searchInput, setSearchInput,
             icon={<FontAwesomeIcon icon={faDice}/>}
             text="Chef's Choice"
             classname="chef-button"
+            tooltip="Randomize a food!"
           />
         </div>
       </div>

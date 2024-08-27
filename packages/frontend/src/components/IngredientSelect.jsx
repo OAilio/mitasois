@@ -42,7 +42,7 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type, isError }) =
   return (
     <div className='select'>
       <label>
-        <span className='select-label'>Main {type}:</span>
+        <span className='select-label'>Main {type}</span>
         <div>
           <Creatable
             className={`ingredient-select ${isError ? "error" : ""}`}

@@ -4,14 +4,18 @@ import IngredientSelect from './IngredientSelect';
 import ConfirmAction from "./ConfirmAction";
 import '../css/foodForm.scss';
 
-const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveFood, setAddFormOpen }) => {
+const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveFood, addFormOpen, setAddFormOpen }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const initialEmptyFormData = { name: "", protein: null, carb: null, date: "" };
   const [initialFormData, setInitialFormData] = useState(initialEmptyFormData);
+  const [isDuplicateName, setIsDuplicateName] = useState(false);
+  const [duplicateFoodId, setDuplicateFoodId] = useState(null);
+  const [duplicateFoodData, setDuplicateFoodData] = useState(null);
 
   // Error state for required fields
   const [errors, setErrors] = useState({ name: false, protein: false, carb: false, date: false });
 
+  // useEffect that saves the initial form data when form is opened
   useEffect(() => {
     if (JSON.stringify(initialFormData) === JSON.stringify(initialEmptyFormData) && formData.id) {
       setInitialFormData(JSON.parse(JSON.stringify(formData)));
@@ -26,13 +30,15 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Trim the input values and check for empty strings or only spaces
+    // Trim the name and check for empty strings or only spaces
     const trimmedName = formData.name.trim();
+    const duplicateFood = foods.find(food => food.name === trimmedName);
 
     // Validate required fields and set different error states for the name
     const newErrors = {
       nameEmpty: !formData.name,
       nameSpaces: formData.name && !trimmedName,
+      nameDuplicate: duplicateFood,
       protein: !formData.protein,
       carb: !formData.carb,
       date: !formData.date,
@@ -41,10 +47,29 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
 
     // If there are any errors, do not submit the form
     if (newErrors.nameEmpty || newErrors.nameSpaces || newErrors.protein || newErrors.carb || newErrors.date) {
-        return;
+      return;
     }
 
+    // If there is an existing food with the same name,
+    // ask user if they want to create new food or edit
+    // existing
+    if (newErrors.nameDuplicate) {
+      setDuplicateFoodId(duplicateFood.id);
+      setDuplicateFoodData(duplicateFood);
+      setIsDuplicateName(true);
+      setShowConfirm(true);
+      return;
+    }
+
+    console.log("id:",duplicateFoodId)
+
+    // If no duplicate, proceed with submission
+    submitFood();
+  };
+
+  const submitFood = () => {
     // Prepare data for submission
+    const trimmedName = formData.name.trim();
     const submissionData = {
       name: trimmedName,
       protein: formData.protein.value,
@@ -52,6 +77,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
       date: formData.date
     };
 
+    // If id exists, it's an update operation
     if (formData.id) {
       submit(formData.id, submissionData, "Roger that!");
       setEditing(null);
@@ -61,8 +87,9 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
       setFormData(initialEmptyFormData);
       setAddFormOpen(false);
     }
-};
+  };
 
+  // Open confirmation is the form content has changed
   const handleCancel = () => {
     if (hasFormChanged()) {
       setShowConfirm(true);
@@ -94,13 +121,28 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
     }));
   };
 
+  const handleDuplicatePrimaryAction = () => {
+    if (addFormOpen) {
+      setAddFormOpen(false) // Close the addNewForm
+    }
+    setEditing(null) // Close the editing form
+    setFormData(initialEmptyFormData); // Empty the form data
+    setActiveFood(duplicateFoodId); // Set active food as the duplicate food
+    setShowConfirm(false); // Close the confirmation
+  };
+
+  const handleDuplicateSecondaryAction = () => {
+    submitFood(); // Submit the food
+    setShowConfirm(false); // Close the confirmation
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="form-container">
           <div className="input-field">
             <label>
-              Name:
+              Name
               <input
                 className={`input ${errors.nameEmpty || errors.nameSpaces ? "error" : ""}`}
                 type="text"
@@ -121,7 +163,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
                 setFormData((prevData) => ({ ...prevData, protein }))
               }
               type="protein"
-							isError={errors.protein}
+              isError={errors.protein}
             />
             {errors.protein && <div className="error-message">Protein is required.</div>}
           </div>
@@ -133,13 +175,13 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
                 setFormData((prevData) => ({ ...prevData, carb }))
               }
               type="carb"
-							isError={errors.carb}
+              isError={errors.carb}
             />
             {errors.carb && <div className="error-message">Carb is required.</div>}
           </div>
           <div className="input-field">
             <label>
-              Date:
+              Date
               <input
                 className={`input ${errors.date ? "error" : ""}`}
                 type="date"
@@ -160,8 +202,20 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
           </button>
         </div>
       </form>
-      {showConfirm && (
-        <ConfirmAction onConfirm={confirmCancel} onCancel={cancelCancel} type="cancel"/>
+      {showConfirm && isDuplicateName && (
+        <ConfirmAction
+          primaryAction={handleDuplicatePrimaryAction}
+          secondaryAction={handleDuplicateSecondaryAction}
+          food={duplicateFoodData}
+          type="duplicate"
+        />
+      )}
+      {showConfirm && !isDuplicateName && (
+        <ConfirmAction 
+          primaryAction={confirmCancel} 
+          secondaryAction={cancelCancel} 
+          type="cancel"
+        />
       )}
     </div>
   );

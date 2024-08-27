@@ -194,8 +194,8 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
       {foodToDelete && (
         <ConfirmAction 
           food={foodToDelete} 
-          onConfirm={handleDeleteConfirm} 
-          onCancel={handleDeleteCancel}
+          primaryAction={handleDeleteConfirm} 
+          secondaryAction={handleDeleteCancel}
           type="delete" 
         />
       )}

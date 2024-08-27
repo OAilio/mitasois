@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import FoodForm from './FoodForm';
 import '../css/addNewFood.scss'
 
-const AddNewFood = ({ handleCreate, foods }) => {
+const AddNewFood = ({ handleCreate, foods, setActiveFood, setEditingFood }) => {
   const [addFormOpen, setAddFormOpen] = useState(false)
   const [formData, setFormData] = useState({ name: '', protein: null, carb: null, date: '' });
   const formRef = useRef(null);
@@ -32,7 +32,7 @@ const AddNewFood = ({ handleCreate, foods }) => {
   return (
     <> 
     {!addFormOpen ? (
-    <div className='new-food-container' onClick={openForm}>
+    <div className='new-food-container' onClick={openForm} title="Click here to add a new food">
       <div className='item-content'>+ Add new food</div>
     </div>
     ) : (
@@ -44,7 +44,10 @@ const AddNewFood = ({ handleCreate, foods }) => {
           setFormData={setFormData}
           submit={handleCreate}
           foods={foods}
+          addFormOpen={addFormOpen}
           setAddFormOpen={setAddFormOpen}
+          setActiveFood={setActiveFood}
+          setEditingFood={setEditingFood}
         /> 
       </div>
     
