@@ -20,7 +20,6 @@ const Filter = ({ options, activeFilters, setActiveFilters, name }) => {
   // Custom valuecontainer to display the amount of selected options
   // instead of clickable filters.  
   const ValueContainer = ({ children, ...props }) => {
-
     const selectedOptions = props.getValue();
     const count = selectedOptions.length;
 

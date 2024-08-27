@@ -43,6 +43,7 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
     return randomFood;
   }
 
+  // Randomizes a food for the user
   const randomizeFood = () => {
     setIsCycling(true); // Start cycling
     setAnimateFood(false); // Reset animation state
@@ -65,9 +66,10 @@ const ChefChoice = ({ foods, setActiveFood, chefChoiceVisible, setChefChoiceVisi
           setAnimateFood(true); // Trigger the enlarge animation
         }, 100); // Small delay before animation
       }
-    }, 100); // Adjust the speed of the cycling effect here (100ms for fast cycling)
+    }, 100); // 100ms for fast cycling
   };
 
+  // Opens the food that user confirms
   const openFoodItem = (food) => {
     setActiveFood(food.id)
     setSelectedFood(null)

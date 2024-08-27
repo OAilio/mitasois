@@ -60,6 +60,10 @@
 
 		.ingSelect__placeholder{
 			color: darken($grey, 25%);
+
+			&::first-letter {
+				text-transform: capitalize;
+			}
 		}
 
 		.ingSelect__input {

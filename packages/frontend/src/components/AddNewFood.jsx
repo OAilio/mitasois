@@ -12,6 +12,7 @@ const AddNewFood = ({ handleCreate, foods, setActiveFood, setEditingFood }) => {
     setAddFormOpen(true)
   }
 
+  // useEffect that moves the screen if adding form is opened
   useEffect(() => {
     if (addFormOpen && formRef.current) {
       const elementTop = formRef.current.getBoundingClientRect().top + window.scrollY;

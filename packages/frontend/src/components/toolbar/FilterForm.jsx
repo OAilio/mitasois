@@ -12,7 +12,7 @@ const FilterForm = ({ foods, proteinFilters, setProteinFilters, carbFilters, set
   }
 
   function closeFilterForm(){
-	setFilterOptionsVisibility(false)
+		setFilterOptionsVisibility(false)
   }
 
 	const toggleDateFilterType = () => {

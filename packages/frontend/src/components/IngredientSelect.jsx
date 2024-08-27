@@ -10,6 +10,7 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type, isError }) =
       { value: 'Beef', label: 'Beef' },
       { value: 'Chicken', label: 'Chicken' },
       { value: 'Egg', label: 'Egg' },
+      { value: 'Seafood', label: 'Seafood' },
       { value: 'Pork', label: 'Pork' },
       { value: 'Vegetable', label: 'Vegetable' },
     ],
@@ -18,7 +19,6 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type, isError }) =
       { value: 'Pasta', label: 'Pasta' },
       { value: 'Bread', label: 'Bread' },
       { value: 'Vegetable', label: 'Vegetable' },
-      { value: 'Quinoa', label: 'Quinoa' }
     ]
   };
 
@@ -47,7 +47,7 @@ const IngredientSelect = ({ foods, ingredient, setIngredient, type, isError }) =
           <Creatable
             className={`ingredient-select ${isError ? "error" : ""}`}
             classNamePrefix={`ingSelect`}
-            placeholder="Select"
+            placeholder={type}
             value={currentSelection.value ? currentSelection : null}
             options={ingredientOptions}
             onChange={(option) => setIngredient(option)}

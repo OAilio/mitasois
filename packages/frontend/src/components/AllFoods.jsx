@@ -155,6 +155,7 @@ const AllFoods = ({ foods, ascendingSort, searchInput, handleDelete, handleUpdat
                 setFormData={setFormData}
                 foods={foods}
                 submit={handleUpdate}
+                editingFood={editingFood}
                 setEditing={setEditingFood}
                 setActiveFood={setActiveFood} />
               ) : (

@@ -4,7 +4,7 @@ import IngredientSelect from './IngredientSelect';
 import ConfirmAction from "./ConfirmAction";
 import '../css/foodForm.scss';
 
-const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveFood, addFormOpen, setAddFormOpen }) => {
+const FoodForm = ({ formData, setFormData, submit, foods, editingFood, setEditing, setActiveFood, addFormOpen, setAddFormOpen }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const initialEmptyFormData = { name: "", protein: null, carb: null, date: "" };
   const [initialFormData, setInitialFormData] = useState(initialEmptyFormData);
@@ -98,6 +98,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
     }
   };
 
+  // Closes the form on cancel
   const confirmCancel = () => {
     setFormData(initialEmptyFormData);
     if (formData.id) {
@@ -109,6 +110,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
     setShowConfirm(false);
   };
 
+  // Keeps the form open
   const cancelCancel = () => {
     setShowConfirm(false);
   };
@@ -123,9 +125,11 @@ const FoodForm = ({ formData, setFormData, submit, foods, setEditing, setActiveF
 
   const handleDuplicatePrimaryAction = () => {
     if (addFormOpen) {
-      setAddFormOpen(false) // Close the addNewForm
+      setAddFormOpen(false) // Close the addNewForm if it's open (adding new operation)
     }
-    setEditing(null) // Close the editing form
+    if (editingFood) {
+      setEditing(null) // Close the editing form if it's open (edit operation)
+    }
     setFormData(initialEmptyFormData); // Empty the form data
     setActiveFood(duplicateFoodId); // Set active food as the duplicate food
     setShowConfirm(false); // Close the confirmation
