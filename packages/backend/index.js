@@ -6,6 +6,7 @@ const Food = require("./models/food")
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('dist'))
 
 
 // Methods
