@@ -1,8 +1,6 @@
 @import './shared';
 
 .filter-form-container {
-    // @include food-item-container;
-    // @include food-item-container-size-diffs;
     background-color: $white;
     border-color: $secondary;
     display: flex;
@@ -15,11 +13,9 @@
     border-radius: 20px;
     margin-bottom: 1rem;
     z-index: 100;
-    position: fixed; // Make it fixed
+    position: fixed;
     left: 0;
-    // margin-left: 4rem;
     right: 0;
-    // bottom: 0;
     top: 0;
 
     .filter-form-header {
@@ -50,12 +46,9 @@
     .filter-form-content {
         display: flex;
         align-items:stretch;
-        // text-align: left;
         justify-content: space-between;
         flex-direction: column;
         margin: 0.75rem 1.5rem;
-        // width: 100%;
-        // background-color: aqua;
 
         .filter-picker-container {
             margin-bottom: 1rem;
@@ -82,7 +75,6 @@
                 cursor: pointer;
 
                 &-icon {
-                    // color: red;
                     margin-right: 0.75rem;
                     font-size: calc($icon-size-small * 0.75);
                 }

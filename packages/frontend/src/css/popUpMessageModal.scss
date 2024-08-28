@@ -36,7 +36,6 @@
 	.pop-up-icon {
 		margin: 0rem 0.75rem;
 		font-size: 2.5rem;
-		// background-color: red;
 	}
 
 	.pop-up-text {
@@ -44,7 +43,6 @@
 		text-wrap: pretty;
 		display: flex;
 		flex-direction: column;
-		// background-color: red;
 
 		.large {
 			font-family: $bold;
@@ -53,8 +51,7 @@
 
 		.small {
 			font-family: $medium;
-			font-size: $small-text;
-			// margin-top: 0.5rem;
+			font-size: $small-text;;
 		}
 	}
 

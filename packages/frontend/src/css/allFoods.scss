@@ -3,7 +3,6 @@
 .list-of-all-food-items {
 	display: flex;
 	position: relative;
-	// bottom: 0;
 	flex-direction: column;
 	@include all-foods-widths;
 	overflow-y: auto;

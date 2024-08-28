@@ -26,7 +26,6 @@
 		border-width: 0.5rem;
 		border-color: $secondary;
 		width: 30rem;
-		// height: 25rem;
 		margin: auto;
 		padding: 1.25rem;
 		text-align: center;
@@ -39,8 +38,6 @@
 		.message-heading {
 			display: flex;
 			flex-direction: column;
-			// background-color: aqua;
-			// margin-bottom: 0.75rem;
 			font-family: $semibold;
 			font-size: $medium-text;
 			
@@ -75,7 +72,6 @@
 		}
 		
 		.message-content {
-			// background-color: red;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -101,13 +97,13 @@
 					transform: scale(1);
 				}
 				25% {
-					transform: scale(1.1); // Increase size by 30%
+					transform: scale(1.1);
 				}
 				50% {
 					transform: scale(1);
 				}
 				75% {
-					transform: scale(1.1); // Increase size by 30%
+					transform: scale(1.1);
 				}
 				100% {
 					transform: scale(1); // Return to original size
@@ -119,13 +115,12 @@
 				font-family: $bold;
 				margin-bottom: 1rem;
 				max-width: 100%;
-				// background-color: aqua;
 				white-space: wrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
 
 				&.enlarge {
-					animation: enlarge 1s ease-in-out; // Apply the enlarge animation for 0.5s
+					animation: enlarge 1s ease-in-out; // Apply the enlarge animation
 				}
 			}
 
@@ -143,7 +138,6 @@
 				.recommended-food {
 					font-size: $medium-text;
 					margin-bottom: 0rem;
-					// background-color: black;
 				}
 
 				.confirmation-icon {
@@ -154,7 +148,6 @@
 
 		.button-group {
 			@include button-group;
-			// padding-top: 2rem;
 			margin-top: 0.5rem;
 
 			button {
