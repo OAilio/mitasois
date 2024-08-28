@@ -1,0 +1,31 @@
+@import "./shared";
+
+.error-bg {
+    background-color: $background;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: $primary;
+
+    .error-icon {
+        color: $red;
+        font-size: 5rem;
+    }
+
+    .error-heading {
+        font-size: $heading;
+        font-family: $bold;
+    }
+
+    .error-text {
+        font-family: $regular;
+        font-size: $medium-text;
+        margin: 0.75rem auto 0rem;
+
+        &.bold {
+            font-family: $semibold;
+        }
+    }
+}

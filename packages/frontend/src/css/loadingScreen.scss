@@ -1,0 +1,36 @@
+@import "./shared";
+
+.loading-bg {
+    background-color: $background;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: $primary;
+
+    .loading-heading {
+        font-size: $heading;
+        font-family: $bold;
+    }
+
+    .loading-text {
+        font-family: $regular;
+        font-size: $medium-text;
+    }
+
+    .spinner {
+        border: 8px solid $secondary;
+        border-top: 8px solid $primary;
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+        animation: spin 1.5s linear infinite;
+        margin: 1rem auto;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}

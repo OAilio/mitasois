@@ -32,7 +32,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, editingFood, setEditin
 
     // Trim the name and check for empty strings or only spaces
     const trimmedName = formData.name.trim();
-    const duplicateFood = foods.find(food => food.name === trimmedName);
+    const duplicateFood = foods.find(food => food.name === trimmedName && food.id != formData.id);
 
     // Validate required fields and set different error states for the name
     const newErrors = {
@@ -146,7 +146,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, editingFood, setEditin
         <div className="form-container">
           <div className="input-field">
             <label>
-              Name
+              Name*
               <input
                 className={`input ${errors.nameEmpty || errors.nameSpaces ? "error" : ""}`}
                 type="text"
@@ -185,7 +185,7 @@ const FoodForm = ({ formData, setFormData, submit, foods, editingFood, setEditin
           </div>
           <div className="input-field">
             <label>
-              Date
+              Date*
               <input
                 className={`input ${errors.date ? "error" : ""}`}
                 type="date"

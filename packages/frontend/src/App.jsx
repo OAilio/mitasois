@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import foodService from './services/foodService';
 
 import './css/body.scss'
@@ -10,16 +9,19 @@ import AddNewFood from './components/AddNewFood';
 import AllFoods from './components/AllFoods';
 import Header from './components/Header';
 import PopUpMessage from './components/PopUpMessage';
+import LoadingScreen from './components/LoadingScreen';
+import ErrorScreen from './components/ErrorScreen';
 
 function App() {
-  const [foods, setFoods] = useState([]);
-  const [activeFood, setActiveFood] = useState(null);
-  const [editingFood, setEditingFood] = useState(null)
-  const [ascendingSort, setAscendingSort] = useState(false)
+  const [foods, setFoods] = useState([]); // List of foods
+  const [activeFood, setActiveFood] = useState(null); // Food that's currently open
+  const [editingFood, setEditingFood] = useState(null) // Food that's currently being edited
+  const [ascendingSort, setAscendingSort] = useState(false) // Sort direction
   const [error, setError] = useState(null);
   const [searchInput, setSearchInput] = useState("")
-  const [message, setMessage] = useState(null)
-  const [messageHeading, setMessageHeading] = useState(null)
+  const [message, setMessage] = useState(null) // Pop-up message content
+  const [messageHeading, setMessageHeading] = useState(null) // Pop-up message heading
+  const [loading, setLoading] = useState(true); // Is page loading
 
   // Filters
   const [proteinFilters, setProteinFilters] = useState([]);
@@ -27,13 +29,13 @@ function App() {
   const [dateFilter, setDateFilter] = useState("");
   const [dateFilterType, setDateFilterType] = useState('Before');
 
-
   // Fetch food data
   useEffect(() => {
     foodService.getAllFoods()
       .then(response => {
         console.log("Promise fulfilled")
         setFoods(response.data);
+        setLoading(false);
       })
       .catch(error => {
         setError(error);
@@ -76,7 +78,9 @@ function App() {
       });
   };
 
-  if (error) return <p>Error: {error.message}</p>
+  if (error) { return <ErrorScreen error={error} />; }
+
+  if (loading) { return <LoadingScreen />; }
 
   return (
     <>
