@@ -55,14 +55,14 @@
         }
 
         .date-label {
-            @include label-style;  
+            @include label-style;
         }
 
         .input-field {
 			@include input-field-basics;
             justify-content: space-between;
             align-items: center;
-
+            
             .date-type-toggle {
                 @include toolbar-icon-animations;
                 color: $primary;
@@ -100,6 +100,10 @@
             .filter-picker-container {
                 margin-bottom: 0rem;
             }
+
+            .date-label {
+                margin-top: 1rem;
+            }
         }
     }
 
@@ -110,6 +114,6 @@
     }
 
     @media screen and (max-width: $large-mobile) {
-        margin: 18rem auto auto auto;
+        margin: 15rem auto auto auto;
     }
 }
